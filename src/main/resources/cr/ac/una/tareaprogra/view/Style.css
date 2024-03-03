@@ -1,0 +1,176 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+*{
+-fx-font-family: Roboto;
+-fx-base-color-focus:#09b6bc;
+-fx-base-color-unfocus:#4d4d4d;
+-fx-base-color-etiquetas:#4d4d4d;
+-fx-base-color-titulos:#51b6cd;
+-fx-base-color-id:#00c853;
+
+
+}
+.jfx-btnimg-agregar,.jfx-btnimg-siguiente{
+    -fx-alignment:CENTER;
+    -fx-content-display:graphic-only;
+    -fx-background-color: #2196F3;
+}
+
+
+.jfx-text-field, .jfx-paswword-field{
+    -fx-font-size:14.0px;
+    -fx-pref-height:26px;
+    -fx-min-height:26px;
+    -fx-max-height:26px;
+    -fx-alignment: TOP_LEFT;
+    -jfx-focus-color: -fx-base-color-focus;
+     -jfx-unfocus-color: -fx-base-color-unfocus;
+    -fx-txt-fill:black;
+    -fx-prompt-text-fill:-fx-base-color-etiquetas;
+    
+}
+
+
+.jfx-titulo-label{
+    -fx-font-size:28px;
+    -fx-padding: 5 0 5 0;
+    -fx-text-fill:-fx-base-color-titulos;
+    -fx-font-weight:bold;
+    -fx-effect:dropshadow(three-pass-box,rgba(0,0,0,0.6),2,0.0,1,2);
+    
+}
+.jfx-subtitulo-label{
+    -fx-font-size: 14.0px;
+    -fx-text-fill: -fx-base-color-titulos;
+    -fx-font-weight: bold; 
+}
+.jfx-button{
+   -jfx-button-type: RAISED;
+    -fx-opacity: 0.8;
+    -fx-content-display: left;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-alignment:CENTER;
+}
+.jfx-button .jfx-rippler{-jfx-rippler-fill: white;}
+.jfx-button:hover, .button:hover{-fx-background-color: #FF6D00;}
+
+
+/*Busqueda View*/
+
+.vbox-busqueda{
+    
+   
+          -fx-background-color: #f2f2f2;
+  -fx-effect: dropshadow(three-pass-box, rgba(33, 150, 243, 1), 10, 0, 0, 0);
+}
+.jfx-btn-cancelar{
+-fx-background-image: url("../resources/cancelar.png");
+  -fx-background-size: 30px 30px;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;}
+.jfx-btn-cancelar{-fx-background-color: #CC0000;}
+.jfx-btn-cancelar:hover{-fx-background-color: #f95454;}
+
+.jfx-btn-aceptar{-fx-background-color: #3498db;}
+.jfx-btn-aceptar{-fx-background-image: url("../resources/Agregar-48.png");
+  -fx-background-size: 30px 30px;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;}
+.jfx-btn-aceptar:hover{-fx-background-color: #69bcff;}
+
+/*Empleados View*/
+
+.jfx-txt-id{
+      -fx-prompt-text-fill:-fx-base-color-id;
+        -jfx-focus-color: -fx-base-color-id;
+        -jfx-unfocus-color: -fx-base-color-id;
+}
+.jfx-btn-nuevo{-fx-background-color: #2196F3;}
+.jfx-btn-nuevo{-fx-background-image: url("../resources/Agregar-48.png");
+  -fx-background-size: 30px 30px;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;}
+.jfx-btn-nuevo:hover{-fx-background-color: #69bcff;}
+.jfx-btn-buscar{
+-fx-background-image: url("../resources/Buscar-48.png");
+  -fx-background-size: 30px 30px;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;}
+
+.jfx-btn-buscar{-fx-background-color: #23B82E;}
+.jfx-btn-buscar:hover{-fx-background-color: #4efd5c;}
+.jfx-btn-eliminar{
+-fx-background-image: url("../resources/Eliminar-48.png");
+  -fx-background-size: 30px 30px;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;}
+.jfx-btn-eliminar{-fx-background-color: #CC0000;}
+.jfx-btn-eliminar:hover{-fx-background-color: #f95454;}
+.jfx-btn-guardar{
+-fx-background-image: url("../resources/Guardar-48.png");
+  -fx-background-size: 30px 30px;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;}
+.jfx-btn-guardar{-fx-background-color: #666666;}
+.jfx-btn-guardar:hover{-fx-background-color: #B0A6A6;}
+
+.hbox-centro{
+     -fx-background-color: #f2f2f2;
+    -fx-padding: 25 15 15 15;
+  -fx-effect: dropshadow(three-pass-box, rgba(33, 150, 243, 1), 10, 0, 0, 0);
+}
+/*Principal View*/
+.jfx-btn-empleados {
+  -fx-background-size: 25px 25px;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;
+  -fx-background-color: #51b6cd;
+}
+
+.jfx-btn-empleados:hover {
+  -fx-background-color: #80c9e3;
+}
+
+.jfx-btn-planillas {
+  -fx-background-size: 30px 30px;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;
+  -fx-background-color: #666666;
+}
+
+.jfx-btn-planillas:hover {
+  -fx-background-color: #999999;
+}
+
+.jfx-btn-salir {
+  -fx-background-size: 30px 30px;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;
+}
+
+.jfx-btn-salir {
+  -fx-background-color: #CC0000;
+}
+
+.jfx-btn-salir:hover {
+  -fx-background-color: #f95454;
+}
+.titulo-planilla {
+  -fx-text-fill: #3887a9;
+      -fx-font-size:28px;
+    -fx-padding: 5 0 5 0;
+    -fx-font-weight:bold;
+    -fx-effect:dropshadow(three-pass-box,rgba(0,0,0,0.6),2,0.0,1,2);
+}
+.jfx-btnimg-tbveliminar{
+    -fx-opacity: 0.8;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+    -fx-background-color: #f44336;
+    -fx-background-image : url("../resources/Eliminar-48.png");
+}
