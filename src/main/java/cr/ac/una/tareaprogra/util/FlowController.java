@@ -6,6 +6,7 @@
 package cr.ac.una.tareaprogra.util;
 
 import cr.ac.una.tareaprogra.App;
+import cr.ac.una.tareaprogra.controller.Controller;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -20,7 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import cr.ac.una.tareaprogra.controller.Controller;
+
 
 public class FlowController {
 
@@ -137,8 +138,8 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        stage.getIcons().add(new Image("cr/ac/una/unaplanilla/resources/unaLogo.png"));
-        stage.setTitle("UNA PLANILLA");
+        stage.getIcons().add(new Image("cr/ac/una/tareaprogra/resources/logo.png"));
+        stage.setTitle("COOPETOY");
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
             controller.setStage(null);
@@ -157,7 +158,7 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        stage.getIcons().add(new Image("cr/ac/una/unaplanilla/resources/Usuario-48.png"));
+        stage.getIcons().add(new Image("cr/ac/una/tareaprogra/resources/logo.png"));
         stage.setTitle("UNA PLANILLA");
         stage.setResizable(resizable);
         stage.setOnHidden((WindowEvent event) -> {
