@@ -1,72 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.controller.MarconigayController">
-   <children>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" styleClass="borde_pane" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER" prefHeight="76.0" prefWidth="850.0" BorderPane.alignment="CENTER">
          <children>
-            <Label styleClass="jfx-titulo-label" text="CoopeToy" VBox.vgrow="ALWAYS" />
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="200.0" spacing="20.0" HBox.hgrow="ALWAYS">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <children>
-                        <Label styleClass="jfx-titulo-label" text="Profesores">
-                           <font>
-                              <Font size="23.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" text="Crear Tipo de Cuenta" />
-                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="180.0">
-                           <children>
-                              <Button mnemonicParsing="false" text="Modificar Cooperativa" HBox.hgrow="ALWAYS" />
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="200.0" spacing="20.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Label styleClass="jfx-titulo-label" text="Asociados">
-                           <font>
-                              <Font size="23.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="99.0" styleClass="jfx-btn-buscar" text="Registrarse" />
-                        <Button mnemonicParsing="false" text="Consultar Cuentas" />
-                        <Button mnemonicParsing="false" styleClass="jfx-btn-aceptar" text="Deposito de Buzon" />
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="200.0" spacing="20.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Label styleClass="jfx-titulo-label" text="Funcionarios">
-                           <font>
-                              <Font size="23.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" text="Mantenimiento" />
-                        <Button mnemonicParsing="false" text="Registrar Usuarios" />
-                        <Button mnemonicParsing="false" text="Mover Dinero" />
-                        <Button mnemonicParsing="false" text="Imprimir Carnet" />
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-               </children>
-            </HBox>
+            <Label styleClass="Title-Cooperativa" text="COOPETOY" />
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="524.0" prefWidth="220.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="btn-create-account-type" text="Crear Tipo de Cuenta" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="btn-modify-cooperative" text="Modificar Cooperativa" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="btn-check-in" text="Registrarse" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="btn-check-accounts" text="Consultar Cuentas" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="btn-mailbox-deposit" text="Deposito de Buzon" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="btn-maintenance" text="Mantenimiento" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="btn-register-user" text="Registrar Usuarios" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="btn-move-money" text="Mover Dinero" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="btn-print-id" text="Imprimir Carnet" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="btn-Exit" text="Salir" />
          </children>
       </VBox>
-   </children>
-</AnchorPane>
+   </left>
+</BorderPane>
