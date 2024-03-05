@@ -64,6 +64,7 @@ public class PrincipalViewController extends Controller  implements Initializabl
 
     @FXML
     private void onActionBtnCreateAccountType(ActionEvent event) {
+        FlowController.getInstance().goView("createAccountType");
     }
 
     @FXML
