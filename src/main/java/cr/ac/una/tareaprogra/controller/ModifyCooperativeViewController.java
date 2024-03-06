@@ -11,18 +11,27 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
  *
  * @author PC
  */
-public class CreateAccountTypeViewController extends Controller implements Initializable {
+public class ModifyCooperativeViewController extends Controller implements Initializable {
 
     @FXML
-    private Button btnAddAccount;
+    private Button btnSearchLogo;
     @FXML
-    private TextField txtTypeAccount;
+    private Button btnCancel;
+    @FXML
+    private Button btnSave;
+    @FXML
+    private TextField txtNewNameCooperative;
+    @FXML
+    private TextField txtAddressLogo;
+    @FXML
+    private ImageView imgNewLogo;
 
     /**
      * Initializes the controller class.
@@ -32,12 +41,20 @@ public class CreateAccountTypeViewController extends Controller implements Initi
         // TODO
     }    
 
-    @Override
-    public void initialize() {
-       }
+    @FXML
+    private void onActionBtnSearchLogo(ActionEvent event) {
+    }
 
     @FXML
-    private void onActionBtnAddAccount(ActionEvent event) {
+    private void onActionBtnCancel(ActionEvent event) {
     }
+
+    @FXML
+    private void onActionBtnSave(ActionEvent event) {
+    }
+
+    @Override
+    public void initialize() {
+         }
     
 }

@@ -22,7 +22,7 @@ public class App extends Application {
         FlowController.getInstance().InitializeFlow(stage, null);
         stage.getIcons().add(new Image("cr/ac/una/tareaprogra/resources/logo.png"));
         stage.setTitle("COOPETOY");
-        FlowController.getInstance().goViewInWindow("PrincipalView");
+        FlowController.getInstance().goMain();
     }
 
 

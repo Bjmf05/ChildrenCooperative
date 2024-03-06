@@ -13,6 +13,13 @@
     -fx-font-weight:bold;
     -fx-background-color: #c2c3db
 }
+.vbox-Center{
+ -fx-border-color:#5271ff;
+     -fx-border-width: 2px; 
+    -fx-border-radius: 5px; 
+    -fx-border-style: solid; 
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 0); 
+}
 .button{
     -jfx-button-type: RAISED;
     -fx-opacity: 0.8;
@@ -21,6 +28,44 @@
 
     -fx-font-size: 14px;
     -fx-alignment:CENTER;
+}
+.sub-Title{
+    -fx-text-fill: #5271ff;
+    -fx-font-size:28px;
+    -fx-padding: 5 0 5 0;
+    -fx-font-weight:bold;
+    -fx-effect:dropshadow(three-pass-box,rgba(0,0,0,0.6),2,0.0,1,2);
+    
+
+}
+
+.sub-Title2{
+    -fx-text-fill: #1E2B69;
+    -fx-font-size:24px;
+    -fx-padding: 5 0 5 0;
+    -fx-font-weight:bold;
+}
+
+.btn-Save{
+    -fx-background-image: url("../resources/Save.png");
+    -fx-background-size: 30px 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-color: #666666;
+}
+.btn-Save:hover{
+    -fx-background-color: #B0A6A6;
+}
+
+.btn-Cancel{
+    -fx-background-image: url("../resources/Cancel.png");
+    -fx-background-size: 30px 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-color: #CC0000;
+}
+.btn-Cancel:hover{
+    -fx-background-color: #f95454;
 }
 
 /*PrincipalView */
@@ -39,7 +84,7 @@
     -fx-background-color:#333333;
 }
 .btn-Exit:hover{
-    -fx-background-color:#f95454;
+    -fx-background-color:#B0A6A6;
 }
 
 .btn-create-account-type{
@@ -107,9 +152,36 @@
 }
 
 .btn-print-id{
-        -fx-background-image:url("../resources/pdf-icon.png");
+    -fx-background-image:url("../resources/pdf-icon.png");
     -fx-background-size: 30px 30px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: left;
     -fx-background-color:#FF0000;
+}
+/*Create New Type Account*/
+.btn-Add{
+    -fx-background-color: #2196F3;
+    -fx-background-image: url("../resources/Add.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+}
+.btn-Add:hover{
+    -fx-background-color: #69bcff;
+}
+
+.btn-Search{
+     -fx-background-color: #23B82E;
+    -fx-background-image: url("../resources/Search.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+}
+.btn-Search:hover{-fx-background-color:#4efd5c;}
+.txt-default{
+    -fx-border-color:#5271ff;
+     -fx-border-width: 2px; 
+    -fx-border-radius: 5px; 
+    -fx-border-style: solid; 
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 0); 
 }
