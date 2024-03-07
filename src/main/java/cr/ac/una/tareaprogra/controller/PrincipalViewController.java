@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
@@ -41,17 +42,17 @@ public class PrincipalViewController extends Controller  implements Initializabl
     @FXML
     private Button btnMailBox;
     @FXML
-    private Button btnMaintenance;
-    @FXML
     private Button btnRegisterUser;
     @FXML
     private Button btnMoveMoney;
     @FXML
-    private Button btnPrintId;
-    @FXML
     private Button btnExit;
     @FXML
     private ImageView imgLogoPrincipal;
+    @FXML
+    private Button btnMaintenanceUser;
+    @FXML
+    private HBox prueba;
 
     /**
      * Initializes the controller class.
@@ -60,7 +61,8 @@ public class PrincipalViewController extends Controller  implements Initializabl
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         imgLogoPrincipal.setImage(new Image("/cr/ac/una/tareaprogra/resources/logo.png"));
-        //Image image = new Image ("");
+      
+   
     }    
 
     @Override
@@ -80,34 +82,38 @@ public class PrincipalViewController extends Controller  implements Initializabl
 
     @FXML
     private void onActionBtnCheckIn(ActionEvent event) {
+        FlowController.getInstance().goView("RegisterUserView");
     }
 
     @FXML
     private void onActionBtnCheckAccount(ActionEvent event) {
+        FlowController.getInstance().goView("CheckAccountView");
     }
 
     @FXML
     private void onActionBtnMailBox(ActionEvent event) {
+        FlowController.getInstance().goView("MailBoxView");
     }
 
-    @FXML
-    private void onActionBtnMaintenance(ActionEvent event) {
-    }
 
     @FXML
     private void onActionBtnRegisterUser(ActionEvent event) {
+        FlowController.getInstance().goView("RegisterUserView");
     }
 
     @FXML
     private void onActionBtnMoveMoney(ActionEvent event) {
+        FlowController.getInstance().goView("MoveMoneyView");
     }
 
-    @FXML
-    private void onActionBtnPrintID(ActionEvent event) {
-    }
 
     @FXML
     private void onActionBtnExit(ActionEvent event) {
         FlowController.getInstance().salir();
+    }
+
+    @FXML
+    private void onActionBtnMaintenanceUser(ActionEvent event) {
+        FlowController.getInstance().goView("MaintenanceUserView");
     }
 }

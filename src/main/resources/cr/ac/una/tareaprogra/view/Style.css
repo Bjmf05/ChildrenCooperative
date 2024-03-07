@@ -13,7 +13,7 @@
 }
 .vbox-no-transparent {
     
-    -fx-background-color: rgba(0, 0, 0, 0.7);
+    -fx-background-color: rgba(255, 255, 255,0.9);
 }
 .backgroundImage {
     -fx-background-image: url("../resources/backgroundImage.png");
@@ -169,7 +169,8 @@
     -fx-background-size: 30px 30px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: left;
-    -fx-background-color:#00008B;
+  /*  -fx-background-color:#00008B;*/
+    -fx-background-color: rgba(0, 0, 139,0.9);
 }
 
 .btn-print-id{
@@ -202,3 +203,14 @@
     -fx-background-color:#4efd5c;
 }
 
+/*Register User*/
+.btn-MakePhoto{
+ -fx-background-color: #23B82E;
+    -fx-background-image: url("../resources/MakePhoto.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+}
+.btn-MakePhoto:hover{
+    -fx-background-color:#4efd5c;
+}
