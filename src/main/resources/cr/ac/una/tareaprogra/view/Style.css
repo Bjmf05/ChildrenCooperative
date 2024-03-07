@@ -7,27 +7,38 @@
     src:url("FunnyKid.ttf");
 }
 
-.borde_pane{
+*{
     -fx-font-family: Arial Rounded;
-    -fx-font-size:12.0px;
-    -fx-font-weight:bold;
-    -fx-background-color: #c2c3db
+ 
 }
-.vbox-Center{
- -fx-border-color:#5271ff;
-     -fx-border-width: 2px; 
-    -fx-border-radius: 5px; 
-    -fx-border-style: solid; 
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 0); 
+.vbox-no-transparent {
+    
+    -fx-background-color: rgba(0, 0, 0, 0.7);
+}
+.backgroundImage {
+    -fx-background-image: url("../resources/backgroundImage.png");
+    -fx-background-size: cover;
+    -fx-fit-height: 100%;
+    -fx-fit-width: 100%;
+}
+.anchorPane-Center{
+    -fx-border-color:#5271ff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-border-style: solid;
+    -fx-padding: 5 5 5 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5, 0, 0, 0);
+    
+    -fx-background-color: rgba(194, 195, 219, 0.68);
 }
 .button{
     -jfx-button-type: RAISED;
     -fx-opacity: 0.8;
     -fx-content-display: left;
     -fx-text-fill: black;
-
-    -fx-font-size: 14px;
     -fx-alignment:CENTER;
+       -fx-font-size: 16px;
+      -fx-font-weight:bold;
 }
 .sub-Title{
     -fx-text-fill: #5271ff;
@@ -35,8 +46,6 @@
     -fx-padding: 5 0 5 0;
     -fx-font-weight:bold;
     -fx-effect:dropshadow(three-pass-box,rgba(0,0,0,0.6),2,0.0,1,2);
-    
-
 }
 
 .sub-Title2{
@@ -44,6 +53,16 @@
     -fx-font-size:24px;
     -fx-padding: 5 0 5 0;
     -fx-font-weight:bold;
+   
+}
+
+.txt-default{
+    -fx-border-color:#5271ff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-border-style: solid;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 0);
+
 }
 
 .btn-Save{
@@ -71,7 +90,7 @@
 /*PrincipalView */
 .Title-Cooperativa {
     -fx-text-fill: #1E2B69;
-    -fx-font-size:28px;
+    -fx-font-size: 28px;
     -fx-padding: 5 0 5 0;
     -fx-font-weight:bold;
     -fx-effect:dropshadow(three-pass-box,rgba(0,0,0,0.6),2,0.0,1,2);
@@ -87,12 +106,14 @@
     -fx-background-color:#B0A6A6;
 }
 
-.btn-create-account-type{
+ .btn-create-account-type{
     -fx-background-image:url("../resources/new-account.png");
     -fx-background-size: 32px 32px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: left;
     -fx-background-color:#006400;
+ 
+    /*-fx-background-color: rgba(0, 100, 0, 255);*/
 }
 
 .btn-modify-cooperative{
@@ -171,17 +192,13 @@
 }
 
 .btn-Search{
-     -fx-background-color: #23B82E;
+    -fx-background-color: #23B82E;
     -fx-background-image: url("../resources/Search.png");
     -fx-background-size: 25px 25px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: left;
 }
-.btn-Search:hover{-fx-background-color:#4efd5c;}
-.txt-default{
-    -fx-border-color:#5271ff;
-     -fx-border-width: 2px; 
-    -fx-border-radius: 5px; 
-    -fx-border-style: solid; 
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 0); 
+.btn-Search:hover{
+    -fx-background-color:#4efd5c;
 }
+

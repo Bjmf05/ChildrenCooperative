@@ -12,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
@@ -48,6 +50,8 @@ public class PrincipalViewController extends Controller  implements Initializabl
     private Button btnPrintId;
     @FXML
     private Button btnExit;
+    @FXML
+    private ImageView imgLogoPrincipal;
 
     /**
      * Initializes the controller class.
@@ -55,6 +59,8 @@ public class PrincipalViewController extends Controller  implements Initializabl
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        imgLogoPrincipal.setImage(new Image("/cr/ac/una/tareaprogra/resources/logo.png"));
+        //Image image = new Image ("");
     }    
 
     @Override
