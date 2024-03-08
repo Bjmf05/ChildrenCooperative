@@ -19,14 +19,14 @@
                   <Label styleClass="sub-Title" text="Crear Tipo de Cuenta" />
                </children>
             </HBox>
-            <HBox alignment="TOP_RIGHT" prefHeight="26.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER" prefHeight="26.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
                <children>
-                  <TextField fx:id="txtTypeAccount" prefHeight="30.0" prefWidth="300.0" promptText="Nuevo Tipo de Cuenta" HBox.hgrow="ALWAYS">
+                  <TextField fx:id="txtTypeAccount" prefHeight="30.0" prefWidth="334.0" promptText="Nuevo Tipo de Cuenta">
                      <HBox.margin>
                         <Insets left="80.0" right="20.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button fx:id="btnAddAccount" mnemonicParsing="false" onAction="#onActionBtnAddAccount" prefHeight="30.0" prefWidth="107.0" styleClass="btn-Add" text="Agregar" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnAddAccount" mnemonicParsing="false" onAction="#onActionBtnAddAccount" prefHeight="30.0" prefWidth="121.0" styleClass="btn-Add" text="Agregar" HBox.hgrow="ALWAYS" />
                </children>
                <VBox.margin>
                   <Insets />
@@ -35,7 +35,7 @@
                   <Insets right="20.0" />
                </padding>
             </HBox>
-            <TableView prefHeight="274.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+            <TableView prefHeight="274.0" prefWidth="600.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="Modificar" />
                 <TableColumn prefWidth="75.0" text="Eliminar" />
