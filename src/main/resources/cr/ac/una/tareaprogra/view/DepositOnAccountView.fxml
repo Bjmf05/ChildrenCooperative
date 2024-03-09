@@ -10,15 +10,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="540.0" prefWidth="750.0" styleClass="anchorPane-Center" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tareaprogra.controller.MailBoxViewController">
+
+<AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="731.0" stylesheets="@Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.tareaprogra.controller.DepositOnAccountViewController">
    <children>
-      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="410.0" prefWidth="100.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="44.0" prefWidth="585.0">
-               <children>
-                  <Label prefHeight="43.0" prefWidth="270.0" styleClass="sub-Title" text="Deposito por Buzon" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
             <HBox alignment="CENTER" prefHeight="43.0" prefWidth="600.0">
                <children>
                   <Label prefHeight="43.0" prefWidth="494.0" styleClass="sub-Title2" text="Digita la cantidad de billetes y monedas a depositar" HBox.hgrow="ALWAYS" />
@@ -129,7 +125,7 @@
                                     <Image url="@../resources/10Colones.png" />
                                  </image>
                               </ImageView>
-                              <TextField fx:id="txf100Amount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="100.0" />
+                              <TextField fx:id="txf10Amount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="100.0" />
                            </children>
                         </VBox>
                         <VBox alignment="TOP_CENTER" prefHeight="109.0" prefWidth="73.0" spacing="20.0" HBox.hgrow="ALWAYS">
@@ -148,19 +144,7 @@
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="735.0" spacing="10.0">
-               <children>
-                  <TextField fx:id="txfInvoice" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="110.0" promptText="¿Cual es tú folio?" />
-                  <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" text="Verificar Folio" />
-               </children>
-               <VBox.margin>
-                  <Insets bottom="15.0" />
-               </VBox.margin>
-            </HBox>
             <HBox prefHeight="79.0" prefWidth="735.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
@@ -170,7 +154,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onActionBtnSave" prefHeight="50.0" prefWidth="150.0" styleClass="btn-Save" text="Guardar" />
+                        <Button fx:id="btaSave" mnemonicParsing="false" onAction="#onActionBtnSave" prefHeight="50.0" prefWidth="150.0" styleClass="btn-Save" text="Guardar" />
                      </children>
                   </VBox>
                </children>

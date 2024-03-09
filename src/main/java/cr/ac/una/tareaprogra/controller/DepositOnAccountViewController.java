@@ -15,9 +15,9 @@ import javafx.scene.control.TextField;
 /**
  * FXML Controller class
  *
- * @author PC
+ * @author Marconi
  */
-public class MailBoxViewController extends Controller implements Initializable {
+public class DepositOnAccountViewController implements Initializable {
 
     @FXML
     private TextField txf20ThousandAmount;
@@ -38,15 +38,13 @@ public class MailBoxViewController extends Controller implements Initializable {
     @FXML
     private TextField txf25Amount;
     @FXML
+    private TextField txf10Amount;
+    @FXML
     private TextField txf5Amount;
-    @FXML
-    private TextField txfInvoice;
-    @FXML
-    private Button btnVerify;
     @FXML
     private Button btnCancel;
     @FXML
-    private Button btnSave;
+    private Button btaSave;
 
     /**
      * Initializes the controller class.
@@ -55,14 +53,6 @@ public class MailBoxViewController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    @Override
-    public void initialize() {
-   }
-
-    @FXML
-    private void onActionBtnVerify(ActionEvent event) {
-    }
 
     @FXML
     private void onActionBtnCancel(ActionEvent event) {

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="325.0" prefWidth="600.0" styleClass="anchorPane-Center" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tareaprogra.controller.WithdrawalViewController">
+   <children>
+      <VBox layoutY="7.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="67.0" prefWidth="585.0">
+               <children>
+                  <Label alignment="BASELINE_LEFT" styleClass="sub-Title" text="Retiro De La Cuenta" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="sub-Title2" text="Verificación de Folio" />
+                        <Label prefHeight="34.0" prefWidth="196.0" styleClass="sub-Title2" text="Selecione Cuenta" />
+                        <Label prefHeight="34.0" prefWidth="195.0" styleClass="sub-Title2" text="Cantidad a Retirar" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="308.0" prefWidth="105.0" spacing="22.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="320.0" spacing="20.0">
+                           <children>
+                              <TextField fx:id="txfVerify" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="117.0" promptText="¿Cuál es el folio?" styleClass="txt-default" />
+                              <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="40.0" prefWidth="110.0" styleClass="btn-Verify" text="Verificar" />
+                           </children>
+                        </HBox>
+                        <ComboBox fx:id="txfAccount" prefHeight="25.0" prefWidth="190.0" promptText="Seleciona la Cuenta" styleClass="cbx-SelectAccount" />
+                        <TextField fx:id="txfAmountToWithdraw" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="117.0" promptText="Monto de Dinero" styleClass="txt-default" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="94.0" prefWidth="585.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onActionBtnCancel" prefHeight="50.0" prefWidth="150.0" styleClass="btn-Cancel" text="Cancelar" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="btnWithdrawal" mnemonicParsing="false" onAction="#onActionBtnWithdrawal" prefHeight="50.0" prefWidth="150.0" styleClass="btn-Withdrawal" text="Retirar" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

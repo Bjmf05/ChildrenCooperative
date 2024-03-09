@@ -249,3 +249,15 @@
 .cbx-SelectAccount:hover{
     -fx-background-color: #ccffcc;
 }
+
+.btn-Withdrawal{
+    -fx-background-color: #666666;
+    -fx-background-image: url("../resources/WithdrawalOfMoney.png");
+    -fx-background-size: 35px 35px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+}
+
+.btn-Withdrawal:hover{
+    -fx-background-color:#cccccc;
+}
