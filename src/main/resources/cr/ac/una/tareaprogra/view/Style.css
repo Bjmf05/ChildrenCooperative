@@ -215,3 +215,37 @@
 .btn-MakePhoto:hover{
     -fx-background-color:#4efd5c;
 }
+
+/*Move Money*/
+.btn-Deposit{
+    -fx-background-color: #33ccff;
+    -fx-background-image: url("../resources/PiggyBank.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-alignment: center-right;
+}
+.btn-Deposit:hover{
+        -fx-background-color:#99ffff;
+
+}
+.btn-Verify{
+    -fx-background-color: #23B82E;
+    -fx-background-image: url("../resources/Verify.png");
+    -fx-background-size: 25px 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-alignment: center-right;
+}
+.btn-Verify:hover{
+    -fx-background-color:#4efd5c;
+}
+.cbx-SelectAccount{
+    -fx-background-color: #99ff99;
+    -fx-font-weight:bold;
+    -fx-text-fill: black;
+     -fx-font-size: 14px;
+}
+.cbx-SelectAccount:hover{
+    -fx-background-color: #ccffcc;
+}
