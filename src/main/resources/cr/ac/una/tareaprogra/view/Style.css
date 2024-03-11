@@ -269,3 +269,23 @@
 .btn-Withdrawal:hover{
     -fx-background-color:#cccccc;
 }
+
+.btn-accept{
+    -fx-background-color: #0066ff;
+}
+
+.btn-accept:hover{
+    -fx-background-color:#33ccff;
+}
+
+.checkBackgroundImage {
+    -fx-background-image: url("../resources/welcomeTo.png");
+    -fx-background-size: cover;
+    -fx-fit-height: 100%;
+    -fx-fit-width: 100%;
+    -fx-background-position: center;
+}
+
+.listView{
+    -fx-font-size:15px;
+}

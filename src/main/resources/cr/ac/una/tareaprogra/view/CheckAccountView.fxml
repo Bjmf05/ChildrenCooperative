@@ -38,13 +38,13 @@
                   <VBox alignment="CENTER" prefHeight="167.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Label styleClass="sub-Title3" text="Tipos de Cuentas Disponibles " />
-                        <ListView fx:id="lstVAccountAvailabe" prefHeight="267.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <ListView fx:id="lstVAccountAvailabe" prefHeight="267.0" prefWidth="200.0" styleClass="listView" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="267.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Label alignment="CENTER" styleClass="sub-Title3" text="Cuentas del Asociado" />
-                        <ListView fx:id="lstVAssociateAccount" prefHeight="167.0" prefWidth="338.0" VBox.vgrow="ALWAYS" />
+                        <ListView fx:id="lstVAssociateAccount" prefHeight="167.0" prefWidth="338.0" styleClass="listView" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
                </children>
