@@ -108,7 +108,7 @@
     -fx-background-size: 30px 30px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: left;
-    -fx-background-color:#333333;
+    -fx-background-color:#cc0000;
 }
 .btn-Exit:hover{
     -fx-background-color:#B0A6A6;

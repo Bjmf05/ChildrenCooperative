@@ -12,15 +12,17 @@ public class Account {
     private int id;
     private String invoice;
     private String Name;
-
+    private Double balance;
     public Account() {
     }
 
-    public Account(int id, String invoice, String Name) {
+    public Account(int id, String invoice, String Name, Double balance) {
         this.id = id;
         this.invoice = invoice;
         this.Name = Name;
+        this.balance = balance;
     }
+
 
     public int getId() {
         return id;
