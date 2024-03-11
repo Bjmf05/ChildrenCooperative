@@ -53,8 +53,6 @@ public class PrincipalViewController extends Controller implements Initializable
     private Button btnMaintenanceUser;
     @FXML
     private HBox prueba;
-    @FXML
-    private Button btnWithdrawal;
 
     /**
      * Initializes the controller class.
@@ -114,9 +112,5 @@ public class PrincipalViewController extends Controller implements Initializable
     @FXML
     private void onActionBtnMaintenanceUser(ActionEvent event) {
         FlowController.getInstance().goView("MaintenanceUserView");
-    }
-
-    @FXML
-    private void onActionBtnWithdrawal(ActionEvent event) {
     }
 }

@@ -47,7 +47,6 @@
             <Button fx:id="btnMaintenanceUser" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnMaintenanceUser" prefHeight="40.0" styleClass="btn-maintenance" text="Mantenimiento Usuarios" VBox.vgrow="ALWAYS" />
             <Button fx:id="btnRegisterUser" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnRegisterUser" prefHeight="40.0" styleClass="btn-register-user" text="Registrar Usuarios" VBox.vgrow="ALWAYS" />
             <Button fx:id="btnMoveMoney" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnMoveMoney" prefHeight="40.0" styleClass="btn-move-money" text="Mover Dinero" VBox.vgrow="ALWAYS" />
-            <Button fx:id="btnWithdrawal" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnWithdrawal" prefHeight="40.0" styleClass="btn-move-money" text="Mover Dinero" />
             <HBox fx:id="prueba" prefHeight="40.0" prefWidth="200.0" styleClass="vbox-no-transparent">
                <children>
                   <Button fx:id="btnExit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnExit" prefHeight="40.0" styleClass="btn-Exit" text="Salir" HBox.hgrow="ALWAYS" />

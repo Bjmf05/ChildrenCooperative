@@ -47,8 +47,6 @@ public class MailBoxViewController extends Controller implements Initializable {
     private Button btnCancel;
     @FXML
     private Button btnSave;
-    @FXML
-    private TextField txf10Amount;
 
     /**
      * Initializes the controller class.
