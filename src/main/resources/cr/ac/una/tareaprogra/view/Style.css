@@ -56,6 +56,13 @@
     -fx-font-weight:bold;
    
 }
+.sub-Title3{
+    -fx-text-fill: #660066;
+    -fx-font-size:20px;
+    -fx-padding: 5 0 5 0;
+    -fx-font-weight:bold;
+   
+}
 
 .txt-default{
     -fx-border-color:#5271ff;
@@ -179,7 +186,7 @@
     -fx-background-size: 30px 30px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: left;
-    -fx-background-color:#FF0000;
+    -fx-background-color:#999900;
 }
 /*Create New Type Account*/
 .btn-Add{
@@ -211,6 +218,7 @@
     -fx-background-size: 25px 25px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: left;
+    -fx-alignment: center-right;
 }
 .btn-MakePhoto:hover{
     -fx-background-color:#4efd5c;

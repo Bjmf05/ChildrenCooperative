@@ -23,7 +23,7 @@ import javafx.scene.layout.VBox;
  *
  * @author PC
  */
-public class PrincipalViewController extends Controller  implements Initializable {
+public class PrincipalViewController extends Controller implements Initializable {
 
     @FXML
     private BorderPane root;
@@ -61,14 +61,13 @@ public class PrincipalViewController extends Controller  implements Initializabl
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         imgLogoPrincipal.setImage(new Image("/cr/ac/una/tareaprogra/resources/logo.png"));
-      
-   
-    }    
+
+    }
 
     @Override
     public void initialize() {
-        
-}
+
+    }
 
     @FXML
     private void onActionBtnCreateAccountType(ActionEvent event) {
@@ -95,7 +94,6 @@ public class PrincipalViewController extends Controller  implements Initializabl
         FlowController.getInstance().goView("MailBoxView");
     }
 
-
     @FXML
     private void onActionBtnRegisterUser(ActionEvent event) {
         FlowController.getInstance().goView("RegisterUserView");
@@ -105,7 +103,6 @@ public class PrincipalViewController extends Controller  implements Initializabl
     private void onActionBtnMoveMoney(ActionEvent event) {
         FlowController.getInstance().goView("MoveMoneyView");
     }
-
 
     @FXML
     private void onActionBtnExit(ActionEvent event) {

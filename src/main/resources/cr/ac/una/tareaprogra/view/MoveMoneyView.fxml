@@ -10,30 +10,30 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="750.0" styleClass="anchorPane-Center" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tareaprogra.controller.MoveMoneyViewController">
-   <top>
-      <VBox prefHeight="103.0" prefWidth="736.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" prefHeight="25.0" prefWidth="586.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <Label contentDisplay="RIGHT" styleClass="sub-Title" text="Mover Dinero" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="736.0" spacing="15.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <TextField fx:id="txfInvoice" prefHeight="30.0" prefWidth="120.0" promptText="¿Cuál es el folio?" />
-                  <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="30.0" prefWidth="106.0" styleClass="btn-Verify" text="Verificar" />
-                  <ComboBox prefHeight="30.0" prefWidth="192.0" promptText="Selecciona la cuenta" styleClass="cbx-SelectAccount" />
-                  <Button fx:id="btnMailBoxDeposit" mnemonicParsing="false" onAction="#onActionBtnMailBoxDeposit" prefHeight="30.0" prefWidth="163.0" styleClass="btn-Deposit" text="Depocito Buzon" />
-                  <Button fx:id="btnDeposit" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onActionBtnDeposit" prefHeight="30.0" prefWidth="111.0" styleClass="btn-Deposit" text="Depocito" />
-               </children>
-               <padding>
-                  <Insets left="5.0" />
-               </padding>
-            </HBox>
-         </children>
-      </VBox>
-   </top>
-   <center>
-      <VBox prefHeight="500.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
-   </center>
+    <top>
+        <VBox prefHeight="103.0" prefWidth="736.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER" prefHeight="25.0" prefWidth="586.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label contentDisplay="RIGHT" styleClass="sub-Title" text="Mover Dinero" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="736.0" spacing="15.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <TextField fx:id="txfInvoice" prefHeight="30.0" prefWidth="120.0" promptText="¿Cuál es el folio?" styleClass="txt-default" />
+                        <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="30.0" prefWidth="106.0" styleClass="btn-Verify" text="Verificar" />
+                        <ComboBox prefHeight="30.0" prefWidth="192.0" promptText="Selecciona la cuenta" styleClass="cbx-SelectAccount" />
+                        <Button fx:id="btnMailBoxDeposit" mnemonicParsing="false" onAction="#onActionBtnMailBoxDeposit" prefHeight="30.0" prefWidth="163.0" styleClass="btn-Deposit" text="Depocito Buzon" />
+                        <Button fx:id="btnDeposit" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onActionBtnDeposit" prefHeight="30.0" prefWidth="111.0" styleClass="btn-Deposit" text="Depocito" />
+                    </children>
+                    <padding>
+                        <Insets left="5.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <VBox prefHeight="500.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+    </center>
 </BorderPane>
