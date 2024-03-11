@@ -4,6 +4,8 @@
  */
 package cr.ac.una.tareaprogra.model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author PC
@@ -13,20 +15,21 @@ public class Associate {
     private int id;
     private String name;
     private String invoice;
-    private String dateOfBirth;
-    private String Sex;
-
+    private LocalDate dateOfBirth;
+    private String sex;
+    private String addressPhoto;
        public Associate() {
     }
 
-    public Associate(int id, String name, String invoice, String dateOfBirth, String Sex) {
+    public Associate(int id, String name, String invoice, LocalDate dateOfBirth, String sex, String addressPhoto) {
         this.id = id;
         this.name = name;
         this.invoice = invoice;
         this.dateOfBirth = dateOfBirth;
-        this.Sex = Sex;
+        this.sex = sex;
+        this.addressPhoto = addressPhoto;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -51,20 +54,27 @@ public class Associate {
         this.invoice = invoice;
     }
 
-    public String getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth; }
 
     public String getSex() {
-        return Sex;
+        return sex;
     }
 
     public void setSex(String Sex) {
-        this.Sex = Sex;
+        this.sex = Sex;
+    }
+
+    public String getAdressPhoto() {
+        return addressPhoto;
+    }
+
+    public void setAddressPhoto(String addressPhoto) {
+        this.addressPhoto = addressPhoto;
     }
     
     

@@ -1,12 +1,14 @@
 package cr.ac.una.tareaprogra.model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author PC
  */
 public class Movements {
 
-    private String date;
+    private LocalDate date;
     private String hour;
     private int accountId;
     private String invoice;
@@ -17,7 +19,7 @@ public class Movements {
     public Movements() {
     }
 
-    public Movements(String date, String hour, int accountId, String invoice, String movement, String amount, Double balanceAccounnt) {
+    public Movements(LocalDate date, String hour, int accountId, String invoice, String movement, String amount, Double balanceAccounnt) {
         this.date = date;
         this.hour = hour;
         this.accountId = accountId;
@@ -27,11 +29,11 @@ public class Movements {
         this.balanceAccounnt = balanceAccounnt;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
