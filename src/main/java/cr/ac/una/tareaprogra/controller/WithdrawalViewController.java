@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package cr.ac.una.tareaprogra.controller;
 
 import java.net.URL;
@@ -18,7 +14,7 @@ import javafx.scene.control.TextField;
  *
  * @author Marconi
  */
-public class WithdrawalViewController implements Initializable {
+public class WithdrawalViewController extends Controller implements Initializable {
 
     @FXML
     private TextField txfVerify;
@@ -52,5 +48,9 @@ public class WithdrawalViewController implements Initializable {
     @FXML
     private void onActionBtnWithdrawal(ActionEvent event) {
     }
+
+    @Override
+    public void initialize() {
+   }
     
 }

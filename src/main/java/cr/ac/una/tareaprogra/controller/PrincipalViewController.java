@@ -125,5 +125,6 @@ public class PrincipalViewController extends Controller implements Initializable
 
     @FXML
     private void onActionBtnWithdrawal(ActionEvent event) {
+         FlowController.getInstance().goView("WithdrawalView");
     }
 }

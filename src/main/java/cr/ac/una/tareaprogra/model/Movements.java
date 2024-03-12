@@ -13,13 +13,13 @@ public class Movements {
     private int accountId;
     private String invoice;
     private String movement;
-    private String amount;
+    private Double amount;
     private Double balanceAccounnt;
 
     public Movements() {
     }
 
-    public Movements(LocalDate date, String hour, int accountId, String invoice, String movement, String amount, Double balanceAccounnt) {
+    public Movements(LocalDate date, String hour, int accountId, String invoice, String movement, Double amount, Double balanceAccounnt) {
         this.date = date;
         this.hour = hour;
         this.accountId = accountId;
@@ -69,11 +69,11 @@ public class Movements {
         this.movement = movement;
     }
 
-    public String getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
