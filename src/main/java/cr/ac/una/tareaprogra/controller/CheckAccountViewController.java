@@ -54,7 +54,7 @@ public class CheckAccountViewController extends Controller implements Initializa
 
     @FXML
     private void onActionBtnCancel(ActionEvent event) {
-              FlowController.getInstance().salir();
+        ((Stage)btnCancel.getScene().getWindow()).close();
     }
 
     @FXML

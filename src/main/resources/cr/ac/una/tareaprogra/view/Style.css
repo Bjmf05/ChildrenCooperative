@@ -130,10 +130,10 @@
     -fx-background-size: 32px 32px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: left;
-    -fx-background-color:#00008B;
+    -fx-background-color:#3d3de2;
 }
 .btn-modify-cooperative:hover{
-    -fx-background-color:#3d3de2;
+    -fx-background-color:#9999ff;
 }
 
 .btn-check-in{
@@ -174,10 +174,10 @@
     -fx-background-size: 30px 30px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: left;
-    -fx-background-color: #FFFF00;
+    -fx-background-color: #ffff00;
 }
 .btn-maintenance:hover{
-    -fx-background-color: #f8f851;}
+    -fx-background-color: #ffff99;}
 
 .btn-register-user{
     -fx-background-image:url("../resources/check-in.png");
@@ -195,10 +195,10 @@
     -fx-background-size: 30px 30px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: left;
-    -fx-background-color:#00008B;
+    -fx-background-color:#3d3de2;
 }
 .btn-move-money:hover{
-    -fx-background-color:#3d3de2;
+    -fx-background-color:#9999ff;
 }
 
 .btn-print-id{

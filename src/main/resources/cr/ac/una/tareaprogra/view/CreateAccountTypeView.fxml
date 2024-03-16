@@ -35,10 +35,10 @@
                   <Insets right="20.0" />
                </padding>
             </HBox>
-            <TableView prefHeight="274.0" prefWidth="600.0">
+            <TableView fx:id="tbvAccount" prefHeight="274.0" prefWidth="600.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Modificar" />
-                <TableColumn prefWidth="75.0" text="Eliminar" />
+                  <TableColumn fx:id="tbcName" prefWidth="75.0" text="Nombre" />
+                <TableColumn fx:id="tbcModify" prefWidth="75.0" text="Modificar" />
               </columns>
             </TableView>
          </children>
