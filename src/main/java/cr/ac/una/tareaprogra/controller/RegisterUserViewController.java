@@ -1,6 +1,7 @@
 package cr.ac.una.tareaprogra.controller;
 
 import cr.ac.una.tareaprogra.model.Associate;
+import cr.ac.una.tareaprogra.util.Formato;
 import cr.ac.una.tareaprogra.util.Mensaje;
 import java.net.URL;
 import java.time.LocalDate;
@@ -53,6 +54,10 @@ public class RegisterUserViewController extends Controller implements Initializa
     private String addressPhoto;
     private String invoise;
     private LocalDate dateOfBirth;
+    @FXML
+    private TextField txtLastName1;
+    @FXML
+    private TextField txtLastName2;
 
     /**
      * Initializes the controller class.
@@ -67,6 +72,9 @@ public class RegisterUserViewController extends Controller implements Initializa
 
     @Override
     public void initialize() {
+        txtId.setTextFormatter(Formato.getInstance().cedulaFormat(20));
+        txtName.setTextFormatter(Formato.getInstance().letrasFormat(15));
+        
     }
 
     @FXML

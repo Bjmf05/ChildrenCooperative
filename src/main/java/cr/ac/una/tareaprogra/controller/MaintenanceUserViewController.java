@@ -4,6 +4,9 @@
  */
 package cr.ac.una.tareaprogra.controller;
 
+import cr.ac.una.tareaprogra.model.PrintPdf;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -76,7 +79,10 @@ public class MaintenanceUserViewController extends Controller implements Initial
     }
 
     @FXML
-    private void onActionBtnPrintPdf(ActionEvent event) {
+    private void onActionBtnPrintPdf(ActionEvent event)throws FileNotFoundException, IOException  {
+        
+        PrintPdf print = new PrintPdf();
+        print.printAsociate();
     }
 
     @FXML

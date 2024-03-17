@@ -39,56 +39,68 @@
    <left>
       <VBox fx:id="vpxButtons" prefHeight="499.0" prefWidth="261.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox styleClass="vbox-no-transparent">
+            <VBox fx:id="vbxTeacher" spacing="10.0">
                <children>
-                  <Button fx:id="btnCreateAccountType" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnCreateAccountType" prefHeight="40.0" styleClass="btn-create-account-type" text="Crear Tipo de Cuenta" HBox.hgrow="ALWAYS" />
+                  <HBox styleClass="vbox-no-transparent">
+                     <children>
+                        <Button fx:id="btnCreateAccountType" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnCreateAccountType" prefHeight="40.0" styleClass="btn-create-account-type" text="Crear Tipo de Cuenta" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox styleClass="vbox-no-transparent">
+                     <children>
+                        <Button fx:id="btnModifyCooperative" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnModifyCooperative" prefHeight="40.0" styleClass="btn-modify-cooperative" text="Modificar Cooperativa" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox styleClass="vbox-no-transparent">
+            </VBox>
+            <VBox fx:id="vbxAssociate" spacing="10.0">
                <children>
-                  <Button fx:id="btnModifyCooperative" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnModifyCooperative" prefHeight="40.0" styleClass="btn-modify-cooperative" text="Modificar Cooperativa" HBox.hgrow="ALWAYS" />
+                  <HBox styleClass="vbox-no-transparent">
+                     <children>
+                        <Button fx:id="btnCheckIn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnCheckIn" prefHeight="40.0" styleClass="btn-check-in" text="Registrarse" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox styleClass="vbox-no-transparent">
+                     <children>
+                        <Button fx:id="btnCheckAccountAssociate" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnCheckAccountAssociate" prefHeight="40.0" styleClass="btn-check-accounts" text="Consultar Cuentas" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" styleClass="vbox-no-transparent">
+                     <children>
+                        <Button fx:id="btnMailBox" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnMailBox" prefHeight="40.0" styleClass="btn-mailbox-deposit" text="Depósito de Buzon" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox styleClass="vbox-no-transparent">
+            </VBox>
+            <VBox fx:id="vbxClerk" spacing="10.0">
                <children>
-                  <Button fx:id="btnCheckIn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnCheckIn" prefHeight="40.0" styleClass="btn-check-in" text="Registrarse" HBox.hgrow="ALWAYS" />
+                  <HBox alignment="CENTER" styleClass="vbox-no-transparent">
+                     <children>
+                        <Button fx:id="btnRegisterUser" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnRegisterUser" prefHeight="40.0" styleClass="btn-register-user" text="Registrar Usuarios" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" styleClass="vbox-no-transparent">
+                     <children>
+                        <Button fx:id="btnCheckAccount" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnCheckAccount" prefHeight="40.0" styleClass="btn-check-accounts" text="Consultar Cuentas" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" styleClass="vbox-no-transparent">
+                     <children>
+                        <Button fx:id="btnMoveMoney" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnMoveMoney" prefHeight="40.0" styleClass="btn-move-money" text="Mover Dinero" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" styleClass="vbox-no-transparent">
+                     <children>
+                        <Button fx:id="btnWithdrawal" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnWithdrawal" prefHeight="40.0" styleClass="btn-Withdrawal" text="Retiro Dinero" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" styleClass="vbox-no-transparent">
+                     <children>
+                        <Button fx:id="btnMaintenanceUser" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnMaintenanceUser" prefHeight="40.0" styleClass="btn-maintenance" text="Mantenimiento Usuarios" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox styleClass="vbox-no-transparent">
-               <children>
-                  <Button fx:id="btnCheckAccountAssociate" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnCheckAccountAssociate" prefHeight="40.0" styleClass="btn-check-accounts" text="Consultar Cuentas" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" styleClass="vbox-no-transparent">
-               <children>
-                  <Button fx:id="btnMailBox" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnMailBox" prefHeight="40.0" styleClass="btn-mailbox-deposit" text="Depósito de Buzon" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" styleClass="vbox-no-transparent">
-               <children>
-                  <Button fx:id="btnRegisterUser" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnRegisterUser" prefHeight="40.0" styleClass="btn-register-user" text="Registrar Usuarios" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" styleClass="vbox-no-transparent">
-               <children>
-                  <Button fx:id="btnCheckAccount" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnCheckAccount" prefHeight="40.0" styleClass="btn-check-accounts" text="Consultar Cuentas" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" styleClass="vbox-no-transparent">
-               <children>
-                  <Button fx:id="btnMoveMoney" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnMoveMoney" prefHeight="40.0" styleClass="btn-move-money" text="Mover Dinero" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" styleClass="vbox-no-transparent">
-               <children>
-                  <Button fx:id="btnWithdrawal" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnWithdrawal" prefHeight="40.0" styleClass="btn-Withdrawal" text="Retiro Dinero" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" styleClass="vbox-no-transparent">
-               <children>
-                  <Button fx:id="btnMaintenanceUser" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnMaintenanceUser" prefHeight="40.0" styleClass="btn-maintenance" text="Mantenimiento Usuarios" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
+            </VBox>
             <HBox fx:id="prueba" prefHeight="40.0" prefWidth="200.0" styleClass="vbox-no-transparent">
                <children>
                   <Button fx:id="btnExit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnExit" prefHeight="40.0" styleClass="btn-Exit" text="Salir" HBox.hgrow="ALWAYS" />

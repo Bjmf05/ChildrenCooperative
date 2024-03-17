@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package cr.ac.una.tareaprogra.controller;
 
 import cr.ac.una.tareaprogra.util.FlowController;
@@ -57,6 +53,12 @@ public class PrincipalViewController extends Controller implements Initializable
     private Button btnCheckAccountAssociate;
     @FXML
     private Button btnWithdrawal;
+    @FXML
+    private VBox vbxTeacher;
+    @FXML
+    private VBox vbxAssociate;
+    @FXML
+    private VBox vbxClerk;
 
     /**
      * Initializes the controller class.
@@ -65,7 +67,6 @@ public class PrincipalViewController extends Controller implements Initializable
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         imgLogoPrincipal.setImage(new Image("/cr/ac/una/tareaprogra/resources/logo.png"));
-
     }
 
     @Override

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package cr.ac.una.tareaprogra.controller;
 
 import cr.ac.una.tareaprogra.model.Account;
@@ -35,28 +31,37 @@ public class CreateAccountTypeViewController extends Controller implements Initi
     private TableColumn<Account, Boolean> tbcModify;
     @FXML
     private TableColumn<Account, String> tbcName;
+    private ObservableList<Account> accountList = FXCollections.observableArrayList();
+
+    public ObservableList<Account> getAccountList() {
+        return accountList;
+    }
+
     /**
      * Initializes the controller class.
      */
-    
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+        tbcName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        tbvAccount.setItems(accountList);
+    }
 
     @Override
     public void initialize() {
-       }
+    }
 
     @FXML
     private void onActionBtnAddAccount(ActionEvent event) {
-        if(!txtTypeAccount.getText().isEmpty()){
+        if (!txtTypeAccount.getText().isEmpty()) {
             Account account = new Account(txtTypeAccount.getText());
+            accountList.add(account);
+
             System.out.println(account.getId());
             System.out.println(account.getName());
         }
         txtTypeAccount.setText("");
+        tbvAccount.setItems(accountList);
     }
-    
+
 }

@@ -1,6 +1,7 @@
 package cr.ac.una.tareaprogra.controller;
 
 import cr.ac.una.tareaprogra.controller.Controller;
+import cr.ac.una.tareaprogra.model.Account;
 import cr.ac.una.tareaprogra.util.FlowController;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,7 +41,7 @@ public class CheckAccountViewController extends Controller implements Initializa
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        lstVAccountAvailabe.setItems(FXCollections.observableArrayList("Cuenta 1", "Cuenta 2", "Cuenta 3"));
+        
         dragAndDrop();
        
 
@@ -93,5 +94,4 @@ public class CheckAccountViewController extends Controller implements Initializa
             e.consume();
         });
     }
-    
 }
