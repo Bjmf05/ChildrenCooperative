@@ -5,6 +5,7 @@ import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -33,20 +34,23 @@ public class PrintPdf {
     private String addressPhoto = "src/main/resources/cr/ac/una/tareaprogra/resources/IconChildPhoto.png";
     private String title = "Coopetoy";
     private String logo = "src/main/resources/cr/ac/una/tareaprogra/resources/logo.png";
+    private String crab = "src/main/resources/cr/ac/una/tareaprogra/resources/crab.png";
+    private String octopus = "src/main/resources/cr/ac/una/tareaprogra/resources/octopus.png";
     private String InriaSerif = "src/main/resources/cr/ac/una/tareaprogra/resources/InriaSerif-Light.ttf";
+    private String Regular = "src/main/resources/cr/ac/una/tareaprogra/resources/Rancho-Regular.ttf";
     private Color backgroundColor = new DeviceRgb(106, 202, 216);
     private Color titleColor = new DeviceRgb(30, 43, 105);
-    private Style titleStyle = new Style().setFontSize(30).setBold().setFontColor(titleColor).setTextAlignment(TextAlignment.CENTER);
-    private Style paragraphText = new Style().setFontSize(15).setTextAlignment(TextAlignment.LEFT);
+    private Style titleStyle = new Style().setFontSize(45).setBold().setFontColor(titleColor).setTextAlignment(TextAlignment.CENTER);
+    private Style paragraphText = new Style().setFontSize(20).setTextAlignment(TextAlignment.LEFT);
 
-    public void printAsociate()throws FileNotFoundException, IOException {
+    public void printAsociate() throws FileNotFoundException, IOException {
         File file = new File(invoice + ".pdf");
 
         PdfDocument pdfDocument = new PdfDocument(new PdfWriter(file));
-        Document document = new Document(pdfDocument);
+        Document document = new Document(pdfDocument, new PageSize(500, 400));
         document.setBackgroundColor(backgroundColor);
-        
-        PdfFont font = PdfFontFactory.createFont(InriaSerif);
+
+        PdfFont font = PdfFontFactory.createFont(Regular);
         titleStyle.setFont(font);
         paragraphText.setFont(font);
         Paragraph prueba = new Paragraph().add("prueba");
@@ -64,13 +68,21 @@ public class PrintPdf {
                 .add(sex + "\n");
 
         Image imagePhoto = new Image(ImageDataFactory.create(addressPhoto));
-        imagePhoto.scaleToFit(150, 150);      
-        imagePhoto.setFixedPosition(390, 605);
-        
+        imagePhoto.scaleToFit(140, 140);
+        imagePhoto.setFixedPosition(325, 155);
+
         Image imageLogo = new Image(ImageDataFactory.create(logo));
-        imageLogo.scaleToFit(40, 40);
-        imageLogo.setFixedPosition(25, 755);
-        
+        imageLogo.scaleToFit(50, 50);
+        imageLogo.setFixedPosition(25, 325);
+
+        Image imageCrab = new Image(ImageDataFactory.create(crab));
+        imageCrab.scaleToFit(140, 140);
+        imageCrab.setFixedPosition(18, -5);
+
+        Image imageOctopus = new Image(ImageDataFactory.create(octopus));
+        imageOctopus.scaleToFit(170, 170);
+        imageOctopus.setFixedPosition(315, 10);
+
         paragraphTitle.addStyle(titleStyle);
         paragraphAsociate.addStyle(paragraphText);
 
@@ -78,6 +90,8 @@ public class PrintPdf {
         document.add(imageLogo);
         document.add(paragraphAsociate);
         document.add(imagePhoto);
+        document.add(imageCrab);
+        document.add(imageOctopus);
         document.close();
         Desktop.getDesktop().open(file);
     }
