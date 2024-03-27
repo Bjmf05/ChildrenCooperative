@@ -21,7 +21,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="586.0" spacing="20.0">
                <children>
                   <Label styleClass="sub-Title2" text="Folio" />
-                  <TextField prefHeight="30.0" prefWidth="150.0" promptText="Folio" styleClass="txt-default" />
+                  <TextField fx:id="txfIdUser" prefHeight="30.0" prefWidth="150.0" promptText="Folio" styleClass="txt-default" />
                   <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="30.0" prefWidth="114.0" styleClass="btn-Verify" text="Verificar" />
                </children>
                <VBox.margin>

@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package cr.ac.una.tareaprogra.controller;
 
-import cr.ac.una.tareaprogra.model.PrintPdf;
+//import cr.ac.una.tareaprogra.model.PrintPdf;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -81,8 +77,8 @@ public class MaintenanceUserViewController extends Controller implements Initial
     @FXML
     private void onActionBtnPrintPdf(ActionEvent event)throws FileNotFoundException, IOException  {
         
-        PrintPdf print = new PrintPdf();
-        print.printAsociate();
+        //PrintPdf print = new PrintPdf();
+        //print.printAsociate();
     }
 
     @FXML

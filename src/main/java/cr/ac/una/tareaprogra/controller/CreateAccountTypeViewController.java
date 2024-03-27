@@ -1,6 +1,7 @@
 package cr.ac.una.tareaprogra.controller;
 
 import cr.ac.una.tareaprogra.model.Account;
+import cr.ac.una.tareaprogra.util.AppContext;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -32,7 +34,10 @@ public class CreateAccountTypeViewController extends Controller implements Initi
     @FXML
     private TableColumn<Account, String> tbcName;
     private ObservableList<Account> accountList = FXCollections.observableArrayList();
-
+    private       ObservableList<Account> appContextAccountList = (ObservableList<Account>) AppContext.getInstance().get("newAccount");
+    @FXML
+    private TableColumn<Account, String> tbcIdAccount;
+  
     public ObservableList<Account> getAccountList() {
         return accountList;
     }
@@ -43,8 +48,12 @@ public class CreateAccountTypeViewController extends Controller implements Initi
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        tbcName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        tbvAccount.setItems(accountList);
+  
+        tbcIdAccount.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tbcName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        if (appContextAccountList != null){
+         accountList.addAll(appContextAccountList);
+         tbvAccount.setItems(accountList);}
     }
 
     @Override
@@ -56,9 +65,7 @@ public class CreateAccountTypeViewController extends Controller implements Initi
         if (!txtTypeAccount.getText().isEmpty()) {
             Account account = new Account(txtTypeAccount.getText());
             accountList.add(account);
-
-            System.out.println(account.getId());
-            System.out.println(account.getName());
+            AppContext.getInstance().set("newAccount", accountList);
         }
         txtTypeAccount.setText("");
         tbvAccount.setItems(accountList);
