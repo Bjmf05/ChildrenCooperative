@@ -33,27 +33,19 @@ public class CreateAccountTypeViewController extends Controller implements Initi
     private TableColumn<Account, Boolean> tbcModify;
     @FXML
     private TableColumn<Account, String> tbcName;
-    private ObservableList<Account> accountList = FXCollections.observableArrayList();
-    private       ObservableList<Account> appContextAccountList = (ObservableList<Account>) AppContext.getInstance().get("newAccount");
-    @FXML
+    private ObservableList<Account> accountList = (ObservableList<Account>) AppContext.getInstance().get("newAccount");
+     @FXML
     private TableColumn<Account, String> tbcIdAccount;
-  
-    public ObservableList<Account> getAccountList() {
-        return accountList;
-    }
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-  
+        // TODO 
         tbcIdAccount.setCellValueFactory(new PropertyValueFactory<>("id"));
         tbcName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        if (appContextAccountList != null){
-         accountList.addAll(appContextAccountList);
-         tbvAccount.setItems(accountList);}
+         tbvAccount.setItems(accountList);
     }
 
     @Override
@@ -65,7 +57,7 @@ public class CreateAccountTypeViewController extends Controller implements Initi
         if (!txtTypeAccount.getText().isEmpty()) {
             Account account = new Account(txtTypeAccount.getText());
             accountList.add(account);
-            AppContext.getInstance().set("newAccount", accountList);
+            
         }
         txtTypeAccount.setText("");
         tbvAccount.setItems(accountList);

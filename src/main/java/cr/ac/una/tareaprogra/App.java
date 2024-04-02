@@ -1,6 +1,9 @@
 package cr.ac.una.tareaprogra;
 
 import cr.ac.una.tareaprogra.model.Account;
+import cr.ac.una.tareaprogra.model.AccountAssociate;
+import cr.ac.una.tareaprogra.model.Associate;
+import cr.ac.una.tareaprogra.model.Movements;
 import cr.ac.una.tareaprogra.util.AppContext;
 import cr.ac.una.tareaprogra.util.FlowController;
 import javafx.application.Application;
@@ -23,6 +26,17 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        
+         ObservableList<Account> accountList = FXCollections.observableArrayList();
+         ObservableList<AccountAssociate> accountAssociateList = FXCollections.observableArrayList();
+         ObservableList<Associate> associateList = FXCollections.observableArrayList();
+         ObservableList<Movements> movementsList = FXCollections.observableArrayList();
+         
+         
+         AppContext.getInstance().set("newAccount", accountList);
+         AppContext.getInstance().set("newAccountAssociate", accountAssociateList);
+         AppContext.getInstance().set("newAssociate", associateList);
+         AppContext.getInstance().set("newMovement", movementsList);
          
         FlowController.getInstance().InitializeFlow(stage, null);
         stage.getIcons().add(new Image("cr/ac/una/tareaprogra/resources/logo.png"));

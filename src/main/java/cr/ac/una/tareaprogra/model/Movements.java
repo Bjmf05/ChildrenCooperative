@@ -1,6 +1,10 @@
 package cr.ac.una.tareaprogra.model;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 /**
  *
@@ -8,81 +12,100 @@ import java.time.LocalDate;
  */
 public class Movements {
 
-    private LocalDate date;
-    private String hour;
-    private int accountId;
-    private String invoice;
-    private String movement;
-    private Double amount;
-    private Double balanceAccounnt;
+    private ObjectProperty<LocalDate> date;
+    private ObjectProperty<LocalTime> hour;
+    private SimpleStringProperty accountId;
+    private SimpleStringProperty invoice;
+    private SimpleStringProperty movement;
+    private SimpleStringProperty amount;
+    private SimpleStringProperty balanceAccount;
 
     public Movements() {
+        this.invoice = new SimpleStringProperty();
+        this.accountId = new SimpleStringProperty();
+        this.movement = new SimpleStringProperty();
+        this.amount = new SimpleStringProperty();
+        this.balanceAccount = new SimpleStringProperty();
+        this.invoice = new SimpleStringProperty();
+        this.date = new SimpleObjectProperty();
+        this.hour = new SimpleObjectProperty();
+        
     }
 
-    public Movements(LocalDate date, String hour, int accountId, String invoice, String movement, Double amount, Double balanceAccounnt) {
-        this.date = date;
-        this.hour = hour;
-        this.accountId = accountId;
-        this.invoice = invoice;
-        this.movement = movement;
-        this.amount = amount;
-        this.balanceAccounnt = balanceAccounnt;
+    public Movements(LocalDate date, LocalTime hour, Long accountId, String invoice, String movement, Long amount, Long balanceAccount) {
+        this();
+        if (date != null) {
+            this.date.set(date);
+        } else {
+            this.date.set(null);
+        }
+        this.date.set(date);
+        this.hour.set(hour);
+        this.accountId.set(accountId.toString());
+        this.invoice.set(invoice);
+        this.movement.set(movement);
+        this.amount.set(amount.toString());
+        this.balanceAccount.set(balanceAccount.toString());
     }
 
     public LocalDate getDate() {
-        return date;
+        return date.get();
     }
 
     public void setDate(LocalDate date) {
-        this.date = date;
+        this.date.set(date);
     }
 
-    public String getHour() {
-        return hour;
+    public LocalTime getHour() {
+        return hour.get();
     }
 
-    public void setHour(String hour) {
-        this.hour = hour;
+    public void setHour(LocalTime hour) {
+        this.hour.set(hour);
     }
 
-    public int getAccountId() {
-        return accountId;
+    public Long getAccountId() {
+         if (accountId.get() != null && !accountId.get().isEmpty()) {
+            return Long.valueOf(accountId.get());
+        } else {
+            return null;
+        }
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setAccountId(Long accountId) {
+        this.accountId.set(accountId.toString());
     }
 
     public String getInvoice() {
-        return invoice;
+        return invoice.get();
     }
 
     public void setInvoice(String invoice) {
-        this.invoice = invoice;
+        this.invoice.set(invoice);
     }
 
     public String getMovement() {
-        return movement;
+        return movement.get();
     }
 
     public void setMovement(String movement) {
-        this.movement = movement;
+        this.movement.set(movement);
     }
 
-    public Double getAmount() {
-        return amount;
+    public Long getAmount() {
+        return Long.valueOf(amount.get());
     }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
+    public void setAmount(Long amount) {
+        this.amount.set(amount.toString());
     }
 
-    public Double getBalanceAccounnt() {
-        return balanceAccounnt;
+    public Long getBalanceAccount() {
+        return Long.valueOf(balanceAccount.get());
     }
 
-    public void setBalanceAccounnt(Double balanceAccounnt) {
-        this.balanceAccounnt = balanceAccounnt;
+    public void setBalanceAccount(Long balanceAccount) {
+        this.balanceAccount.set(balanceAccount.toString());
     }
 
     

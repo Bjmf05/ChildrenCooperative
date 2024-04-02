@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="540.0" prefWidth="750.0" styleClass="anchorPane-Center" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tareaprogra.controller.MaintenanceUserViewController">
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="750.0" styleClass="anchorPane-Center" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tareaprogra.controller.MaintenanceUserViewController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="129.0" layoutY="56.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -22,19 +22,19 @@
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="122.0" prefWidth="636.0" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox prefHeight="264.0" prefWidth="481.0">
+                  <VBox prefHeight="264.0" prefWidth="481.0" spacing="30.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0" spacing="38.0" VBox.vgrow="ALWAYS">
+                        <HBox spacing="60.0">
                            <children>
                               <Label styleClass="sub-Title2" text="Folio" />
-                              <TextField prefHeight="30.0" prefWidth="150.0" promptText="Folio" styleClass="txt-default" />
+                              <TextField fx:id="txtFolio" prefHeight="30.0" prefWidth="150.0" promptText="Folio" styleClass="txt-default" />
                               <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="30.0" prefWidth="114.0" styleClass="btn-Verify" text="Verificar" />
                            </children>
                            <padding>
                               <Insets left="20.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="457.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                        <HBox spacing="41.0">
                            <children>
                               <Label styleClass="sub-Title2" text="Cedula" />
                               <TextField fx:id="txtId" prefHeight="30.0" prefWidth="150.0" promptText="Solo numeros ( ;" styleClass="txt-default" />
@@ -43,16 +43,27 @@
                               <Insets left="20.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="457.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                        <HBox spacing="32.0">
                            <children>
                               <Label styleClass="sub-Title2" text="Nombre" />
-                              <TextField fx:id="txtName" prefHeight="30.0" prefWidth="252.0" promptText="¿Como te llamas?" styleClass="txt-default" />
+                              <TextField fx:id="txtName" prefHeight="30.0" prefWidth="150.0" promptText="¿Como te llamas?" styleClass="txt-default" />
                            </children>
                            <padding>
                               <Insets left="20.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="636.0" spacing="37.0" VBox.vgrow="ALWAYS">
+                        <HBox spacing="12.0">
+                           <children>
+                              <Label styleClass="sub-Title2" text="Apellido 1" />
+                              <TextField fx:id="txfLastName1" prefHeight="30.0" prefWidth="120.0" promptText="Primer Apellido" styleClass="txt-default" />
+                              <Label layoutX="10.0" layoutY="10.0" styleClass="sub-Title2" text="Apellido 2" />
+                              <TextField fx:id="txfLastName2" layoutX="106.0" layoutY="10.0" prefHeight="30.0" prefWidth="120.0" promptText="Segundo Apellido" styleClass="txt-default" />
+                           </children>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </HBox>
+                        <HBox spacing="60.0">
                            <children>
                               <Label styleClass="sub-Title2" text="Sexo" />
                               <ComboBox fx:id="cbxSex" onAction="#onActionCbxSex" prefHeight="30.0" prefWidth="150.0" promptText="Despliegame" styleClass="txt-default" visibleRowCount="2" />
@@ -61,7 +72,7 @@
                               <Insets left="20.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="636.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                        <HBox spacing="10.0">
                            <children>
                               <Label styleClass="sub-Title2" text="Fecha de Nacimiento" />
                               <DatePicker fx:id="dpDateOfBirth" onAction="#onActionDpDateOfBirth" prefHeight="30.0" prefWidth="150.0" promptText="¿Cuando Naciste?" styleClass="txt-default" />
@@ -71,10 +82,13 @@
                            </padding>
                         </HBox>
                      </children>
+                     <HBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </HBox.margin>
                   </VBox>
-                  <VBox prefHeight="264.0" prefWidth="180.0" spacing="5.0">
+                  <VBox prefHeight="354.0" prefWidth="221.0" spacing="5.0">
                      <children>
-                        <ImageView fx:id="imgMakePhoto" fitHeight="150.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS" />
+                        <ImageView fx:id="imgMakePhoto" fitHeight="200.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS" />
                         <HBox alignment="CENTER">
                            <children>
                               <Button fx:id="btnMakePhoto" mnemonicParsing="false" onAction="#onActionBtnMakePhoto" prefHeight="40.0" prefWidth="141.0" styleClass="btn-MakePhoto" text="Tomar Foto" />
@@ -84,7 +98,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="83.0" prefWidth="736.0">
                <children>
                   <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                      <children>

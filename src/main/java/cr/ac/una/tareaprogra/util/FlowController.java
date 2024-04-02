@@ -20,6 +20,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 public class FlowController {
@@ -169,6 +170,7 @@ public class FlowController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.initModality(Modality.WINDOW_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED); 
         stage.initOwner(parentStage);
         stage.centerOnScreen();
         stage.showAndWait();
@@ -190,5 +192,8 @@ public class FlowController {
     public void salir() {
         this.mainStage.close();
     }
+     public void delete(String parametro){
+     loaders.remove(parametro);
+ }
 
 }
