@@ -32,7 +32,8 @@ public class App extends Application {
          ObservableList<Associate> associateList = FXCollections.observableArrayList();
          ObservableList<Movements> movementsList = FXCollections.observableArrayList();
          
-         
+         AccountAssociate accountAssociate = new AccountAssociate(2L,"Puta","M0001");
+         accountAssociateList.add(accountAssociate);
          AppContext.getInstance().set("newAccount", accountList);
          AppContext.getInstance().set("newAccountAssociate", accountAssociateList);
          AppContext.getInstance().set("newAssociate", associateList);

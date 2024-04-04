@@ -224,6 +224,9 @@ public class RegisterUserViewController extends Controller implements Initializa
             photoRequired = true;
             
         }
+         if (openCamera.getParameter().equals("c")) {
+             FlowController.getInstance().delete("OpenCameraView");
+         }
     }
 
     private void clear() {
