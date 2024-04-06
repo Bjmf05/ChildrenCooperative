@@ -44,8 +44,6 @@ public class PrincipalViewController extends Controller implements Initializable
     @FXML
     private Button btnRegisterUser;
     @FXML
-    private Button btnMoveMoney;
-    @FXML
     private Button btnExit;
     @FXML
     private ImageView imgLogoPrincipal;
@@ -63,6 +61,10 @@ public class PrincipalViewController extends Controller implements Initializable
     private VBox vbxAssociate;
     @FXML
     private VBox vbxClerk;
+    @FXML
+    private Button btnDepositFuntionary;
+    @FXML
+    private Button btnMailBoxFunctionary;
 
     /**
      * Initializes the controller class.
@@ -108,9 +110,8 @@ public class PrincipalViewController extends Controller implements Initializable
         FlowController.getInstance().goView("RegisterUserView");
     }
 
-    @FXML
     private void onActionBtnMoveMoney(ActionEvent event) {
-        FlowController.getInstance().goView("MoveMoneyView");
+        FlowController.getInstance().goView("DepositFunctionaryView");
     }
 
     @FXML
@@ -131,5 +132,15 @@ public class PrincipalViewController extends Controller implements Initializable
     @FXML
     private void onActionBtnWithdrawal(ActionEvent event) {
          FlowController.getInstance().goView("WithdrawalView");
+    }
+
+    @FXML
+    private void onActionBtnDepositFuntionary(ActionEvent event) {
+        FlowController.getInstance().goView("DepositFunctionaryView");
+    }
+
+    @FXML
+    private void onActionBtnMailBoxFunctionary(ActionEvent event) {
+        FlowController.getInstance().goView("MailBoxDepositView");
     }
 }

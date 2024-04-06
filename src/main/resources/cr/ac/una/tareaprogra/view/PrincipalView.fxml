@@ -86,7 +86,12 @@
                   </HBox>
                   <HBox alignment="CENTER" styleClass="vbox-no-transparent">
                      <children>
-                        <Button fx:id="btnMoveMoney" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnMoveMoney" prefHeight="40.0" styleClass="btn-move-money" text="Mover Dinero" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnDepositFuntionary" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnDepositFuntionary" prefHeight="40.0" styleClass="btn-move-money" text="Realizar Deposito" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" styleClass="vbox-no-transparent">
+                     <children>
+                        <Button fx:id="btnMailBoxFunctionary" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnMailBoxFunctionary" prefHeight="40.0" styleClass="btn-mailbox-deposit" text="Depósito de Buzon" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" styleClass="vbox-no-transparent">

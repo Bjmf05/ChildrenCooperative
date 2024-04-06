@@ -43,7 +43,6 @@ public class CreateAccountTypeViewController extends Controller implements Initi
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO 
-        tbcIdAccount.setCellValueFactory(new PropertyValueFactory<>("id"));
         tbcName.setCellValueFactory(new PropertyValueFactory<>("name"));
          tbvAccount.setItems(accountList);
     }

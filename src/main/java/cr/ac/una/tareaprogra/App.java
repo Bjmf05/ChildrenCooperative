@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Month;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -34,6 +36,9 @@ public class App extends Application {
          
          AccountAssociate accountAssociate = new AccountAssociate(2L,"Puta","M0001");
          accountAssociateList.add(accountAssociate);
+         LocalDate date = LocalDate.of(20001, 11, 05);
+         Associate associate = new Associate(604700092L,"Breiner","Munoz","Fallas","M0001", date,"Masculino","C:/ProgramData/fotos_usuarios/M0001.jpg");
+         associateList.add(associate);
          AppContext.getInstance().set("newAccount", accountList);
          AppContext.getInstance().set("newAccountAssociate", accountAssociateList);
          AppContext.getInstance().set("newAssociate", associateList);
