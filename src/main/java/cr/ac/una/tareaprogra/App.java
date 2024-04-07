@@ -38,7 +38,7 @@ public class App extends Application {
          
          AccountAssociate accountAssociate = new AccountAssociate(2L,"Puta","M0001");
          accountAssociateList.add(accountAssociate);
-         LocalDate date = LocalDate.of(20001, 11, 05);
+         LocalDate date = LocalDate.of(2001, 11, 05);
          Associate associate = new Associate(604700092L,"Breiner","Munoz","Fallas","M0001", date,"Masculino","C:/ProgramData/fotos_usuarios/M0001.jpg");
          associateList.add(associate);
          

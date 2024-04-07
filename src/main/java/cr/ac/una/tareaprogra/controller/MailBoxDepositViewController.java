@@ -122,6 +122,7 @@ public class MailBoxDepositViewController extends Controller implements Initiali
             } else {
                 safeDeposit();
                 FlowController.getInstance().goViewInWindowModal("CheckDepositView", getStage(), true);
+                mailBoxDeposi.remove(mailBoxDeposit);
                 clear();
             }
         } catch (Exception e) {

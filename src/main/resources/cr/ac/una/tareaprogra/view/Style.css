@@ -300,9 +300,15 @@
 }
 
 .listView .list-cell{
-    -fx-font-size:15px;
+
+        -fx-background-color:#e067e0;
+        -fx-alignment:CENTER;
     -fx-text-fill: black;
-    -fx-alignment: center;
+    -fx-font-size: 15px;
+      -fx-font-weight:bold;
+          -fx-border-width: 1px;
+    -fx-border-color: #000000; 
+    -fx-border-style: solid; 
 }
 
 .checkDepositBackground{
@@ -330,4 +336,14 @@
     -fx-border-color: #009999; 
     -fx-border-style: solid; 
     
+}
+.tbvStateOfAccount{
+    -fx-background-color:#ffcccc;
+        -fx-alignment:CENTER;
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+      -fx-font-weight:bold;
+          -fx-border-width: 1px;
+    -fx-border-color: #000000; 
+    -fx-border-style: solid; 
 }
