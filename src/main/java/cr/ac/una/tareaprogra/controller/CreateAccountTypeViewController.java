@@ -5,12 +5,14 @@ import cr.ac.una.tareaprogra.util.AppContext;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -44,6 +46,8 @@ public class CreateAccountTypeViewController extends Controller implements Initi
     public void initialize(URL url, ResourceBundle rb) {
         // TODO 
         tbcName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tbcModify.setCellValueFactory((TableColumn.CellDataFeatures<Account, Boolean> p) -> new SimpleBooleanProperty(p.getValue() != null));
+        tbcModify.setCellFactory((TableColumn<Account, Boolean> p) -> new ButtonCell());
          tbvAccount.setItems(accountList);
     }
 
@@ -61,5 +65,25 @@ public class CreateAccountTypeViewController extends Controller implements Initi
         txtTypeAccount.setText("");
         tbvAccount.setItems(accountList);
     }
+     private class ButtonCell extends TableCell<Account, Boolean> {
 
+        final Button cellButton = new Button();
+
+        ButtonCell() {
+            cellButton.setPrefWidth(200);
+            cellButton.getStyleClass().add("btn-maintenance");
+            cellButton.setText("Modificar");
+            cellButton.setOnAction((ActionEvent t) -> {
+//      hacer funcion modificar
+            });
+        }
+
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if (!empty) {
+                setGraphic(cellButton);
+            }
+        }
+    }
 }

@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
  *
  * @author PC
  */
-public class CheckDepositViewController extends Controller implements Initializable {
+public class CheckWithdrawalViewController extends Controller implements Initializable {
 
     @FXML
     private Button btnAccept;
@@ -20,20 +20,18 @@ public class CheckDepositViewController extends Controller implements Initializa
     /**
      * Initializes the controller class.
      */
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
     }    
-
-    @Override
-    public void initialize() {
-  }
 
     @FXML
     private void onActionBtnAccept(ActionEvent event) {
         getStage().close();
     }
+
+    @Override
+    public void initialize() {
+   }
     
 }

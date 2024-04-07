@@ -90,7 +90,9 @@ public class MaintenanceUserViewController extends Controller implements Initial
 
     @FXML
     private void onActionBtnVerify(ActionEvent event) {
+        boolean foundUser = false;
         ObservableList<Associate> associates = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
+        if(!txtFolio.getText().isEmpty()){
         for (Associate associat : associates) {
             if (txtFolio.getText().equals(associat.getInvoice())) {                
                 
@@ -102,10 +104,14 @@ public class MaintenanceUserViewController extends Controller implements Initial
                 String localUrl = file.toURI().toString();
                 imgMakePhoto.setImage(new Image(localUrl));
                 enableData();
+                foundUser=true;
                 break;
             }
         }
-
+              if(!foundUser){
+                 new Mensaje().showModal(Alert.AlertType.ERROR, "Mantenimiento Asociado", getStage(), "No se encontro ningun asociado con ese folio.");
+            }
+        }
     }
 
     @FXML

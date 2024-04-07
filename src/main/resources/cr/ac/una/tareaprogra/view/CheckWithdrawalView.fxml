@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="400.0" styleClass="checkWithdrawalBackground" stylesheets="@Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.tareaprogra.controller.CheckWithdrawalViewController">
+   <children>
+      <VBox alignment="BOTTOM_CENTER" layoutX="20.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="82.0" styleClass="vbox-no-transparent">
+               <children>
+                  <Button fx:id="btnAccept" mnemonicParsing="false" onAction="#onActionBtnAccept" prefHeight="31.0" prefWidth="82.0" styleClass="btn-accept" text="Aceptar" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="30.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

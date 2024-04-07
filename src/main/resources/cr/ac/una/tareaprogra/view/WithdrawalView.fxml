@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="325.0" prefWidth="600.0" styleClass="anchorPane-Center" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tareaprogra.controller.WithdrawalViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchorPane-Center" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tareaprogra.controller.WithdrawalViewController">
    <children>
       <VBox layoutY="7.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -21,30 +21,49 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" HBox.hgrow="ALWAYS">
+                  <HBox alignment="CENTER_LEFT" spacing="30.0">
                      <children>
                         <Label styleClass="sub-Title2" text="Verificación de Folio" />
-                        <Label prefHeight="34.0" prefWidth="196.0" styleClass="sub-Title2" text="Selecione Cuenta" />
-                        <Label prefHeight="34.0" prefWidth="195.0" styleClass="sub-Title2" text="Cantidad a Retirar" />
+                        <TextField fx:id="txfInvoice" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="117.0" promptText="¿Cuál es el folio?" styleClass="txt-default" />
+                        <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="13.0" prefWidth="110.0" styleClass="btn-Verify" text="Verificar" />
                      </children>
-                  </VBox>
-                  <VBox prefHeight="308.0" prefWidth="105.0" spacing="22.0" HBox.hgrow="ALWAYS">
+                  </HBox>
+                  <HBox spacing="49.0">
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="320.0" spacing="20.0">
-                           <children>
-                              <TextField fx:id="txfVerify" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="117.0" promptText="¿Cuál es el folio?" styleClass="txt-default" />
-                              <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="40.0" prefWidth="110.0" styleClass="btn-Verify" text="Verificar" />
-                           </children>
-                        </HBox>
-                        <ComboBox fx:id="txfAccount" prefHeight="25.0" prefWidth="190.0" promptText="Seleciona la Cuenta" styleClass="cbx-SelectAccount" />
+                        <Label styleClass="sub-Title2" text="Nombre Asociado" />
+                        <Label fx:id="lblNameAssociate" styleClass="sub-Title2" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="20.0">
+                     <children>
+                        <Label prefHeight="34.0" prefWidth="171.0" styleClass="sub-Title2" text="Selecione Cuenta" />
+                        <ComboBox fx:id="cbxAccount" prefHeight="26.0" prefWidth="182.0" promptText="Seleciona la Cuenta" styleClass="cbx-SelectAccount">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin></ComboBox>
+                        <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#onActionBtnSearch" prefHeight="30.0" prefWidth="120.0" styleClass="btn-Search" text="Buscar" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="42.0">
+                     <children>
+                        <Label styleClass="sub-Title2" text="Saldo de la Cuenta" />
+                        <Label fx:id="lblBalanceAccount" styleClass="sub-Title2" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="31.0">
+                     <children>
+                        <Label prefHeight="34.0" prefWidth="195.0" styleClass="sub-Title2" text="Cantidad a Retirar" />
                         <TextField fx:id="txfAmountToWithdraw" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="117.0" promptText="Monto de Dinero" styleClass="txt-default" />
                      </children>
-                  </VBox>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox prefHeight="94.0" prefWidth="585.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </padding>
+            </VBox>
+            <HBox prefHeight="73.0" prefWidth="586.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                      <children>

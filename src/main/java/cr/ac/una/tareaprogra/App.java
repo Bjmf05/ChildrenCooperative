@@ -3,6 +3,7 @@ package cr.ac.una.tareaprogra;
 import cr.ac.una.tareaprogra.model.Account;
 import cr.ac.una.tareaprogra.model.AccountAssociate;
 import cr.ac.una.tareaprogra.model.Associate;
+import cr.ac.una.tareaprogra.model.MailBoxDeposit;
 import cr.ac.una.tareaprogra.model.Movements;
 import cr.ac.una.tareaprogra.util.AppContext;
 import cr.ac.una.tareaprogra.util.FlowController;
@@ -33,12 +34,15 @@ public class App extends Application {
          ObservableList<AccountAssociate> accountAssociateList = FXCollections.observableArrayList();
          ObservableList<Associate> associateList = FXCollections.observableArrayList();
          ObservableList<Movements> movementsList = FXCollections.observableArrayList();
+         ObservableList<MailBoxDeposit>  mailBoxDepositList = FXCollections.observableArrayList();
          
          AccountAssociate accountAssociate = new AccountAssociate(2L,"Puta","M0001");
          accountAssociateList.add(accountAssociate);
          LocalDate date = LocalDate.of(20001, 11, 05);
          Associate associate = new Associate(604700092L,"Breiner","Munoz","Fallas","M0001", date,"Masculino","C:/ProgramData/fotos_usuarios/M0001.jpg");
          associateList.add(associate);
+         
+         AppContext.getInstance().set("newMailBoxDeposit", mailBoxDepositList);
          AppContext.getInstance().set("newAccount", accountList);
          AppContext.getInstance().set("newAccountAssociate", accountAssociateList);
          AppContext.getInstance().set("newAssociate", associateList);

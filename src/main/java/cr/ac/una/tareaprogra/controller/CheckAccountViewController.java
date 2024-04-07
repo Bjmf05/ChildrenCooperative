@@ -4,6 +4,7 @@ import cr.ac.una.tareaprogra.model.Account;
 import cr.ac.una.tareaprogra.model.AccountAssociate;
 import cr.ac.una.tareaprogra.model.Associate;
 import cr.ac.una.tareaprogra.util.AppContext;
+import cr.ac.una.tareaprogra.util.Mensaje;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 import javafx.scene.control.TextField;
 import javafx.scene.input.DataFormat;
@@ -65,14 +67,19 @@ public class CheckAccountViewController extends Controller implements Initializa
 
     @FXML
     private void onActionBtnVerify(ActionEvent event) {
-
+boolean foundUser = false;
         if (!txfIdUser.getText().isEmpty()) {
             for (Associate associate : associat) {
                 if (Objects.equals(associate.getInvoice(), txfIdUser.getText())) {
                     compareList();
+                    txfIdUser.setEditable(false);
+                    btnSave.setDisable(false);
+                    foundUser=true;
                 }
             }
-            txfIdUser.setEditable(false);
+                if(!foundUser){
+                 new Mensaje().showModal(Alert.AlertType.ERROR, "Revizar Cuentas", getStage(), "No se encontro ningun asociado con ese folio.");
+            }
         }
     }
 
@@ -156,6 +163,7 @@ public class CheckAccountViewController extends Controller implements Initializa
 
     private void clear() {     
         txfIdUser.clear();
+        btnSave.setDisable(true);
         txfIdUser.setEditable(true);
         lstVAccountAvailabe.setItems(FXCollections.observableArrayList());
         lstVAssociateAccount.setItems(FXCollections.observableArrayList());

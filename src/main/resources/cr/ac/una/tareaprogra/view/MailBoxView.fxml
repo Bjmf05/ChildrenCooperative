@@ -2,7 +2,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,16 +14,27 @@
 
 <AnchorPane id="AnchorPane" prefHeight="540.0" prefWidth="750.0" styleClass="anchorPane-Center" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tareaprogra.controller.MailBoxViewController">
    <children>
-      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" prefHeight="44.0" prefWidth="585.0">
                <children>
                   <Label prefHeight="43.0" prefWidth="270.0" styleClass="sub-Title" text="Deposito por Buzon" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="43.0" prefWidth="600.0">
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="735.0" spacing="10.0">
                <children>
-                  <Label prefHeight="43.0" prefWidth="494.0" styleClass="sub-Title2" text="Digita la cantidad de billetes y monedas a depositar" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="txfInvoice" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="110.0" promptText="¿Cual es tú folio?" />
+                  <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="30.0" prefWidth="152.0" styleClass="btn-Verify" text="Verificar Folio" />
+                  <ComboBox fx:id="cbxAccount" prefHeight="26.0" prefWidth="198.0" promptText="Selecciona la Cuenta" styleClass="cbx-SelectAccount" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox alignment="CENTER" prefHeight="27.0" prefWidth="736.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="494.0" styleClass="sub-Title2" text="Digita la cantidad de billetes y monedas a depositar" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
             <VBox prefHeight="263.0" prefWidth="735.0" spacing="35.0">
@@ -149,18 +162,10 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
+                  <Insets bottom="10.0" />
                </VBox.margin>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="735.0" spacing="10.0">
-               <children>
-                  <TextField fx:id="txfInvoice" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="110.0" promptText="¿Cual es tú folio?" />
-                  <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="30.0" prefWidth="152.0" styleClass="btn-Verify" text="Verificar Folio" />
-               </children>
-               <VBox.margin>
-                  <Insets bottom="15.0" />
-               </VBox.margin>
-            </HBox>
+            <Separator prefWidth="200.0" />
             <HBox prefHeight="79.0" prefWidth="735.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">

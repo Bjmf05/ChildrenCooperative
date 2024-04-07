@@ -97,16 +97,22 @@ public class DepositFunctionaryViewController extends Controller implements Init
 
     @FXML
     private void onActionBtnVerify(ActionEvent event) {
+        boolean foundUser = false;
         if (!txfInvoice.getText().isEmpty()) {
             for (Associate associate : associat) {
                 if (Objects.equals(associate.getInvoice(), txfInvoice.getText())) {
                     chargeCbxAccount();
+                    btnStartDeposit.setDisable(false);
+                    btnVerify.setDisable(true);
+                    txfInvoice.setEditable(false);
+                    cbxAccount.setDisable(false);
+                    foundUser=true;
                     break;
                 }
             }
-            btnVerify.setDisable(true);
-            txfInvoice.setEditable(false);
-            cbxAccount.setDisable(false);
+    if(!foundUser){
+                 new Mensaje().showModal(Alert.AlertType.ERROR, "Realizar Cuenta", getStage(), "No se encontro ningun asociado con ese folio.");
+            }
         }
     }
 
@@ -145,6 +151,7 @@ public class DepositFunctionaryViewController extends Controller implements Init
     private void disableData() {
         txfInvoice.setEditable(true);
         btnVerify.setDisable(false);
+        btnStartDeposit.setDisable(true);
         cbxAccount.setDisable(true);
         txf20ThousandAmount.setEditable(false);
         txf10ThousandAmount.setEditable(false);
