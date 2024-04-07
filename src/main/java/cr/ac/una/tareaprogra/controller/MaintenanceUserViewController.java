@@ -1,7 +1,9 @@
 package cr.ac.una.tareaprogra.controller;
 
 //import cr.ac.una.tareaprogra.model.PrintPdf;
+import com.itextpdf.text.DocumentException;
 import cr.ac.una.tareaprogra.model.Associate;
+import cr.ac.una.tareaprogra.model.PrintPdf;
 import cr.ac.una.tareaprogra.util.AppContext;
 import cr.ac.una.tareaprogra.util.FlowController;
 import cr.ac.una.tareaprogra.util.Formato;
@@ -132,10 +134,10 @@ public class MaintenanceUserViewController extends Controller implements Initial
     }
 
     @FXML
-    private void onActionBtnPrintPdf(ActionEvent event) throws FileNotFoundException, IOException {
+    private void onActionBtnPrintPdf(ActionEvent event) throws IOException, DocumentException {
 
-        //PrintPdf print = new PrintPdf();
-        //print.printAsociate();
+        PrintPdf print = new PrintPdf();
+        print.printAsociate(associate);
     }
 
     @FXML
