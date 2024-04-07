@@ -11,10 +11,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchorPane-Center" stylesheets="@Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.tareaprogra.controller.CheckAccountAssociateViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="650.0" styleClass="anchorPane-Center" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.tareaprogra.controller.CheckAccountAssociateViewController">
    <children>
-      <VBox layoutX="132.0" layoutY="100.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="TOP_CENTER" layoutX="132.0" layoutY="100.0" prefHeight="200.0" prefWidth="100.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" prefHeight="57.0" prefWidth="586.0">
                <children>
@@ -23,23 +22,28 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="48.0" prefWidth="736.0" spacing="15.0">
                <children>
-                  <TextField fx:id="txfInvoice" prefHeight="30.0" prefWidth="120.0" promptText="¿Cuál es el folio?" styleClass="txt-default" />
+                  <TextField fx:id="txfInvoice" prefHeight="30.0" prefWidth="112.0" promptText="¿Cuál es el folio?" styleClass="txt-default" />
                   <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="30.0" prefWidth="106.0" styleClass="btn-Verify" text="Verificar" />
-                  <ComboBox prefHeight="30.0" prefWidth="192.0" promptText="Selecciona la cuenta" styleClass="cbx-SelectAccount" />
+                  <ComboBox fx:id="cbxAccount" prefHeight="30.0" prefWidth="192.0" promptText="Selecciona la cuenta" styleClass="cbx-SelectAccount" />
+                  <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#onActionBtnSearch" prefHeight="30.0" prefWidth="119.0" styleClass="btn-Search" text="Buscar" />
                </children>
                <padding>
                   <Insets left="5.0" />
                </padding>
             </HBox>
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tbvMovementAccount" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Fecha" />
-                <TableColumn prefWidth="75.0" text="Hora" />
-                  <TableColumn prefWidth="75.0" text="Movimento" />
-                  <TableColumn prefWidth="75.0" text="Saldo" />
-                  <TableColumn minWidth="100.0" prefWidth="75.0" text="Saldo Actual" />
+                <TableColumn fx:id="tbvClDate" prefWidth="75.0" text="Fecha" />
+                <TableColumn fx:id="tbvClHour" prefWidth="75.0" text="Hora" />
+                  <TableColumn fx:id="tbvClMovement" prefWidth="75.0" text="Movimento" />
+                  <TableColumn fx:id="tbvClAmount" prefWidth="75.0" text="Monto" />
+                  <TableColumn fx:id="tbvClAccountBalance" minWidth="100.0" prefWidth="75.0" text="Saldo Actual" />
               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
+            <Button fx:id="btnClear" mnemonicParsing="false" onAction="#onActionBtnClear" prefHeight="37.0" prefWidth="146.0" styleClass="btn-Cancel" text="Limpiar" />
          </children>
       </VBox>
    </children>

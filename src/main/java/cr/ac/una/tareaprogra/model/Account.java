@@ -79,7 +79,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return id.get() + name.get();
+        return name.get();
     }
 
 

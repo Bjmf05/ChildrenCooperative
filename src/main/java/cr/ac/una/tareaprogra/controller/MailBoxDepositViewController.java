@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -14,8 +15,14 @@ import javafx.scene.control.TextField;
  *
  * @author PC
  */
-public class MailBoxViewController extends Controller implements Initializable {
+public class MailBoxDepositViewController extends Controller implements Initializable {
 
+    @FXML
+    private TextField txfInvoice;
+    @FXML
+    private Button btnVerify;
+    @FXML
+    private Label lblNameAccount;
     @FXML
     private TextField txf20ThousandAmount;
     @FXML
@@ -36,10 +43,6 @@ public class MailBoxViewController extends Controller implements Initializable {
     private TextField txf25Amount;
     @FXML
     private TextField txf5Amount;
-    @FXML
-    private TextField txfInvoice;
-    @FXML
-    private Button btnVerify;
     @FXML
     private Button btnCancel;
     @FXML
@@ -64,11 +67,11 @@ public class MailBoxViewController extends Controller implements Initializable {
         txf25Amount.setTextFormatter(Formato.getInstance().integerFormat());
         txf10Amount.setTextFormatter(Formato.getInstance().integerFormat());
         txf5Amount.setTextFormatter(Formato.getInstance().integerFormat());
-    }
+    }    
 
     @Override
     public void initialize() {
-    }
+  }
 
     @FXML
     private void onActionBtnVerify(ActionEvent event) {
@@ -81,8 +84,8 @@ public class MailBoxViewController extends Controller implements Initializable {
     @FXML
     private void onActionBtnSave(ActionEvent event) {
     }
-
-    private void disableData() {
+    
+    private void disableData(){
         txf20ThousandAmount.setEditable(false);
         txf10ThousandAmount.setEditable(false);
         txf5ThousandAmount.setEditable(false);
@@ -94,10 +97,9 @@ public class MailBoxViewController extends Controller implements Initializable {
         txf25Amount.setEditable(false);
         txf10Amount.setEditable(false);
         txf5Amount.setEditable(false);
-
+        
     }
-
-    private void enableData() {
+    private void enableData(){
         txf20ThousandAmount.setEditable(true);
         txf10ThousandAmount.setEditable(true);
         txf5ThousandAmount.setEditable(true);
@@ -109,12 +111,10 @@ public class MailBoxViewController extends Controller implements Initializable {
         txf25Amount.setEditable(true);
         txf10Amount.setEditable(true);
         txf5Amount.setEditable(true);
-
     }
-
-    private void clear() {
+    private void clear(){
         disableData();
-        txf20ThousandAmount.clear();
+         txf20ThousandAmount.clear();
         txf10ThousandAmount.clear();
         txf5ThousandAmount.clear();
         txf2ThousandAmount.clear();

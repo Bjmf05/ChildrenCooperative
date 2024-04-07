@@ -19,8 +19,14 @@ public class AccountAssociate {
         this.id = new SimpleStringProperty(id.toString());
         this.name=new SimpleStringProperty(name);
         this.invoice = new SimpleStringProperty(invoice);
+        this.balanceAccount = new SimpleStringProperty("0");
     }
-
+    public AccountAssociate(Long id, String name, String invoice,Long balanceAccount) {
+        this.id = new SimpleStringProperty(id.toString());
+        this.name=new SimpleStringProperty(name);
+        this.invoice = new SimpleStringProperty(invoice);
+        this.balanceAccount = new SimpleStringProperty(balanceAccount.toString());
+    }
     public AccountAssociate() {
         this.id = new SimpleStringProperty();
         this.name = new SimpleStringProperty();
@@ -35,13 +41,7 @@ public class AccountAssociate {
         this.invoice.set(accountassociate.getInvoice());
         this.balanceAccount.set(accountassociate.getBalanceAccount());
     }
-    
-    public AccountAssociate(Account account, String additionalData){
-     this.id = new SimpleStringProperty(account.getId().toString());
-        this.name = new SimpleStringProperty(account.getName());
-        this.invoice = new SimpleStringProperty(additionalData);
-        this.balanceAccount = new SimpleStringProperty("0");
-    }   
+     
     
     public Long getId() {
         if (id.get() != null && !id.get().isEmpty()) {
@@ -111,7 +111,7 @@ public class AccountAssociate {
 
     @Override
     public String toString() {
-        return  id.get()  + name.get();
+        return  name.get();
     }
  
 }

@@ -78,7 +78,7 @@ public class RegisterUserViewController extends Controller implements Initializa
         // TODO
         imgMakePhoto.setImage(new Image("/cr/ac/una/tareaprogra/resources/IconChildPhoto.png"));
         cbxSex.getItems().addAll("Femenino", "Masculino");
-        
+      
         txtId.setTextFormatter(Formato.getInstance().integerFormat());
         txtName.setTextFormatter(Formato.getInstance().letrasFormat(30));
         txtLastName1.setTextFormatter(Formato.getInstance().letrasFormat(30));
@@ -224,6 +224,9 @@ public class RegisterUserViewController extends Controller implements Initializa
             photoRequired = true;
             
         }
+         if (openCamera.getParameter().equals("c")) {
+             FlowController.getInstance().delete("OpenCameraView");
+         }
     }
 
     private void clear() {

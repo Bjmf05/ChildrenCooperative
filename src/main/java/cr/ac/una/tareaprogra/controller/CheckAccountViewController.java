@@ -1,8 +1,13 @@
 package cr.ac.una.tareaprogra.controller;
+
 import cr.ac.una.tareaprogra.model.Account;
 import cr.ac.una.tareaprogra.model.AccountAssociate;
+import cr.ac.una.tareaprogra.model.Associate;
 import cr.ac.una.tareaprogra.util.AppContext;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,14 +34,19 @@ public class CheckAccountViewController extends Controller implements Initializa
     @FXML
     private Button btnVerify;
     @FXML
-    private ListView<Account> lstVAccountAvailabe;
+    private ListView<String> lstVAccountAvailabe;
     @FXML
-    private ListView<AccountAssociate> lstVAssociateAccount;
+    private ListView<String> lstVAssociateAccount;
     @FXML
     private Button btnCancel;
     @FXML
     private Button btnSave;
-    private ObservableList<Account> accountAvaible = FXCollections.observableArrayList();
+    private ObservableList<String> obsAccountAvaible = FXCollections.observableArrayList();
+    private ObservableList<String> obsAccountAssociat = FXCollections.observableArrayList();
+    private ObservableList<AccountAssociate> accountAssociat;
+    private ObservableList<Account> accountAvaible;
+    private ObservableList<Associate> associat;
+
     @FXML
     private TextField txfIdUser;
 
@@ -47,58 +57,88 @@ public class CheckAccountViewController extends Controller implements Initializa
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
-
+        dragAndDrop();
+        accountAssociat = (ObservableList<AccountAssociate>) AppContext.getInstance().get("newAccountAssociate");
+        accountAvaible = (ObservableList<Account>) AppContext.getInstance().get("newAccount");
+        associat = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
     }
 
     @FXML
     private void onActionBtnVerify(ActionEvent event) {
-        accountAvaible = (ObservableList<Account>) AppContext.getInstance().get("newAccount");
-        lstVAccountAvailabe.setItems(accountAvaible);
-        dragAndDrop();
+
+        if (!txfIdUser.getText().isEmpty()) {
+            for (Associate associate : associat) {
+                if (Objects.equals(associate.getInvoice(), txfIdUser.getText())) {
+                    compareList();
+                }
+            }
+            txfIdUser.setEditable(false);
+        }
     }
 
     @FXML
     private void onActionBtnCancel(ActionEvent event) {
-        ((Stage) btnCancel.getScene().getWindow()).close();
+        clear();
     }
 
     @FXML
     private void onActionBtnSave(ActionEvent event) {
+        ObservableList<String> optionalList = lstVAssociateAccount.getItems();
+        for (String item : optionalList) {
+
+            String[] parts = item.split("-");
+            String accountId = parts[0];
+            String acccountName = parts[1];
+
+            boolean exists = false;
+            for (AccountAssociate accountAssociate : accountAssociat) {
+                if (Objects.equals(accountAssociate.getInvoice(), txfIdUser.getText())) {
+                    if (Objects.equals(accountAssociate.getId(), accountId)) {
+                        exists = true;
+                        break;
+                    }
+                }
+            }
+            
+            if (!exists) {
+                accountAssociat.add(new AccountAssociate(Long.parseLong(accountId),acccountName,txfIdUser.getText()));
+            }
+        }
+        clear();
     }
 
     @Override
     public void initialize() {
+        clear();
+        accountAssociat = (ObservableList<AccountAssociate>) AppContext.getInstance().get("newAccountAssociate");
+        accountAvaible = (ObservableList<Account>) AppContext.getInstance().get("newAccount");
+        associat = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
     }
+
     private void dragAndDrop() {
         lstVAccountAvailabe.setOnDragDetected(e -> {
             if (!lstVAccountAvailabe.getSelectionModel().isEmpty()) {
-                Account selectedItem = lstVAccountAvailabe.getSelectionModel().getSelectedItem();
-                String serializeItem = serializeAccount(selectedItem);
+                String selectedItem = lstVAccountAvailabe.getSelectionModel().getSelectedItem();
                 Dragboard db = lstVAccountAvailabe.startDragAndDrop(TransferMode.MOVE);
                 ClipboardContent content = new ClipboardContent();
-                content.put(AccountTransfer.DATA_FORMAT, serializeItem);
+                content.putString(selectedItem);
                 db.setContent(content);
             }
             e.consume();
         });
 
         lstVAssociateAccount.setOnDragOver(e -> {
-            if (e.getDragboard().hasContent(AccountTransfer.DATA_FORMAT)) {
+            if (e.getDragboard().hasString()) {
                 e.acceptTransferModes(TransferMode.MOVE);
             }
             e.consume();
         });
 
         lstVAssociateAccount.setOnDragDropped(e -> {
-            if (e.getDragboard().hasContent(AccountTransfer.DATA_FORMAT)) {
-                String draggedItemString = (String) e.getDragboard().getContent(AccountTransfer.DATA_FORMAT);
-                String[] parts = draggedItemString.split(",");
-                String accountId = parts[0];
-                String accountName = parts[1];
-                lstVAssociateAccount.getItems().add(new AccountAssociate(Long.parseLong(accountId),accountName, txfIdUser.getText())); // Assuming you have a constructor in AccountAssociate that accepts an Account object
-                lstVAccountAvailabe.getItems().removeIf(item->item.getId().equals(accountId));
-                lstVAccountAvailabe.getItems().removeIf(item->item.getName().equals(accountName));
+            if (e.getDragboard().hasString()) {
+                String draggedItem = e.getDragboard().getString();
+                lstVAssociateAccount.getItems().add(draggedItem);
+                lstVAccountAvailabe.getItems().remove(draggedItem);
             }
             e.setDropCompleted(true);
             e.consume();
@@ -106,12 +146,52 @@ public class CheckAccountViewController extends Controller implements Initializa
     }
 
     private String serializeAccount(Account account) {
-        return account.getId() + "," + account.getName();
+        return account.getId() + "-" + account.getName();
     }
 
-    public class AccountTransfer {
+    private String serializeAccountAssociate(AccountAssociate accountAssociate) {
+        return accountAssociate.getId() + "-" + accountAssociate.getName();
+    }
 
-        public static final DataFormat DATA_FORMAT = new DataFormat("com.example.account");
+
+    private void clear() {     
+        txfIdUser.clear();
+        txfIdUser.setEditable(true);
+        lstVAccountAvailabe.setItems(FXCollections.observableArrayList());
+        lstVAssociateAccount.setItems(FXCollections.observableArrayList());
+        obsAccountAssociat.clear();
+        obsAccountAvaible.clear();
+    }
+
+    private void fillLstVAccountAvailabe() {
+        for (Account accountAvaib : accountAvaible) {
+            String data = serializeAccount(accountAvaib);
+            obsAccountAvaible.add(data);
+        }
+
+    }
+
+    private void fillLstVAssociateAccount() {
+        for (AccountAssociate accountAssociate : accountAssociat) {
+            if (Objects.equals(accountAssociate.getInvoice(), txfIdUser.getText())) {
+                String data = serializeAccountAssociate(accountAssociate);
+                obsAccountAssociat.add(data);
+            }
+
+        }
+    }
+
+    private void compareList() {
+        fillLstVAccountAvailabe();
+        fillLstVAssociateAccount();
+        ObservableList<String> filteredList = FXCollections.observableArrayList();
+        for (String item : obsAccountAvaible) {
+            if (!obsAccountAssociat.contains(item)) {
+                filteredList.add(item);
+            }
+        }
+        lstVAccountAvailabe.setItems(filteredList);
+        lstVAssociateAccount.setItems(obsAccountAssociat);
     }
 
 }

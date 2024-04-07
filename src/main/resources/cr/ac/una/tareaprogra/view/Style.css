@@ -311,3 +311,11 @@
     -fx-text-fill: black;
     -fx-alignment: center;
 }
+
+.checkDepositBackground{
+    -fx-background-image: url("../resources/checkDeposit.png");
+    -fx-background-size: cover;
+    -fx-fit-height: 100%;
+    -fx-fit-width: 100%;
+    -fx-background-position: center;
+}
