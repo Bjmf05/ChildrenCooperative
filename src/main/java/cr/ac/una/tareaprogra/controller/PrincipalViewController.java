@@ -75,7 +75,7 @@ public class PrincipalViewController extends Controller implements Initializable
 
     @Override
     public void initialize() {
-
+        
     }
 
     @FXML
@@ -87,7 +87,7 @@ public class PrincipalViewController extends Controller implements Initializable
     private void onActionBtnModifyCooperative(ActionEvent event) {
         FlowController.getInstance().goView("ModifyCooperativeView");
     }
-
+    
     @FXML
     private void onActionBtnCheckIn(ActionEvent event) {
         FlowController.getInstance().goView("RegisterUserView");

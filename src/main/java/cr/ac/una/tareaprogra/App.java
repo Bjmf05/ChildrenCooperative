@@ -37,7 +37,7 @@ public class App extends Application {
          AppContext.getInstance().set("newAccountAssociate", accountAssociateList);
          AppContext.getInstance().set("newAssociate", associateList);
          AppContext.getInstance().set("newMovement", movementsList);
-         
+        
         FlowController.getInstance().InitializeFlow(stage, null);
         stage.getIcons().add(new Image("cr/ac/una/tareaprogra/resources/logo.png"));
         stage.setTitle("COOPETOY");
