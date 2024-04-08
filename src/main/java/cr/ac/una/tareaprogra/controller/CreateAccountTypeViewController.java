@@ -2,6 +2,7 @@ package cr.ac.una.tareaprogra.controller;
 
 import cr.ac.una.tareaprogra.model.Account;
 import cr.ac.una.tareaprogra.util.AppContext;
+import cr.ac.una.tareaprogra.util.FlowController;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -74,7 +75,11 @@ public class CreateAccountTypeViewController extends Controller implements Initi
             cellButton.getStyleClass().add("btn-maintenance");
             cellButton.setText("Modificar");
             cellButton.setOnAction((ActionEvent t) -> {
-//      hacer funcion modificar
+                Account account = (Account) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
+ChangeNameAccountViewController  ChangeNameAccount = (ChangeNameAccountViewController) FlowController.getInstance().getController("ChangeNameAccountView");
+ChangeNameAccount.nameAccount(account);
+FlowController.getInstance().goViewInWindowModal("ChangeNameAccountView", getStage(), true);
+tbvAccount.refresh();
             });
         }
 

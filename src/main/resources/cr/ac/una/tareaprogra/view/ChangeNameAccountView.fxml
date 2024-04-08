@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="250.0" prefWidth="550.0" styleClass="changeNameAccount" stylesheets="@Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.tareaprogra.controller.ChangeNameAccountViewController">
+   <children>
+      <VBox layoutX="75.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="TOP_CENTER">
+               <children>
+                  <Label styleClass="sub-Title2" text="Cambia el Nombre de la Cuenta" />
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Label styleClass="sub-Title2" text="Nombre:" />
+                  <TextField fx:id="txfNewNameAccount" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="20.0" right="30.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onActionBtnCancel" prefHeight="35.0" prefWidth="125.0" styleClass="btn-Cancel" text="Cancelar" />
+                     </children>
+                     <padding>
+                        <Insets right="60.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onActionBtnSave" prefHeight="35.0" prefWidth="125.0" styleClass="btn-Save" text="Modificar" />
+                     </children>
+                     <padding>
+                        <Insets left="60.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
