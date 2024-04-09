@@ -43,7 +43,7 @@ public class PrintPdf {
 
         PdfWriter.getInstance(document, new FileOutputStream(file));
 
-        Image imagePhoto = Image.getInstance(App.class.getResource(addressPhoto));
+        Image imagePhoto = Image.getInstance(addressPhoto);
         imagePhoto.scaleToFit(140, 140);
         imagePhoto.setAbsolutePosition(325, 155);
 
@@ -90,11 +90,9 @@ public class PrintPdf {
         this.invoice = associate.getInvoice();
         this.dateOfBirth = associate.getDateOfBirth();
         this.sex = associate.getSex();
-//        File file = new File(associate.getAdressPhoto());
-//        String localUrl = file.toURI().toString();
-//        System.out.println(localUrl);
-//        System.out.println(associate.getAdressPhoto());
-//        this.addressPhoto = localUrl;
+        File file = new File(associate.getAdressPhoto());
+        String localUrl = file.toURI().toString();
+        this.addressPhoto = localUrl;
         printPdf();
     }
 }
