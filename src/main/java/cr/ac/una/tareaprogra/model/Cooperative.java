@@ -40,7 +40,7 @@ public class Cooperative {
     }
     
     public void setNameOfCooperative(String nameOfCooperative) {
-        this.nameOfCooperative.set(nameOfCooperative);;
+        this.nameOfCooperative.set(nameOfCooperative);
     }
 
     public void setLogoPath(String logoPath) {

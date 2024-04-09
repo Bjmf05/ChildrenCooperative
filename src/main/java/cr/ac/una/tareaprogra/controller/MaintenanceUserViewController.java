@@ -81,6 +81,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
         txtName.setTextFormatter(Formato.getInstance().letrasFormat(30));
         txfLastName1.setTextFormatter(Formato.getInstance().letrasFormat(30));
         txfLastName2.setTextFormatter(Formato.getInstance().letrasFormat(30));
+        associate = new Associate();
         indicateRequired();
         disableData();
     }
@@ -97,7 +98,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
         if(!txtFolio.getText().isEmpty()){
         for (Associate associat : associates) {
             if (txtFolio.getText().equals(associat.getInvoice())) {                
-                
+                txtFolio.setDisable(true);
                 associate = associat;
                 unbindAssociate();
                 bindAssociate();
@@ -130,6 +131,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
 
     @FXML
     private void onActionBtnCancel(ActionEvent event) {
+        unbindAssociate();
         clear();
     }
 
@@ -158,9 +160,10 @@ public class MaintenanceUserViewController extends Controller implements Initial
                 }
                                             
                             new Mensaje().showModal(Alert.AlertType.INFORMATION, "Guardar Asociado", getStage(), "Asociado actualizado correctamente.");
-                            clear();
-                            associate = new Associate();
                             unbindAssociate();
+                            clear();
+                            
+                            
 
             }
         } catch (Exception ex) {
@@ -179,7 +182,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
         dpDateOfBirth.setDisable(false);
         btnPrintPdf.setDisable(false);
         btnMakePhoto.setDisable(false);
-        txtFolio.setDisable(true);
+        
     }
 
     private void disableData() {
@@ -193,7 +196,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
         dpDateOfBirth.setDisable(true);
         btnPrintPdf.setDisable(true);
         btnMakePhoto.setDisable(true);
-        txtFolio.setDisable(false);
+        
     }
 
     private void bindAssociate() {
@@ -247,14 +250,18 @@ public class MaintenanceUserViewController extends Controller implements Initial
     }
 
     private void clear() {
+        txtFolio.setDisable(false);
         disableData();
-
+        associate = new Associate();
+        addressImage = "";
+        txtFolio.clear();
         txtId.clear();
         txtName.clear();
         txfLastName1.clear();
         txfLastName2.clear();
         dpDateOfBirth.setValue(null);
         cbxSex.getSelectionModel().clearSelection();
+        image = null;
         imgMakePhoto.setImage(new Image("/cr/ac/una/tareaprogra/resources/IconChildPhoto.png"));
         cbxSex.setValue("Masculino");
         txtFolio.requestFocus();
