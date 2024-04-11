@@ -168,9 +168,9 @@ public class RegisterUserViewController extends Controller implements Initializa
     }
 
     private String changeFileName(String newInvoise) {
-        String FOLDER_PATH = "C:/ProgramData/fotos_usuarios/";
+        String FOLDER_PATH = "C:/ProgramData/Cooperativa/fotos_usuarios/";
         if (newInvoise != null && !newInvoise.isEmpty()) {
-            File file = new File("C:/ProgramData/fotos_usuarios/foto.jpg");
+            File file = new File("C:/ProgramData/Cooperativa/fotos_usuarios/foto.jpg");
             File newFile = new File(FOLDER_PATH + newInvoise + ".jpg");
             if (file.exists()) {
                 file.renameTo(newFile);
@@ -217,7 +217,7 @@ public class RegisterUserViewController extends Controller implements Initializa
         OpenCameraViewController openCamera = (OpenCameraViewController) FlowController.getInstance().getController("OpenCameraView");
         FlowController.getInstance().goViewInWindowModal("OpenCameraView", getStage(), true);
         if (openCamera.getParameter().equals("p")) {
-            File file = new File("C:/ProgramData/fotos_usuarios/foto.jpg");
+            File file = new File("C:/ProgramData/Cooperativa/fotos_usuarios/foto.jpg");
             String localUrl = file.toURI().toString();
             Image image = new Image(localUrl);
             imgMakePhoto.setImage(image);

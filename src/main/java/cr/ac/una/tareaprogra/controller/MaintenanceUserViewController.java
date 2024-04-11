@@ -69,6 +69,8 @@ public class MaintenanceUserViewController extends Controller implements Initial
     private Image image;
     Associate associate;
     List<Node> required = new ArrayList<>();
+    @FXML
+    private Button btnDeleteAssociate;
 
     /**
      * Initializes the controller class.
@@ -267,5 +269,10 @@ public class MaintenanceUserViewController extends Controller implements Initial
         txtFolio.requestFocus();
         FlowController.getInstance().delete("CheckRegistrationView");
         FlowController.getInstance().delete("OpenCameraView");
+    }
+
+    @FXML
+    private void onActionBtnDeleteAssociate(ActionEvent event) {
+        
     }
 }

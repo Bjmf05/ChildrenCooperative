@@ -171,6 +171,11 @@ public class WithdrawalViewController extends Controller implements Initializabl
                 amountAccount = accountAssociate.getBalanceAccount();
                 int amountAccoun = Integer.parseInt(amountAccount);
                 int amountWithdrawal = Integer.parseInt(txfAmountToWithdraw.getText());
+                int lastNumber = amountWithdrawal % 10;
+                
+                if(lastNumber != 0 && lastNumber!= 5){
+                return "Digita una cantidad que termine en 0 o 5.";
+                }
                 if (amountWithdrawal > amountAccoun) {
                     return "Digita una cantidad igual o menor a la que contiene la cuenta";
                 }

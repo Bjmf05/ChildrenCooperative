@@ -354,3 +354,10 @@
     -fx-fit-width: 100%;
     -fx-background-position: center;
 }
+.btn-Delete{
+    -fx-background-color: #FFA500;
+      -fx-background-image: url("../resources/delete.png");
+    -fx-background-size: 35px 35px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+}

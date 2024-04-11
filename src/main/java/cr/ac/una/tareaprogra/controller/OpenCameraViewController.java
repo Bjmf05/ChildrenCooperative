@@ -68,7 +68,7 @@ public class OpenCameraViewController extends Controller implements Initializabl
     @FXML
     private void onActionBtnMakePhoto(ActionEvent event) {
         if (webcam != null && webcam.isOpen()) {
-            String folderPath = "C:\\ProgramData\\fotos_usuarios"; 
+            String folderPath = "C:\\ProgramData\\Cooperativa\\fotos_usuarios"; 
             File folder = new File(folderPath);
             if (!folder.exists()) {
                 if (!folder.mkdir()) {
