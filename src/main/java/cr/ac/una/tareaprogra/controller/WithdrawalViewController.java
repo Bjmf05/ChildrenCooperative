@@ -142,6 +142,7 @@ public class WithdrawalViewController extends Controller implements Initializabl
                 int amountAccoun = Integer.parseInt(amountAccount);
                 int amountWithdrawal = Integer.parseInt(txfAmountToWithdraw.getText());
                 amountAccoun -= amountWithdrawal;
+                
                 accountAssociate.setBalanceAccount(String.valueOf(amountAccoun));
                 safeMovement(accountAssociate, amountWithdrawal, amountAccoun);
             }

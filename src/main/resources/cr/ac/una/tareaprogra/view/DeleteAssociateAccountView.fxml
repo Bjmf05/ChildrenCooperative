@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="250.0" prefWidth="600.0" styleClass="anchorPane-Center" stylesheets="@Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="cr.ac.una.tareaprogra.controller.DeleteAssociateAccountViewController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="250.0" layoutY="100.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label styleClass="sub-Title" text="Eliminar Cuenta Asociado" />
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <children>
+                  <Label styleClass="sub-Title2" text="Nombre del Asociado:" />
+                  <Label fx:id="lblNameAssoiate" styleClass="sub-Title3" />
+               </children>
+               <padding>
+                  <Insets left="92.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="16.0" prefWidth="586.0" spacing="20.0">
+               <children>
+                  <Label styleClass="sub-Title2" text="Selecciona la cuenta: " />
+                  <ComboBox fx:id="cbxAccount" prefHeight="26.0" prefWidth="174.0" promptText="Cuenta Asociado" styleClass="cbx-SelectAccount" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="110.0">
+               <children>
+                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onActionBtnCancel" prefHeight="40.0" prefWidth="150.0" styleClass="btn-Cancel" text="Cancelar" />
+                  <Button fx:id="btnDelete" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionBtnDelete" prefHeight="40.0" prefWidth="150.0" styleClass="btn-Delete" text="Eliminar" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

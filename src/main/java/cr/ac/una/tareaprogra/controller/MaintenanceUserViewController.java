@@ -1,6 +1,5 @@
 package cr.ac.una.tareaprogra.controller;
 
-//import cr.ac.una.tareaprogra.model.PrintPdf;
 import com.itextpdf.text.DocumentException;
 import cr.ac.una.tareaprogra.model.Associate;
 import cr.ac.una.tareaprogra.model.PrintPdf;
@@ -9,7 +8,6 @@ import cr.ac.una.tareaprogra.util.FlowController;
 import cr.ac.una.tareaprogra.util.Formato;
 import cr.ac.una.tareaprogra.util.Mensaje;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -71,6 +69,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
     List<Node> required = new ArrayList<>();
     @FXML
     private Button btnDeleteAssociate;
+    private boolean changePhoto = false;
 
     /**
      * Initializes the controller class.
@@ -97,24 +96,25 @@ public class MaintenanceUserViewController extends Controller implements Initial
     private void onActionBtnVerify(ActionEvent event) {
         boolean foundUser = false;
         ObservableList<Associate> associates = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
-        if(!txtFolio.getText().isEmpty()){
-        for (Associate associat : associates) {
-            if (txtFolio.getText().equals(associat.getInvoice())) {                
-                txtFolio.setDisable(true);
-                associate = associat;
-                unbindAssociate();
-                bindAssociate();
-                addressImage = associate.getAdressPhoto();
-                File file = new File(addressImage);
-                String localUrl = file.toURI().toString();
-                imgMakePhoto.setImage(new Image(localUrl));
-                enableData();
-                foundUser=true;
-                break;
+        if (!txtFolio.getText().isEmpty()) {
+            for (Associate associat : associates) {
+                if (txtFolio.getText().equals(associat.getInvoice())) {
+                    txtFolio.setDisable(true);
+                    associate = associat;
+                    unbindAssociate();
+                    bindAssociate();
+                    addressImage = associate.getAdressPhoto();
+                    File file = new File(addressImage);
+                    String localUrl = file.toURI().toString();
+                    imgMakePhoto.setImage(new Image(localUrl));
+                    enableData();
+                    foundUser = true;
+                    btnDeleteAssociate.setDisable(false);
+                    break;
+                }
             }
-        }
-              if(!foundUser){
-                 new Mensaje().showModal(Alert.AlertType.ERROR, "Mantenimiento Asociado", getStage(), "No se encontro ningun asociado con ese folio.");
+            if (!foundUser) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Mantenimiento Asociado", getStage(), "No se encontro ningun asociado con ese folio.");
             }
         }
     }
@@ -129,6 +129,20 @@ public class MaintenanceUserViewController extends Controller implements Initial
 
     @FXML
     private void onActionBtnMakePhoto(ActionEvent event) {
+        OpenCameraViewController openCamera = (OpenCameraViewController) FlowController.getInstance().getController("OpenCameraView");
+        FlowController.getInstance().goViewInWindowModal("OpenCameraView", getStage(), true);
+        if (openCamera.getParameter().equals("p")) {
+            File file = new File("C:/ProgramData/Cooperativa/fotos_usuarios/foto.jpg");
+            String localUrl = file.toURI().toString();
+            Image image = new Image(localUrl);
+            imgMakePhoto.setImage(image);
+            deletePhoto(associate.getAdressPhoto());
+            changePhoto=true;
+            FlowController.getInstance().delete("OpenCameraView");
+        }
+        if (openCamera.getParameter().equals("c")) {
+            FlowController.getInstance().delete("OpenCameraView");
+        }
     }
 
     @FXML
@@ -155,22 +169,23 @@ public class MaintenanceUserViewController extends Controller implements Initial
                 if (associate.getId() != null) {
                     for (Associate associat : associates) {
                         if (Objects.equals(associat.getInvoice(), associate.getInvoice())) {
+                            if(changePhoto){
+                            associate.setAddressPhoto(changeFileName(associate.getInvoice()));
+                            }
                             associat.setAssociate(associate);
 
                         }
                     }
                 }
-                                            
-                            new Mensaje().showModal(Alert.AlertType.INFORMATION, "Guardar Asociado", getStage(), "Asociado actualizado correctamente.");
-                            unbindAssociate();
-                            clear();
-                            
-                            
+
+                new Mensaje().showModal(Alert.AlertType.INFORMATION, "Guardar Asociado", getStage(), "Asociado actualizado correctamente.");
+                unbindAssociate();
+                clear();
 
             }
         } catch (Exception ex) {
-            Logger.getLogger(RegisterUserViewController.class.getName()).log(Level.SEVERE, "Error guardando el asociado.", ex);
-            new Mensaje().showModal(Alert.AlertType.ERROR, "Registrar Asociado", getStage(), "Ocurrio un error guardando el asociado.");
+            Logger.getLogger(RegisterUserViewController.class.getName()).log(Level.SEVERE, "Error actualizando el asociado.", ex);
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Mantenimiento Asociado", getStage(), "Ocurrio un error actualizando el asociado.");
         }
 
     }
@@ -183,8 +198,10 @@ public class MaintenanceUserViewController extends Controller implements Initial
         cbxSex.setDisable(false);
         dpDateOfBirth.setDisable(false);
         btnPrintPdf.setDisable(false);
+        btnSave.setDisable(false);
+        btnDeleteAssociate.setDisable(false);
         btnMakePhoto.setDisable(false);
-        
+
     }
 
     private void disableData() {
@@ -197,8 +214,10 @@ public class MaintenanceUserViewController extends Controller implements Initial
         cbxSex.setDisable(true);
         dpDateOfBirth.setDisable(true);
         btnPrintPdf.setDisable(true);
+        btnSave.setDisable(true);
+        btnDeleteAssociate.setDisable(true);
         btnMakePhoto.setDisable(true);
-        
+
     }
 
     private void bindAssociate() {
@@ -252,6 +271,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
     }
 
     private void clear() {
+        btnDeleteAssociate.setDisable(true);
         txtFolio.setDisable(false);
         disableData();
         associate = new Associate();
@@ -264,6 +284,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
         dpDateOfBirth.setValue(null);
         cbxSex.getSelectionModel().clearSelection();
         image = null;
+        changePhoto = false;
         imgMakePhoto.setImage(new Image("/cr/ac/una/tareaprogra/resources/IconChildPhoto.png"));
         cbxSex.setValue("Masculino");
         txtFolio.requestFocus();
@@ -273,6 +294,48 @@ public class MaintenanceUserViewController extends Controller implements Initial
 
     @FXML
     private void onActionBtnDeleteAssociate(ActionEvent event) {
-        
+        try {
+            boolean answer = new Mensaje().showConfirmation("Eliminar Asociado", getStage(), "¿Estas seguro de Eliminar ese Asociado?");
+            if (answer) {
+                ObservableList<Associate> associates = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
+                if (associate.getId() != null) {
+                    for (int i = 0; i < associates.size(); i++) {
+
+                        if (Objects.equals(associates.get(i).getInvoice(), associate.getInvoice())) {
+                            deletePhoto(associates.get(i).getAdressPhoto());
+                            associates.remove(associates.get(i));
+
+                        }
+                    }
+                }
+
+                new Mensaje().showModal(Alert.AlertType.INFORMATION, "Eliminar Asociado", getStage(), "Asociado eliminado correctamente.");
+                unbindAssociate();
+                clear();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(RegisterUserViewController.class.getName()).log(Level.SEVERE, "Error eliminar el asociado.", ex);
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Asociado", getStage(), "Ocurrio un error eliminando el asociado.");
+        }
+    }
+
+    private void deletePhoto(String AddressPhoto) {
+        File archive = new File(AddressPhoto);
+        if (archive.exists()) {
+            archive.delete();
+        }
+    }
+
+    private String changeFileName(String newInvoise) {
+        String FOLDER_PATH = "C:/ProgramData/Cooperativa/fotos_usuarios/";
+        if (newInvoise != null && !newInvoise.isEmpty()) {
+            File file = new File("C:/ProgramData/Cooperativa/fotos_usuarios/foto.jpg");
+            File newFile = new File(FOLDER_PATH + newInvoise + ".jpg");
+            if (file.exists()) {
+                file.renameTo(newFile);
+            }
+        }
+        String address = FOLDER_PATH + newInvoise + ".jpg";
+        return address;
     }
 }

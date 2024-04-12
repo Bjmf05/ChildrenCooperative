@@ -102,6 +102,9 @@ public class CheckAccountAssociateViewController extends Controller implements I
         ObservableList<Movements> filterList = movement.filtered(movements
                 -> Objects.equals(movements.getAccountName(), account)
                 && Objects.equals(movements.getInvoice(), txfInvoice.getText()));
+        
+
+        
         tbvMovementAccount.setItems(filterList);
     }
 

@@ -4,10 +4,9 @@ import cr.ac.una.tareaprogra.model.Account;
 import cr.ac.una.tareaprogra.model.AccountAssociate;
 import cr.ac.una.tareaprogra.model.Associate;
 import cr.ac.una.tareaprogra.util.AppContext;
+import cr.ac.una.tareaprogra.util.FlowController;
 import cr.ac.una.tareaprogra.util.Mensaje;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -21,10 +20,9 @@ import javafx.scene.input.TransferMode;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 
 import javafx.scene.control.TextField;
-import javafx.scene.input.DataFormat;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -51,6 +49,10 @@ public class CheckAccountViewController extends Controller implements Initializa
 
     @FXML
     private TextField txfIdUser;
+    @FXML
+    private Label lblNameAssociate;
+    @FXML
+    private Button btnDelete;
 
     /**
      *
@@ -74,6 +76,8 @@ boolean foundUser = false;
                     compareList();
                     txfIdUser.setEditable(false);
                     btnSave.setDisable(false);
+                    btnDelete.setDisable(false);
+                    lblNameAssociate.setText(associate.getName()+" "+associate.getLastName1());
                     foundUser=true;
                 }
             }
@@ -163,7 +167,9 @@ boolean foundUser = false;
 
     private void clear() {     
         txfIdUser.clear();
+        lblNameAssociate.setText("");
         btnSave.setDisable(true);
+        btnDelete.setDisable(true);
         txfIdUser.setEditable(true);
         lstVAccountAvailabe.setItems(FXCollections.observableArrayList());
         lstVAssociateAccount.setItems(FXCollections.observableArrayList());
@@ -200,6 +206,15 @@ boolean foundUser = false;
         }
         lstVAccountAvailabe.setItems(filteredList);
         lstVAssociateAccount.setItems(obsAccountAssociat);
+    }
+
+    @FXML
+    private void onActionBtnDelete(ActionEvent event) {
+        DeleteAssociateAccountViewController deleteAssociate = (DeleteAssociateAccountViewController) FlowController.getInstance().getController("DeleteAssociateAccountView");
+    deleteAssociate.chargeCbxAccount(txfIdUser.getText());
+    FlowController.getInstance().goViewInWindowModal("DeleteAssociateAccountView", getStage(), true);
+    FlowController.getInstance().delete("DeleteAssociateAccountView");
+    clear();
     }
 
 }

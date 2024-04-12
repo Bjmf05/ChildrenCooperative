@@ -201,6 +201,9 @@
     -fx-background-position: left;
     -fx-background-color:#999900;
 }
+.btn-print-id:hover{
+      -fx-background-color:#f2f24d;
+}
 /*Create New Type Account*/
 .btn-Add{
     -fx-background-color: #2196F3;
@@ -360,4 +363,8 @@
     -fx-background-size: 35px 35px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: left;
+    -fx-alignment:CENTER_RIGHT;
+}
+.btn-Delete:hover{
+    -fx-background-color: #f8c76d;
 }

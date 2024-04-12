@@ -23,6 +23,7 @@
                   <Label styleClass="sub-Title2" text="Folio" />
                   <TextField fx:id="txfIdUser" prefHeight="30.0" prefWidth="150.0" promptText="Digite el folio asociado" styleClass="txt-default" />
                   <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="30.0" prefWidth="114.0" styleClass="btn-Verify" text="Verificar" />
+                  <Label fx:id="lblNameAssociate" styleClass="sub-Title3" />
                </children>
                <VBox.margin>
                   <Insets left="10.0" />
@@ -52,24 +53,11 @@
                   <Insets left="5.0" right="5.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                <children>
-                  <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onActionBtnCancel" prefHeight="50.0" prefWidth="150.0" styleClass="btn-Cancel" text="Cancelar" />
-                     </children>
-                     <padding>
-                        <Insets right="60.0" />
-                     </padding>
-                  </VBox>
-                  <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onActionBtnSave" prefHeight="50.0" prefWidth="150.0" styleClass="btn-Save" text="Guardar" />
-                     </children>
-                     <padding>
-                        <Insets left="60.0" />
-                     </padding>
-                  </VBox>
+                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onActionBtnCancel" prefHeight="50.0" prefWidth="150.0" styleClass="btn-Cancel" text="Cancelar" />
+                  <Button fx:id="btnDelete" layoutX="178.0" layoutY="35.0" mnemonicParsing="false" onAction="#onActionBtnDelete" prefHeight="50.0" prefWidth="170.0" styleClass="btn-Delete" text="Eliminar Cuenta" />
+                  <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onActionBtnSave" prefHeight="50.0" prefWidth="150.0" styleClass="btn-Save" text="Guardar" />
                </children>
             </HBox>
          </children>
