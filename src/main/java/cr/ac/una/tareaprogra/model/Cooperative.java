@@ -1,12 +1,13 @@
 package cr.ac.una.tareaprogra.model;
 
+import java.io.Serializable;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
  *
  * @author Marconi
  */
-public class Cooperative {
+public class Cooperative implements Serializable {
     
     private static int id = 0;
     private SimpleStringProperty idOfChange;

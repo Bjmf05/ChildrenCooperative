@@ -1,5 +1,6 @@
 package cr.ac.una.tareaprogra.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
@@ -8,7 +9,7 @@ import javafx.beans.property.SimpleStringProperty;
  *
  * @author PC
  */
-public class AccountAssociate {
+public class AccountAssociate implements Serializable  {
 
     private SimpleStringProperty id;
     private SimpleStringProperty name;

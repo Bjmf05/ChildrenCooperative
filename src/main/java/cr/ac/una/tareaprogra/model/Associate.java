@@ -1,5 +1,6 @@
 package cr.ac.una.tareaprogra.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -9,7 +10,7 @@ import javafx.beans.property.SimpleStringProperty;
  *
  * @author PC
  */
-public class Associate {
+public class Associate implements Serializable  {
 
     public SimpleStringProperty id;
     public SimpleStringProperty name;
@@ -56,7 +57,7 @@ public class Associate {
         this.lastName2.set(associate.getLastName2());
         this.invoice.set(associate.getInvoice());
         this.sex.set(associate.getSex());
-        this.addressPhoto.set(associate.getAdressPhoto());
+        this.addressPhoto.set(associate.getAddressPhoto());
         if (dateOfBirth != null) {
             this.dateOfBirth.set(associate.getDateOfBirth());
         } else {
@@ -71,7 +72,7 @@ public class Associate {
         this.lastName1.set(associate.getLastName1());
         this.lastName2.set(associate.getLastName2());
         this.sex.set(associate.getSex());
-        this.addressPhoto.set(associate.getAdressPhoto());
+        this.addressPhoto.set(associate.getAddressPhoto());
         if (dateOfBirth != null) {
             this.dateOfBirth.set(associate.getDateOfBirth());
         } else {
@@ -139,7 +140,7 @@ public class Associate {
         this.sex.set(sex);
     }
 
-    public String getAdressPhoto() {
+    public String getAddressPhoto() {
         return addressPhoto.get();
     }
 

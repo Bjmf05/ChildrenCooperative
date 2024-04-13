@@ -45,6 +45,10 @@
         </executions>
         <configuration>
           <mainClass>cr.ac.una.tareaprogra.App</mainClass>
+          <options>
+            <option>--add-opens</option>
+            <option>javafx.base/javafx.beans.property=ALL-UNNAMED</option>
+          </options>
         </configuration>
       </plugin>
       <plugin>

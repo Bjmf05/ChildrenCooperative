@@ -90,7 +90,7 @@ public class PrintPdf {
         this.invoice = associate.getInvoice();
         this.dateOfBirth = associate.getDateOfBirth();
         this.sex = associate.getSex();
-        File file = new File(associate.getAdressPhoto());
+        File file = new File(associate.getAddressPhoto());
         String localUrl = file.toURI().toString();
         this.addressPhoto = localUrl;
         printPdf();

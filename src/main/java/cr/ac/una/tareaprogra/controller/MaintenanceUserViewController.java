@@ -103,7 +103,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
                     associate = associat;
                     unbindAssociate();
                     bindAssociate();
-                    addressImage = associate.getAdressPhoto();
+                    addressImage = associate.getAddressPhoto();
                     File file = new File(addressImage);
                     String localUrl = file.toURI().toString();
                     imgMakePhoto.setImage(new Image(localUrl));
@@ -136,7 +136,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
             String localUrl = file.toURI().toString();
             Image image = new Image(localUrl);
             imgMakePhoto.setImage(image);
-            deletePhoto(associate.getAdressPhoto());
+            deletePhoto(associate.getAddressPhoto());
             changePhoto=true;
             FlowController.getInstance().delete("OpenCameraView");
         }
@@ -302,7 +302,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
                     for (int i = 0; i < associates.size(); i++) {
 
                         if (Objects.equals(associates.get(i).getInvoice(), associate.getInvoice())) {
-                            deletePhoto(associates.get(i).getAdressPhoto());
+                            deletePhoto(associates.get(i).getAddressPhoto());
                             associates.remove(associates.get(i));
 
                         }

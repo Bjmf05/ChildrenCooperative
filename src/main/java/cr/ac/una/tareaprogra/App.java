@@ -3,6 +3,7 @@ package cr.ac.una.tareaprogra;
 import cr.ac.una.tareaprogra.model.Account;
 import cr.ac.una.tareaprogra.model.AccountAssociate;
 import cr.ac.una.tareaprogra.model.Associate;
+import cr.ac.una.tareaprogra.model.Data;
 import cr.ac.una.tareaprogra.model.MailBoxDeposit;
 import cr.ac.una.tareaprogra.model.Movements;
 import cr.ac.una.tareaprogra.util.AppContext;
@@ -30,37 +31,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        String cooperativaPath = "C:\\ProgramData\\Cooperativa";
-        File cooperativaFolder = new File(cooperativaPath);
- 
-        if (!cooperativaFolder.exists()) {
-            cooperativaFolder.mkdirs();
-        } 
-// Crear primero el data       
-//        String cooperativaDataPath = "C:\\ProgramData\\Cooperativa\\data\\context.json";
-//        File cooperativaData = new File(cooperativaDataPath);
-//        if(cooperativaData.exists()){
-//        //Cargar Datos
-//        }else{cooperativaData.mkdirs();}
 
-        ObservableList<Account> accountList = FXCollections.observableArrayList();
-        ObservableList<AccountAssociate> accountAssociateList = FXCollections.observableArrayList();
-        ObservableList<Associate> associateList = FXCollections.observableArrayList();
-        ObservableList<Movements> movementsList = FXCollections.observableArrayList();
-        ObservableList<MailBoxDeposit> mailBoxDepositList = FXCollections.observableArrayList();
 
-        AccountAssociate accountAssociate = new AccountAssociate(2L, "Puta", "M0001");
-        accountAssociateList.add(accountAssociate);
-        LocalDate date = LocalDate.of(2001, 11, 05);
-        Associate associate = new Associate(604700092L, "Breiner", "Munoz", "Fallas", "M0001", date, "Masculino", "C:/ProgramData/fotos_usuarios/M0001.jpg");
-        associateList.add(associate);
-
-        AppContext.getInstance().set("newMailBoxDeposit", mailBoxDepositList);
-        AppContext.getInstance().set("newAccount", accountList);
-        AppContext.getInstance().set("newAccountAssociate", accountAssociateList);
-        AppContext.getInstance().set("newAssociate", associateList);
-        AppContext.getInstance().set("newMovement", movementsList);
-
+        Data data = new Data();
+        data.startData();
+        
         FlowController.getInstance().InitializeFlow(stage, null);
         stage.getIcons().add(new Image("cr/ac/una/tareaprogra/resources/logo.png"));
         stage.setTitle("COOPETOY");

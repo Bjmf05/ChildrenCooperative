@@ -1,5 +1,6 @@
 package cr.ac.una.tareaprogra.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -12,7 +13,7 @@ import javafx.beans.property.SimpleStringProperty;
  *
  * @author PC
  */
-public class Movements {
+public class Movements implements Serializable {
     
     private ObjectProperty<LocalDate> date;
     private ObjectProperty<LocalTime> hour;

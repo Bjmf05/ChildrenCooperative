@@ -1,12 +1,13 @@
 package cr.ac.una.tareaprogra.model;
 
+import java.io.Serializable;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
  *
  * @author PC
  */
-public class MailBoxDeposit {
+public class MailBoxDeposit implements Serializable {
 
     private SimpleStringProperty invoice;
     public SimpleStringProperty nameAccount;

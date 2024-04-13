@@ -1,12 +1,10 @@
 package cr.ac.una.tareaprogra.controller;
 
-import cr.ac.una.tareaprogra.model.Account;
+import cr.ac.una.tareaprogra.model.Data;
 import cr.ac.una.tareaprogra.util.AppContext;
 import cr.ac.una.tareaprogra.util.FlowController;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -116,6 +114,9 @@ public class PrincipalViewController extends Controller implements Initializable
 
     @FXML
     private void onActionBtnExit(ActionEvent event) {
+        AppContext appContext = AppContext.getInstance();
+        Data data = new Data();
+        data.safeLists();
         FlowController.getInstance().salir();
     }
 
