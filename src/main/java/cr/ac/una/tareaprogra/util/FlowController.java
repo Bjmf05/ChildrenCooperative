@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -84,6 +85,7 @@ public class FlowController {
         try {
             this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("view/PrincipalView.fxml"), this.idioma)));
             this.mainStage.show();
+            FlowController.getInstance().goView("TitleOfCooperativeView", "Top", null);
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Error inicializando la vista base.", ex);
         }
@@ -114,6 +116,9 @@ public class FlowController {
                 vBox.getChildren().add(loader.getRoot());
                 break;
             case "Top":
+                HBox hBox = ((HBox) ((BorderPane) stage.getScene().getRoot()).getTop());
+                hBox.getChildren().clear();
+                hBox.getChildren().add(loader.getRoot());
                 break;
             case "Bottom":
                 break;

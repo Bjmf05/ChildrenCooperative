@@ -9,10 +9,8 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class Cooperative implements Serializable {
     
-    private static int id = 0;
-    private SimpleStringProperty idOfChange;
-    private SimpleStringProperty nameOfCooperative;
-    private SimpleStringProperty logoPath;
+    private SimpleStringProperty nameOfCooperative = new SimpleStringProperty("COOPETOY");
+    private SimpleStringProperty logoPath = new SimpleStringProperty("cr/ac/una/tareaprogra/resources/logo.png");
     
 
     public Cooperative() {
@@ -22,7 +20,6 @@ public class Cooperative implements Serializable {
 
     public Cooperative(String nameOfCooperative) {
         this();
-        //this.idOfChange.set(Integer.toString(id++));
         this.nameOfCooperative.set(nameOfCooperative);
     }
 

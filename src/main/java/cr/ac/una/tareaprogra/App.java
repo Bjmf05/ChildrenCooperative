@@ -3,6 +3,7 @@ package cr.ac.una.tareaprogra;
 import cr.ac.una.tareaprogra.model.Account;
 import cr.ac.una.tareaprogra.model.AccountAssociate;
 import cr.ac.una.tareaprogra.model.Associate;
+import cr.ac.una.tareaprogra.model.Cooperative;
 import cr.ac.una.tareaprogra.model.Data;
 import cr.ac.una.tareaprogra.model.MailBoxDeposit;
 import cr.ac.una.tareaprogra.model.Movements;
@@ -31,14 +32,16 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
-
+        ObservableList<Cooperative>  cooperativeList = FXCollections.observableArrayList();
+        AppContext.getInstance().set("newCooperative", cooperativeList);
+        Cooperative cooperative = new Cooperative("COOPETOY","cr/ac/una/tareaprogra/resources/logo.png");
+        cooperativeList.add(cooperative);
         Data data = new Data();
         data.startData();
         
         FlowController.getInstance().InitializeFlow(stage, null);
-        stage.getIcons().add(new Image("cr/ac/una/tareaprogra/resources/logo.png"));
-        stage.setTitle("COOPETOY");
+        stage.getIcons().add(new Image(cooperative.getLogoPath()));
+        stage.setTitle(cooperative.getNameOfCooperative());
         FlowController.getInstance().goMain();
     }
 
