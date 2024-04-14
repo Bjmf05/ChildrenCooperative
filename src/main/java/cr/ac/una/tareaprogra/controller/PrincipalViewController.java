@@ -26,8 +26,6 @@ public class PrincipalViewController extends Controller implements Initializable
     @FXML
     private BorderPane root;
     @FXML
-    private Label lblTitulo;
-    @FXML
     private VBox vpxButtons;
     @FXML
     private Button btnCreateAccountType;
@@ -43,8 +41,6 @@ public class PrincipalViewController extends Controller implements Initializable
     private Button btnRegisterUser;
     @FXML
     private Button btnExit;
-    @FXML
-    private ImageView imgLogoPrincipal;
     @FXML
     private Button btnMaintenanceUser;
     @FXML
@@ -70,7 +66,6 @@ public class PrincipalViewController extends Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        imgLogoPrincipal.setImage(new Image("/cr/ac/una/tareaprogra/resources/logo.png"));
     }
 
     @Override

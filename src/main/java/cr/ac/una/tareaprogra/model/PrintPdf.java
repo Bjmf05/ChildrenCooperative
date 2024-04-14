@@ -45,7 +45,7 @@ public class PrintPdf {
 
         Image imagePhoto = Image.getInstance(addressPhoto);
         imagePhoto.scaleToFit(140, 140);
-        imagePhoto.setAbsolutePosition(325, 155);
+        imagePhoto.setAbsolutePosition(325, 200);
 
         Image imageLogo = Image.getInstance(App.class.getResource(logo));
         imageLogo.scaleToFit(50, 50);
@@ -53,7 +53,7 @@ public class PrintPdf {
 
         Image imageCrab = Image.getInstance(App.class.getResource(crab));
         imageCrab.scaleToFit(140, 140);
-        imageCrab.setAbsolutePosition(18, -5);
+        imageCrab.setAbsolutePosition(18, 10);
 
         Image imageOctopus = Image.getInstance(App.class.getResource(octopus));
         imageOctopus.scaleToFit(170, 170);

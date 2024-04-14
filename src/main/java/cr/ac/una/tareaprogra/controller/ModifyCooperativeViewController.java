@@ -111,24 +111,24 @@ public class ModifyCooperativeViewController extends Controller implements Initi
     }
 
     @Override
-        public void initialize() {
-        }
+    public void initialize() {
+    }
         
-        private void safeChangeCoopertive() {
-            for (Cooperative cooperative : cooperativeList) {
-                if(!txtNewNameCooperative.getText().isEmpty()){
-                    cooperative.setNameOfCooperative(newNameOfCooperative);
-                }
-                if(!txtAddressLogo.getText().isEmpty()){
-                    cooperative.setLogoPath(newUrlOfLogo);
-                }
+    private void safeChangeCoopertive() {
+        for (Cooperative cooperative : cooperativeList) {
+            if(!txtNewNameCooperative.getText().isEmpty()){
+                cooperative.setNameOfCooperative(newNameOfCooperative);
+            }
+            if(!txtAddressLogo.getText().isEmpty()){
+                cooperative.setLogoPath(newUrlOfLogo);
             }
         }
+    }
 
-        private void loadCooperative() {
-            instanceCooperative = new Cooperative();
-            for (Cooperative cooperative : cooperativeList) {
-                instanceCooperative = cooperative;
-            }
+    private void loadCooperative() {
+        instanceCooperative = new Cooperative();
+        for (Cooperative cooperative : cooperativeList) {
+            instanceCooperative = cooperative;
         }
+    }
 }
