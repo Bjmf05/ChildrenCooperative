@@ -1,5 +1,6 @@
 package cr.ac.una.tareaprogra.controller;
 
+import cr.ac.una.tareaprogra.App;
 import cr.ac.una.tareaprogra.model.Data;
 import cr.ac.una.tareaprogra.util.AppContext;
 import cr.ac.una.tareaprogra.util.FlowController;
@@ -25,8 +26,6 @@ public class PrincipalViewController extends Controller implements Initializable
 
     @FXML
     private BorderPane root;
-    @FXML
-    private VBox vpxButtons;
     @FXML
     private Button btnCreateAccountType;
     @FXML
@@ -59,6 +58,8 @@ public class PrincipalViewController extends Controller implements Initializable
     private Button btnDepositFuntionary;
     @FXML
     private Button btnMailBoxFunctionary;
+    @FXML
+    private VBox vbxButtons;
 
     /**
      * Initializes the controller class.
@@ -66,13 +67,30 @@ public class PrincipalViewController extends Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        String parameter = App.getParameter();
+        delete(parameter);
     }
 
     @Override
     public void initialize() {
         
     }
-
+    
+    private void delete(String parameter){
+        if(parameter.equals("P")){
+            vbxButtons.getChildren().remove(vbxAssociate);
+            vbxButtons.getChildren().remove(vbxClerk);
+        }
+        if(parameter.equals("A")){
+            vbxButtons.getChildren().remove(vbxClerk);
+            vbxButtons.getChildren().remove(vbxTeacher);
+        }
+        if(parameter.equals("F")){
+            vbxButtons.getChildren().remove(vbxAssociate);
+            vbxButtons.getChildren().remove(vbxTeacher);
+        }
+    }
+    
     @FXML
     private void onActionBtnCreateAccountType(ActionEvent event) {
         FlowController.getInstance().goView("CreateAccountTypeView");

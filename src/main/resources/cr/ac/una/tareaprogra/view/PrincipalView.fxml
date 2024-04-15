@@ -11,7 +11,7 @@
       <HBox alignment="CENTER" prefHeight="101.0" prefWidth="845.0" BorderPane.alignment="CENTER" />
    </top>
    <left>
-      <VBox fx:id="vpxButtons" prefHeight="499.0" prefWidth="261.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbxButtons" prefHeight="499.0" prefWidth="261.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <VBox fx:id="vbxTeacher" spacing="10.0">
                <children>

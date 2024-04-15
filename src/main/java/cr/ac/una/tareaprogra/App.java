@@ -29,7 +29,7 @@ import javafx.scene.image.Image;
 public class App extends Application {
 
     private static Scene scene;
-
+    private static String parameter = "";
     @Override
     public void start(Stage stage) throws IOException {
   
@@ -47,7 +47,13 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        if(args.length>0){
+            parameter = args[0];
+        }
         launch();
     }
 
+    public static String getParameter() {
+        return parameter;
+    }
 }
