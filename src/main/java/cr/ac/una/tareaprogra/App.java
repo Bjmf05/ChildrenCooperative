@@ -32,16 +32,17 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        ObservableList<Cooperative>  cooperativeList = FXCollections.observableArrayList();
-        AppContext.getInstance().set("newCooperative", cooperativeList);
-        Cooperative cooperative = new Cooperative("COOPETOY","cr/ac/una/tareaprogra/resources/logo.png");
-        cooperativeList.add(cooperative);
+  
         Data data = new Data();
         data.startData();
-        
+        ObservableList <Cooperative> cooperativeList = (ObservableList <Cooperative>) AppContext.getInstance().get("newCooperative");
+        Cooperative instanceCooperative = new Cooperative();
+        for (Cooperative cooperative : cooperativeList) {
+            instanceCooperative = cooperative;
+        }
         FlowController.getInstance().InitializeFlow(stage, null);
-        stage.getIcons().add(new Image(cooperative.getLogoPath()));
-        stage.setTitle(cooperative.getNameOfCooperative());
+        stage.getIcons().add(new Image(instanceCooperative.getLogoPath()));
+        stage.setTitle(instanceCooperative.getNameOfCooperative());
         FlowController.getInstance().goMain();
     }
 

@@ -10,11 +10,13 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.BaseFont;
 import cr.ac.una.tareaprogra.App;
+import cr.ac.una.tareaprogra.util.AppContext;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -27,14 +29,15 @@ public class PrintPdf {
     private String invoice = "C019";
     private LocalDate dateOfBirth = LocalDate.of(2003, 03, 19);
     private String sex = "Masculino";
-    private String title = "Coopetoy";
+    private String title = "";
     private String addressPhoto = "resources/IconChildPhoto.png";
-    private String logo = "resources/logo.png";
+    private String logo = "";
     private String crab = "resources/crab.png";
     private String octopus = "resources/octopus.png";
     private String InriaSerif = "cr/ac/una/tareaprogra/resources/InriaSerif-Light.ttf";
     private String Regular = "cr/ac/una/tareaprogra/resources/Rancho-Regular.ttf";
-
+    private Cooperative instanceCooperative;
+    
     public void printPdf() throws IOException, DocumentException {
         File file = new File(invoice + ".pdf");
         com.itextpdf.text.Rectangle pageSize = new com.itextpdf.text.Rectangle(500f, 400f);
@@ -46,10 +49,15 @@ public class PrintPdf {
         Image imagePhoto = Image.getInstance(addressPhoto);
         imagePhoto.scaleToFit(140, 140);
         imagePhoto.setAbsolutePosition(325, 200);
-
-        Image imageLogo = Image.getInstance(App.class.getResource(logo));
-        imageLogo.scaleToFit(50, 50);
-        imageLogo.setAbsolutePosition(25, 325);
+        
+        Image imageLogo;
+        if("cr/ac/una/tareaprogra/resources/logo.png".equals(instanceCooperative.getLogoPath())){
+            imageLogo = Image.getInstance(App.class.getResource("resources/logo.png"));
+        }else{
+            imageLogo = Image.getInstance(logo);
+        }
+        imageLogo.scaleToFit(75, 75);
+        imageLogo.setAbsolutePosition(10, 325);
 
         Image imageCrab = Image.getInstance(App.class.getResource(crab));
         imageCrab.scaleToFit(140, 140);
@@ -86,13 +94,25 @@ public class PrintPdf {
 
     public void printAsociate(Associate associate) throws IOException, DocumentException {
         this.id = associate.getId();
-        this.name = associate.getName()+" "+associate.getLastName1()+" "+associate.getLastName2();
+        this.name = associate.getName() + " " + associate.getLastName1() + " " + associate.getLastName2();
         this.invoice = associate.getInvoice();
         this.dateOfBirth = associate.getDateOfBirth();
         this.sex = associate.getSex();
         File file = new File(associate.getAddressPhoto());
         String localUrl = file.toURI().toString();
         this.addressPhoto = localUrl;
+        loadCooperative();
+        this.title = instanceCooperative.getNameOfCooperative();
+        String logolUrl = instanceCooperative.getLogoPath();
+        this.logo = logolUrl;
         printPdf();
+    }
+
+    private void loadCooperative() {
+        ObservableList<Cooperative> cooperativeList = (ObservableList<Cooperative>) AppContext.getInstance().get("newCooperative");    
+        instanceCooperative = new Cooperative();
+        for (Cooperative cooperative : cooperativeList) {
+            instanceCooperative = cooperative;
+        }
     }
 }

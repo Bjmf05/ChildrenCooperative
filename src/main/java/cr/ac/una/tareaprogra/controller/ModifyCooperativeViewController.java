@@ -93,27 +93,27 @@ public class ModifyCooperativeViewController extends Controller implements Initi
         Boolean checkMesaje = false;
         if (!txtNewNameCooperative.getText().isEmpty()) {
             titleOfCooperative.setNameOfTitle(newNameOfCooperative);
-            txtNewNameCooperative.clear();
             checkMesaje = true;
         }
         if (!txtAddressLogo.getText().isEmpty()) {
             titleOfCooperative.setImagePath(newUrlOfLogo);
-            txtAddressLogo.clear();
             imgNewLogo.setImage(null);
             checkMesaje = true;
         }
         safeChangeCoopertive();
         if(checkMesaje){
-            new Mensaje().showModal(Alert.AlertType.INFORMATION, "Confirmacion", getStage(), "Los cambios se guardaron con exito");
+            new Mensaje().showModal(Alert.AlertType.INFORMATION, "Confirmacion", getStage(), "Los cambios se guardaron con exito, \nAlgunos cambios se reflejaran despues de reiniciar la aplicacion");
         }else{
             new Mensaje().showModal(Alert.AlertType.ERROR, "Error", getStage(), "Tiene que llenar al menos un dato");
         }
+        txtNewNameCooperative.clear();
+        txtAddressLogo.clear();
     }
 
     @Override
     public void initialize() {
     }
-        
+    
     private void safeChangeCoopertive() {
         for (Cooperative cooperative : cooperativeList) {
             if(!txtNewNameCooperative.getText().isEmpty()){
