@@ -1,6 +1,7 @@
 package cr.ac.una.tareaprogra.controller;
 
 import cr.ac.una.tareaprogra.model.AccountAssociate;
+import cr.ac.una.tareaprogra.model.Associate;
 import cr.ac.una.tareaprogra.model.MailBoxDeposit;
 import cr.ac.una.tareaprogra.model.Movements;
 import cr.ac.una.tareaprogra.util.AppContext;
@@ -61,8 +62,10 @@ public class MailBoxDepositViewController extends Controller implements Initiali
     @FXML
     private TextField txf10Amount;
     private ObservableList<MailBoxDeposit> mailBoxDeposi = (ObservableList<MailBoxDeposit>) AppContext.getInstance().get("newMailBoxDeposit");
-    private ObservableList<AccountAssociate> accountAssociat=(ObservableList<AccountAssociate>) AppContext.getInstance().get("newAccountAssociate");
+    private ObservableList<AccountAssociate> accountAssociat = (ObservableList<AccountAssociate>) AppContext.getInstance().get("newAccountAssociate");
     MailBoxDeposit mailBoxDeposit;
+    @FXML
+    private Label lblNameInvoice;
 
     /**
      * Initializes the controller class.
@@ -99,6 +102,7 @@ public class MailBoxDepositViewController extends Controller implements Initiali
                     mailBoxDeposit = mailboxDeposit;
                     bindMailboxDeposit();
                     enableData();
+                    showNameAssociate(txfInvoice.getText());
                     break;
                 }
             }
@@ -115,7 +119,7 @@ public class MailBoxDepositViewController extends Controller implements Initiali
 
     @FXML
     private void onActionBtnSave(ActionEvent event) {
-           try {
+        try {
             String invalid = validateRequired();
             if (!invalid.isEmpty()) {
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Realizar Deposito", getStage(), invalid);
@@ -163,6 +167,7 @@ public class MailBoxDepositViewController extends Controller implements Initiali
     private void clear() {
         disableData();
         txfInvoice.setEditable(true);
+        lblNameInvoice.setText("");
         txfInvoice.clear();
         txf20ThousandAmount.clear();
         txf10ThousandAmount.clear();
@@ -191,8 +196,9 @@ public class MailBoxDepositViewController extends Controller implements Initiali
         txf10Amount.textProperty().bindBidirectional(mailBoxDeposit.amount10);
         txf5Amount.textProperty().bindBidirectional(mailBoxDeposit.amount5);
     }
+
     private void safeDeposit() {
-        
+
         String account = lblNameAccount.getText();
         for (AccountAssociate accountAssociate : accountAssociat) {
             if (Objects.equals(accountAssociate.getInvoice(), txfInvoice.getText())
@@ -212,7 +218,8 @@ public class MailBoxDepositViewController extends Controller implements Initiali
             }
         }
     }
-private int totalDeposit() {
+
+    private int totalDeposit() {
         int total = (20000 * stringToInt(txf20ThousandAmount))
                 + (10000 * stringToInt(txf10ThousandAmount))
                 + (5000 * stringToInt(txf5ThousandAmount))
@@ -227,11 +234,13 @@ private int totalDeposit() {
 
         return total;
     }
+
     private int stringToInt(TextField textField) {
         String text = textField.getText();
         return text != null && !text.isEmpty() ? Integer.parseInt(text) : 0;
     }
-       private void safeMovement(AccountAssociate accountAssociate, int amount, int balanceAccount) {
+
+    private void safeMovement(AccountAssociate accountAssociate, int amount, int balanceAccount) {
         ObservableList<Movements> movement = (ObservableList<Movements>) AppContext.getInstance().get("newMovement");
         long idAccount = accountAssociate.getId();
         String invoice = accountAssociate.getInvoice();
@@ -240,7 +249,8 @@ private int totalDeposit() {
         long balanceAccoun = balanceAccount;
         movement.add(new Movements(idAccount, accountname, invoice, "Deposito", amoun, balanceAccoun));
     }
-           private String validateRequired() {
+
+    private String validateRequired() {
         TextField[] textFields = {txf20ThousandAmount, txf10ThousandAmount, txf5ThousandAmount, txf2ThousandAmount,
             txf1ThousandAmount, txf500Amount, txf100Amount, txf50Amount, txf25Amount, txf10Amount, txf5Amount};
         boolean atLeastOneHas = false;
@@ -255,5 +265,12 @@ private int totalDeposit() {
         } else {
             return "No has dijitado ninguna cantidad. Hazlo he intenta de nuevo.";
         }
+    }
+
+    private void showNameAssociate(String invoice) {
+        ObservableList<Associate> associateList = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
+        ObservableList<Associate> filterAsscociateList = associateList.filtered(associate -> Objects.equals(invoice, associate.getInvoice()));
+        Associate associate = filterAsscociateList.get(0);
+        lblNameInvoice.setText(associate.getName() + " " + associate.getLastName1());
     }
 }

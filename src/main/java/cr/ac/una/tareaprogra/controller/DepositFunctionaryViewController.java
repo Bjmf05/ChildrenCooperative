@@ -8,8 +8,6 @@ import cr.ac.una.tareaprogra.util.FlowController;
 import cr.ac.una.tareaprogra.util.Formato;
 import cr.ac.una.tareaprogra.util.Mensaje;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -19,10 +17,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -69,6 +67,8 @@ public class DepositFunctionaryViewController extends Controller implements Init
     private ObservableList<AccountAssociate> accountAssociat;
     @FXML
     private ComboBox<AccountAssociate> cbxAccount;
+    @FXML
+    private Label lblNameInvoice;
 
     /**
      * Initializes the controller class.
@@ -102,6 +102,7 @@ public class DepositFunctionaryViewController extends Controller implements Init
             for (Associate associate : associat) {
                 if (Objects.equals(associate.getInvoice(), txfInvoice.getText())) {
                     chargeCbxAccount();
+                    showNameAssociate(txfInvoice.getText());
                     btnStartDeposit.setDisable(false);
                     btnVerify.setDisable(true);
                     txfInvoice.setEditable(false);
@@ -185,6 +186,7 @@ public class DepositFunctionaryViewController extends Controller implements Init
     private void clear() {
         disableData();
         txfInvoice.clear();
+        lblNameInvoice.setText("");
         cbxAccount.setItems(FXCollections.observableArrayList());
         txf20ThousandAmount.clear();
         txf10ThousandAmount.clear();
@@ -274,5 +276,11 @@ public class DepositFunctionaryViewController extends Controller implements Init
         } else {
             return "No has dijitado ninguna cantidad. Hazlo he intenta de nuevo.";
         }
+    }
+            private void showNameAssociate(String invoice) {
+        ObservableList<Associate> associateList = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
+        ObservableList<Associate> filterAsscociateList = associateList.filtered(associate -> Objects.equals(invoice, associate.getInvoice()));
+        Associate associate = filterAsscociateList.get(0);
+        lblNameInvoice.setText(associate.getName() + " " + associate.getLastName1()+" "+ associate.getLastName2());
     }
 }

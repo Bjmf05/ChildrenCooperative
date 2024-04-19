@@ -32,6 +32,7 @@ public class App extends Application {
         FlowController.getInstance().InitializeFlow(stage, null);
         stage.getIcons().add(new Image(instanceCooperative.getLogoPath()));
         stage.setTitle(instanceCooperative.getNameOfCooperative());
+        
         FlowController.getInstance().goMain();
     }
 
@@ -45,4 +46,5 @@ public class App extends Application {
     public static String getParameter() {
         return parameter;
     }
+
 }

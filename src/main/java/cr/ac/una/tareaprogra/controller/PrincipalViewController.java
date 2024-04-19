@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -57,6 +58,10 @@ public class PrincipalViewController extends Controller implements Initializable
     private Button btnMailBoxFunctionary;
     @FXML
     private VBox vbxButtons;
+    @FXML
+    private Button btnGame;
+    @FXML
+    private Button btnTutorial;
 
     /**
      * Initializes the controller class.
@@ -64,9 +69,10 @@ public class PrincipalViewController extends Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
         String parameter = App.getParameter();
         delete(parameter);
-        Runtime.getRuntime().addShutdownHook(new Thread(this::safeData));
+
     }
 
     @Override
@@ -125,7 +131,7 @@ public class PrincipalViewController extends Controller implements Initializable
 
     @FXML
     private void onActionBtnExit(ActionEvent event) {
-
+        safeData();
         FlowController.getInstance().salir();
     }
 
@@ -158,5 +164,13 @@ public class PrincipalViewController extends Controller implements Initializable
     private void safeData() {
         Data data = new Data();
         data.safeLists();
+    }
+
+    @FXML
+    private void onActionBtnGame(ActionEvent event) {
+    }
+
+    @FXML
+    private void onActionBtnTutorial(ActionEvent event) {
     }
 }

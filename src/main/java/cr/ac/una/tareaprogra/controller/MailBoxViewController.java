@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -65,6 +66,8 @@ public class MailBoxViewController extends Controller implements Initializable {
     private ObservableList<Associate> associat = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
     private ObservableList<AccountAssociate> accountAssociat = (ObservableList<AccountAssociate>) AppContext.getInstance().get("newAccountAssociate");
     private ObservableList<MailBoxDeposit> mailBoxDeposit = (ObservableList<MailBoxDeposit>) AppContext.getInstance().get("newMailBoxDeposit");
+    @FXML
+    private Label lblNameInvoice;
 
     /**
      * Initializes the controller class.
@@ -97,6 +100,7 @@ public class MailBoxViewController extends Controller implements Initializable {
             for (Associate associate : associat) {
                 if (Objects.equals(associate.getInvoice(), txfInvoice.getText())) {
                     chargeCbxAccount();
+                    showNameAssociate(txfInvoice.getText());
                     btnSave.setDisable(false);
                     btnVerify.setDisable(true);
                     txfInvoice.setEditable(false);
@@ -173,6 +177,7 @@ public class MailBoxViewController extends Controller implements Initializable {
         btnVerify.setDisable(false);
         txfInvoice.setEditable(true);
         txfInvoice.clear();
+        lblNameInvoice.setText("");
         cbxAccount.setItems(FXCollections.observableArrayList());
         txf20ThousandAmount.clear();
         txf10ThousandAmount.clear();
@@ -236,5 +241,11 @@ public class MailBoxViewController extends Controller implements Initializable {
         }
         return textField.getText();
 
+    }
+            private void showNameAssociate(String invoice) {
+        ObservableList<Associate> associateList = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
+        ObservableList<Associate> filterAsscociateList = associateList.filtered(associate -> Objects.equals(invoice, associate.getInvoice()));
+        Associate associate = filterAsscociateList.get(0);
+        lblNameInvoice.setText(associate.getName() + " " + associate.getLastName1());
     }
 }

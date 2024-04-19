@@ -18,15 +18,16 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="25.0" prefWidth="586.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label contentDisplay="RIGHT" styleClass="sub-Title" text="Realizar Deposito de Buzon" />
+                        <Label contentDisplay="RIGHT" styleClass="sub-Title" text="Verificar Deposito de Buzon" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="48.0" prefWidth="736.0" spacing="15.0" VBox.vgrow="ALWAYS">
                      <children>
                         <TextField fx:id="txfInvoice" prefHeight="30.0" prefWidth="120.0" promptText="¿Cuál es el folio?" styleClass="txt-default" />
-                        <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="30.0" prefWidth="257.0" styleClass="btn-Verify" text="Verificar Deposito de Buzon" />
+                        <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="30.0" prefWidth="109.0" styleClass="btn-Verify" text="Verificar" />
+                        <Label fx:id="lblNameInvoice" styleClass="sub-Title3" />
                         <Label styleClass="sub-Title2" text="Cuenta:" />
-                        <Label fx:id="lblNameAccount" styleClass="sub-Title2" text=" " />
+                        <Label fx:id="lblNameAccount" styleClass="sub-Title2" />
                      </children>
                      <padding>
                         <Insets left="5.0" />

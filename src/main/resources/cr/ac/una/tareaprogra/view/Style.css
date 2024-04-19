@@ -193,7 +193,26 @@
 .btn-move-money:hover{
     -fx-background-color:#9999ff;
 }
-
+.btn-tutorial{
+    -fx-background-image:url("../resources/tutorial.png");
+    -fx-background-size: 30px 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-color:#00FF00;
+}
+.btn-tutorial:hover{
+      -fx-background-color:#72ff72;
+}
+.btn-game{
+    -fx-background-image:url("../resources/game-icon.png");
+    -fx-background-size: 30px 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-color:#fa00fa;
+}
+.btn-game:hover{
+      -fx-background-color:#ffa6ff;
+}
 .btn-print-id{
     -fx-background-image:url("../resources/pdf-icon.png");
     -fx-background-size: 30px 30px;

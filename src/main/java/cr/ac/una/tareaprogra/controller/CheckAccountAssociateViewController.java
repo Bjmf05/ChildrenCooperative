@@ -8,7 +8,6 @@ import cr.ac.una.tareaprogra.util.Mensaje;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Collections;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -19,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -55,6 +55,8 @@ public class CheckAccountAssociateViewController extends Controller implements I
     private ObservableList<AccountAssociate> accountAssociat = (ObservableList<AccountAssociate>) AppContext.getInstance().get("newAccountAssociate");
     @FXML
     private ComboBox<AccountAssociate> cbxAccount;
+    @FXML
+    private Label lblNameInvoice;
 
     /**
      * Initializes the controller class.
@@ -81,11 +83,12 @@ public class CheckAccountAssociateViewController extends Controller implements I
                     btnSearch.setDisable(false);
                     txfInvoice.setEditable(false);
                     foundUser=true;
+                    showNameAssociate(txfInvoice.getText());
                     break;
                 }
             }
             if(!foundUser){
-                 new Mensaje().showModal(Alert.AlertType.ERROR, "Revizar Cuenta", getStage(), "No se encontro ningun asociado con ese folio.");
+                 new Mensaje().showModal(Alert.AlertType.ERROR, "Revizar Cuenta", getStage(), "No se encontro ningun asociado con ese folio que haya realizado algun movimiento.");
             }
         }
     }
@@ -126,9 +129,16 @@ public class CheckAccountAssociateViewController extends Controller implements I
     private void clear() {
         btnSearch.setDisable(true);
         btnVerify.setDisable(false);
+        lblNameInvoice.setText("");
         txfInvoice.clear();
         txfInvoice.setEditable(true);
         cbxAccount.setItems(FXCollections.observableArrayList());
         tbvMovementAccount.setItems(FXCollections.observableArrayList());
+    }
+        private void showNameAssociate(String invoice) {
+        ObservableList<Associate> associateList = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
+        ObservableList<Associate> filterAsscociateList = associateList.filtered(associate -> Objects.equals(invoice, associate.getInvoice()));
+        Associate associate = filterAsscociateList.get(0);
+        lblNameInvoice.setText(associate.getName() + " " + associate.getLastName1()+" "+ associate.getLastName2());
     }
 }

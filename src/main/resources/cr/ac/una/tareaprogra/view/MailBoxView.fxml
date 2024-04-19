@@ -24,7 +24,8 @@
             <HBox alignment="CENTER" prefHeight="39.0" prefWidth="735.0" spacing="10.0">
                <children>
                   <TextField fx:id="txfInvoice" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="110.0" promptText="¿Cual es tú folio?" />
-                  <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="30.0" prefWidth="152.0" styleClass="btn-Verify" text="Verificar Folio" />
+                  <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#onActionBtnVerify" prefHeight="30.0" prefWidth="108.0" styleClass="btn-Verify" text="Verificar" />
+                  <Label fx:id="lblNameInvoice" styleClass="sub-Title3" />
                   <ComboBox fx:id="cbxAccount" prefHeight="26.0" prefWidth="198.0" promptText="Selecciona la Cuenta" styleClass="cbx-SelectAccount" />
                </children>
                <VBox.margin>

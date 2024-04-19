@@ -84,7 +84,9 @@ public class FlowController {
     public void goMain() {
         try {
             this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("view/PrincipalView.fxml"), this.idioma)));
+            this.mainStage.setOnCloseRequest(event -> event.consume());
             this.mainStage.show();
+            
             FlowController.getInstance().goView("TitleOfCooperativeView", "Top", null);
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Error inicializando la vista base.", ex);
@@ -175,7 +177,7 @@ public class FlowController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.initStyle(StageStyle.UNDECORATED); 
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.initOwner(parentStage);
         stage.centerOnScreen();
         stage.showAndWait();
@@ -197,8 +199,9 @@ public class FlowController {
     public void salir() {
         this.mainStage.close();
     }
-     public void delete(String parametro){
-     loaders.remove(parametro);
- }
+
+    public void delete(String parametro) {
+        loaders.remove(parametro);
+    }
 
 }

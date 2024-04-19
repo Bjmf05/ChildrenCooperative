@@ -80,9 +80,19 @@
                   </HBox>
                </children>
             </VBox>
+            <HBox prefHeight="40.0" prefWidth="200.0" styleClass="vbox-no-transparent">
+               <children>
+                  <Button fx:id="btnGame" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnGame" prefHeight="40.0" styleClass="btn-game" text="Jugar Minijuego" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="200.0" styleClass="vbox-no-transparent">
+               <children>
+                  <Button fx:id="btnTutorial" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnTutorial" prefHeight="40.0" styleClass="btn-tutorial" text="Tutorial" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
             <HBox fx:id="prueba" prefHeight="40.0" prefWidth="200.0" styleClass="vbox-no-transparent">
                <children>
-                  <Button fx:id="btnExit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnExit" prefHeight="40.0" styleClass="btn-Exit" text="Salir" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnExit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onActionBtnExit" prefHeight="40.0" styleClass="btn-Exit" text="Guardar y Salir" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </children>

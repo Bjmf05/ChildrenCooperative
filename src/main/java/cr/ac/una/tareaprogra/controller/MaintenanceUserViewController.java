@@ -351,7 +351,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
         ObservableList<AccountAssociate> filterAccountAssociate = accountAssociateList.filtered(accountAssociate -> Objects.equals(accountAssociate.getInvoice(), invoice));
         for (AccountAssociate accountAssociate : filterAccountAssociate) {
             if (!Objects.equals(accountAssociate.getBalanceAccount(), "0")) {
-                return "La cuenta "+accountAssociate.getName()+"aun tiene fondos, si deseas eliminar retira los fondos";
+                return "La cuenta "+accountAssociate.getName()+" aun tiene fondos, si deseas eliminar retira los fondos";
             }
         }
 
