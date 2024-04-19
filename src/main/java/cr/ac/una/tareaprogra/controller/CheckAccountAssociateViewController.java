@@ -103,9 +103,13 @@ public class CheckAccountAssociateViewController extends Controller implements I
                 -> Objects.equals(movements.getAccountName(), account)
                 && Objects.equals(movements.getInvoice(), txfInvoice.getText()));
         
-
         
-        tbvMovementAccount.setItems(filterList);
+        ObservableList<Movements> modifiableList = FXCollections.observableArrayList();
+        for (int i = filterList.size() - 1; i >= 0; i--) {
+            Movements movements = filterList.get(i);
+            modifiableList.add(movements);
+        }
+        tbvMovementAccount.setItems(modifiableList);
     }
 
     @FXML

@@ -1,9 +1,11 @@
 package cr.ac.una.tareaprogra.model;
 
+import cr.ac.una.tareaprogra.util.AppContext;
 import java.io.Serializable;
 import java.util.Objects;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -82,7 +84,18 @@ public class Account implements Serializable {
     public String toString() {
         return name.get();
     }
-
+private Integer createIdAccount(){
+    ObservableList<Account> accountList = (ObservableList<Account>) AppContext.getInstance().get("newAccount");
+    if(accountList.isEmpty()){
+        return 1;
+    }
+    else{
+        Account account = accountList.get(accountList.size()-1);
+        Long newIdL = account.getId();
+        int newIdI = (int) (newIdL+1);
+        return newIdI;
+    }
+}
 
     
     

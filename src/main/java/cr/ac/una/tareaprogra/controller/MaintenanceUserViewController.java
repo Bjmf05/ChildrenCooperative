@@ -1,6 +1,7 @@
 package cr.ac.una.tareaprogra.controller;
 
 import com.itextpdf.text.DocumentException;
+import cr.ac.una.tareaprogra.model.AccountAssociate;
 import cr.ac.una.tareaprogra.model.Associate;
 import cr.ac.una.tareaprogra.model.PrintPdf;
 import cr.ac.una.tareaprogra.util.AppContext;
@@ -137,7 +138,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
             Image image = new Image(localUrl);
             imgMakePhoto.setImage(image);
             deletePhoto(associate.getAddressPhoto());
-            changePhoto=true;
+            changePhoto = true;
             FlowController.getInstance().delete("OpenCameraView");
         }
         if (openCamera.getParameter().equals("c")) {
@@ -169,8 +170,8 @@ public class MaintenanceUserViewController extends Controller implements Initial
                 if (associate.getId() != null) {
                     for (Associate associat : associates) {
                         if (Objects.equals(associat.getInvoice(), associate.getInvoice())) {
-                            if(changePhoto){
-                            associate.setAddressPhoto(changeFileName(associate.getInvoice()));
+                            if (changePhoto) {
+                                associate.setAddressPhoto(changeFileName(associate.getInvoice()));
                             }
                             associat.setAssociate(associate);
 
@@ -294,6 +295,10 @@ public class MaintenanceUserViewController extends Controller implements Initial
 
     @FXML
     private void onActionBtnDeleteAssociate(ActionEvent event) {
+        String invalid = validateAccounts();
+        if(!invalid.isEmpty()){
+         new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Asociado", getStage(), invalid);}
+        else{
         try {
             boolean answer = new Mensaje().showConfirmation("Eliminar Asociado", getStage(), "¿Estas seguro de Eliminar ese Asociado?");
             if (answer) {
@@ -317,6 +322,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
             Logger.getLogger(RegisterUserViewController.class.getName()).log(Level.SEVERE, "Error eliminar el asociado.", ex);
             new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Asociado", getStage(), "Ocurrio un error eliminando el asociado.");
         }
+        }
     }
 
     private void deletePhoto(String AddressPhoto) {
@@ -337,5 +343,18 @@ public class MaintenanceUserViewController extends Controller implements Initial
         }
         String address = FOLDER_PATH + newInvoise + ".jpg";
         return address;
+    }
+
+    private String validateAccounts() {
+        String invoice = txtFolio.getText();
+        ObservableList<AccountAssociate> accountAssociateList = (ObservableList<AccountAssociate>) AppContext.getInstance().get("newAccountAssociate");
+        ObservableList<AccountAssociate> filterAccountAssociate = accountAssociateList.filtered(accountAssociate -> Objects.equals(accountAssociate.getInvoice(), invoice));
+        for (AccountAssociate accountAssociate : filterAccountAssociate) {
+            if (!Objects.equals(accountAssociate.getBalanceAccount(), "0")) {
+                return "La cuenta "+accountAssociate.getName()+"aun tiene fondos, si deseas eliminar retira los fondos";
+            }
+        }
+
+        return "";
     }
 }

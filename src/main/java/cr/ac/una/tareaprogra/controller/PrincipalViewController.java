@@ -10,9 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -69,28 +66,29 @@ public class PrincipalViewController extends Controller implements Initializable
         // TODO
         String parameter = App.getParameter();
         delete(parameter);
+        Runtime.getRuntime().addShutdownHook(new Thread(this::safeData));
     }
 
     @Override
     public void initialize() {
-        
+
     }
-    
-    private void delete(String parameter){
-        if(parameter.equals("P")){
+
+    private void delete(String parameter) {
+        if (parameter.equals("P")) {
             vbxButtons.getChildren().remove(vbxAssociate);
             vbxButtons.getChildren().remove(vbxClerk);
         }
-        if(parameter.equals("A")){
+        if (parameter.equals("A")) {
             vbxButtons.getChildren().remove(vbxClerk);
             vbxButtons.getChildren().remove(vbxTeacher);
         }
-        if(parameter.equals("F")){
+        if (parameter.equals("F")) {
             vbxButtons.getChildren().remove(vbxAssociate);
             vbxButtons.getChildren().remove(vbxTeacher);
         }
     }
-    
+
     @FXML
     private void onActionBtnCreateAccountType(ActionEvent event) {
         FlowController.getInstance().goView("CreateAccountTypeView");
@@ -100,7 +98,7 @@ public class PrincipalViewController extends Controller implements Initializable
     private void onActionBtnModifyCooperative(ActionEvent event) {
         FlowController.getInstance().goView("ModifyCooperativeView");
     }
-    
+
     @FXML
     private void onActionBtnCheckIn(ActionEvent event) {
         FlowController.getInstance().goView("RegisterUserView");
@@ -127,9 +125,7 @@ public class PrincipalViewController extends Controller implements Initializable
 
     @FXML
     private void onActionBtnExit(ActionEvent event) {
-        AppContext appContext = AppContext.getInstance();
-        Data data = new Data();
-        data.safeLists();
+
         FlowController.getInstance().salir();
     }
 
@@ -145,7 +141,7 @@ public class PrincipalViewController extends Controller implements Initializable
 
     @FXML
     private void onActionBtnWithdrawal(ActionEvent event) {
-         FlowController.getInstance().goView("WithdrawalView");
+        FlowController.getInstance().goView("WithdrawalView");
     }
 
     @FXML
@@ -156,5 +152,11 @@ public class PrincipalViewController extends Controller implements Initializable
     @FXML
     private void onActionBtnMailBoxFunctionary(ActionEvent event) {
         FlowController.getInstance().goView("MailBoxDepositView");
+
+    }
+
+    private void safeData() {
+        Data data = new Data();
+        data.safeLists();
     }
 }
