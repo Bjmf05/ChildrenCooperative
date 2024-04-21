@@ -2,7 +2,6 @@ package cr.ac.una.tareaprogra.controller;
 
 import cr.ac.una.tareaprogra.App;
 import cr.ac.una.tareaprogra.model.Data;
-import cr.ac.una.tareaprogra.util.AppContext;
 import cr.ac.una.tareaprogra.util.FlowController;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -168,6 +166,7 @@ public class PrincipalViewController extends Controller implements Initializable
 
     @FXML
     private void onActionBtnGame(ActionEvent event) {
+        FlowController.getInstance().goView("SnakeGameView");
     }
 
     @FXML
