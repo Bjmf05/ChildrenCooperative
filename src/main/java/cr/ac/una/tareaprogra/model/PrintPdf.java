@@ -39,7 +39,11 @@ public class PrintPdf {
     private Cooperative instanceCooperative;
     
     public void printPdf() throws IOException, DocumentException {
-        File file = new File(invoice + ".pdf");
+        String temporaryFolder = System.getProperty("java.io.tmpdir");
+        String fileName = invoice+".pdf";
+        File file = new File(temporaryFolder, fileName);
+        file.deleteOnExit();
+        
         com.itextpdf.text.Rectangle pageSize = new com.itextpdf.text.Rectangle(500f, 400f);
         Document document = new Document(pageSize);
         BaseFont baseFont = BaseFont.createFont(Regular, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
