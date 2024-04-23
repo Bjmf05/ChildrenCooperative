@@ -80,6 +80,7 @@ public class CheckAccountViewController extends Controller implements Initializa
                     btnSave.setDisable(false);
                     btnDelete.setDisable(false);
                     lblNameAssociate.setText(associate.getName() + " " + associate.getLastName1());
+                    btnVerify.setDisable(true);
                     foundUser = true;
                 }
             }
@@ -145,6 +146,7 @@ public class CheckAccountViewController extends Controller implements Initializa
 
     private void clear() {
         txfIdUser.clear();
+        btnVerify.setDisable(false);
         lblNameAssociate.setText("");
         btnSave.setDisable(true);
         btnDelete.setDisable(true);
