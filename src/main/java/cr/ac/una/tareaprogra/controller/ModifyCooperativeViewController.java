@@ -5,7 +5,12 @@ import cr.ac.una.tareaprogra.util.AppContext;
 import cr.ac.una.tareaprogra.util.FlowController;
 import cr.ac.una.tareaprogra.util.Mensaje;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -44,6 +49,8 @@ public class ModifyCooperativeViewController extends Controller implements Initi
     private String newUrlOfLogo;
     private TitleOfCooperativeViewController titleOfCooperative = (TitleOfCooperativeViewController) FlowController.getInstance().getController("TitleOfCooperativeView");
     private Cooperative instanceCooperative;
+    private File selectedFile;
+    private  String imagePath;
     /**
      * Initializes the controller class.
      */
@@ -59,9 +66,11 @@ public class ModifyCooperativeViewController extends Controller implements Initi
         fileChooser.setTitle("Selecione Imagen");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.jpg", "PNG files (*.png)", "*.png");
         fileChooser.getExtensionFilters().add(extFilter);
-        File selectedFile = fileChooser.showOpenDialog(null);
-        ruteOfArchive = selectedFile.getAbsolutePath();
-        txtAddressLogo.setText(ruteOfArchive);
+        selectedFile = fileChooser.showOpenDialog(null);
+        if(selectedFile != null){
+            ruteOfArchive = selectedFile.getAbsolutePath();
+            txtAddressLogo.setText(ruteOfArchive);
+        }
         if (!txtAddressLogo.getText().isEmpty()) {
             newUrlOfLogo = "file:///" + ruteOfArchive.replace("\\", "/");
             Image image = new Image(newUrlOfLogo);
@@ -81,7 +90,7 @@ public class ModifyCooperativeViewController extends Controller implements Initi
     }
 
     @FXML
-    private void onActionBtnSave(ActionEvent event) {
+    private void onActionBtnSave(ActionEvent event) throws IOException {
         newNameOfCooperative = txtNewNameCooperative.getText();
         Boolean checkMesaje = false;
         if (!txtNewNameCooperative.getText().isEmpty()) {
@@ -89,6 +98,17 @@ public class ModifyCooperativeViewController extends Controller implements Initi
             checkMesaje = true;
         }
         if (!txtAddressLogo.getText().isEmpty()) {
+            String relativePath = "./Logos/";
+            String pathOfFolder = "./Logos";
+            File folder = new File(pathOfFolder);
+            if (!folder.exists()) { 
+                folder.mkdir();// Crea la carpeta de logos si no existe.
+            }
+            Path source = Paths.get(selectedFile.getAbsolutePath());
+            Path destiny = Paths.get(relativePath,selectedFile.getName());
+            imagePath = "file:" + relativePath + selectedFile.getName();
+            Files.copy(source, destiny, StandardCopyOption.REPLACE_EXISTING);
+
             titleOfCooperative.setImagePath(newUrlOfLogo);
             imgNewLogo.setImage(null);
             checkMesaje = true;
@@ -113,7 +133,7 @@ public class ModifyCooperativeViewController extends Controller implements Initi
                 cooperative.setNameOfCooperative(newNameOfCooperative);
             }
             if(!txtAddressLogo.getText().isEmpty()){
-                cooperative.setLogoPath(newUrlOfLogo);
+                cooperative.setLogoPath(imagePath);
             }
         }
     }
