@@ -167,7 +167,8 @@ public class MailBoxDepositViewController extends Controller implements Initiali
     private void clear() {
         disableData();
         txfInvoice.setEditable(true);
-        lblNameInvoice.setText("");
+        lblNameInvoice.setText(null);
+        lblNameAccount.setText(null);
         txfInvoice.clear();
         txf20ThousandAmount.clear();
         txf10ThousandAmount.clear();
@@ -184,17 +185,18 @@ public class MailBoxDepositViewController extends Controller implements Initiali
 
     private void bindMailboxDeposit() {
         lblNameAccount.textProperty().bindBidirectional(mailBoxDeposit.nameAccount);
-        txf20ThousandAmount.textProperty().bindBidirectional(mailBoxDeposit.amount20Thousand);
-        txf10ThousandAmount.textProperty().bindBidirectional(mailBoxDeposit.amount10Thousand);
-        txf5ThousandAmount.textProperty().bindBidirectional(mailBoxDeposit.amount5Thousand);
-        txf2ThousandAmount.textProperty().bindBidirectional(mailBoxDeposit.amount2Thousand);
-        txf1ThousandAmount.textProperty().bindBidirectional(mailBoxDeposit.amount1Thousand);
-        txf500Amount.textProperty().bindBidirectional(mailBoxDeposit.amount500);
-        txf100Amount.textProperty().bindBidirectional(mailBoxDeposit.amount100);
-        txf50Amount.textProperty().bindBidirectional(mailBoxDeposit.amount50);
-        txf25Amount.textProperty().bindBidirectional(mailBoxDeposit.amount25);
-        txf10Amount.textProperty().bindBidirectional(mailBoxDeposit.amount10);
-        txf5Amount.textProperty().bindBidirectional(mailBoxDeposit.amount5);
+        txf20ThousandAmount.setText(mailBoxDeposit.amount20Thousand);
+        txf10ThousandAmount.setText(mailBoxDeposit.amount10Thousand);
+        txf5ThousandAmount.setText(mailBoxDeposit.amount5Thousand);
+        txf2ThousandAmount.setText(mailBoxDeposit.amount2Thousand);
+        txf1ThousandAmount.setText(mailBoxDeposit.amount1Thousand);
+        txf500Amount.setText(mailBoxDeposit.amount500);
+        txf100Amount.setText(mailBoxDeposit.amount100);
+        txf50Amount.setText(mailBoxDeposit.amount50);
+        txf25Amount.setText(mailBoxDeposit.amount25);
+        txf10Amount.setText(mailBoxDeposit.amount10);
+        txf5Amount.setText(mailBoxDeposit.amount5);
+
     }
 
     private void safeDeposit() {

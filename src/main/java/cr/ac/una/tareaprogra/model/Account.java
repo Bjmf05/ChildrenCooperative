@@ -4,7 +4,6 @@ import cr.ac.una.tareaprogra.util.AppContext;
 import java.io.Serializable;
 import java.util.Objects;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 
 /**
@@ -12,7 +11,6 @@ import javafx.collections.ObservableList;
  * @author PC
  */
 public class Account implements Serializable {
-    private static  int idNumber = 0;
     private SimpleStringProperty id;
     private SimpleStringProperty name;
     
@@ -23,7 +21,7 @@ public class Account implements Serializable {
 
     public Account(String name) {
         this();
-        this.id.set(Integer.toString(++idNumber));
+        this.id.set(Integer.toString(createIdAccount()));
         this.name.set(name);
     }
     public Account(Account account){

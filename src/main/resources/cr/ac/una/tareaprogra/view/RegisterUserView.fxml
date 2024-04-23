@@ -22,7 +22,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="122.0" prefWidth="636.0" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox prefHeight="292.0" prefWidth="495.0" spacing="30.0" HBox.hgrow="ALWAYS">
+                  <VBox alignment="CENTER_RIGHT" prefHeight="292.0" prefWidth="495.0" spacing="30.0" HBox.hgrow="ALWAYS">
                      <children>
                         <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="0.0" prefWidth="481.0" spacing="41.0">
                            <children>
@@ -90,7 +90,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#onActionBtnCancel" prefHeight="50.0" prefWidth="150.0" styleClass="btn-Cancel" text="Cancelar" />
                      </children>
@@ -98,7 +98,7 @@
                         <Insets right="60.0" />
                      </padding>
                   </VBox>
-                  <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Button fx:id="btnSave" mnemonicParsing="false" onAction="#onActionBtnSave" prefHeight="50.0" prefWidth="150.0" styleClass="btn-Save" text="Guardar" />
                      </children>

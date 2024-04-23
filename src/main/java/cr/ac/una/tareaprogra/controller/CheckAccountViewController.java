@@ -7,8 +7,10 @@ import cr.ac.una.tareaprogra.util.AppContext;
 import cr.ac.una.tareaprogra.util.FlowController;
 import cr.ac.una.tareaprogra.util.Mensaje;
 import java.net.URL;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -69,7 +71,7 @@ public class CheckAccountViewController extends Controller implements Initializa
 
     @FXML
     private void onActionBtnVerify(ActionEvent event) {
-boolean foundUser = false;
+        boolean foundUser = false;
         if (!txfIdUser.getText().isEmpty()) {
             for (Associate associate : associat) {
                 if (Objects.equals(associate.getInvoice(), txfIdUser.getText())) {
@@ -77,12 +79,12 @@ boolean foundUser = false;
                     txfIdUser.setEditable(false);
                     btnSave.setDisable(false);
                     btnDelete.setDisable(false);
-                    lblNameAssociate.setText(associate.getName()+" "+associate.getLastName1());
-                    foundUser=true;
+                    lblNameAssociate.setText(associate.getName() + " " + associate.getLastName1());
+                    foundUser = true;
                 }
             }
-                if(!foundUser){
-                 new Mensaje().showModal(Alert.AlertType.ERROR, "Revizar Cuentas", getStage(), "No se encontro ningun asociado con ese folio.");
+            if (!foundUser) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Revizar Cuentas", getStage(), "No se encontro ningun asociado con ese folio.");
             }
         }
     }
@@ -94,36 +96,13 @@ boolean foundUser = false;
 
     @FXML
     private void onActionBtnSave(ActionEvent event) {
-        ObservableList<String> optionalList = lstVAssociateAccount.getItems();
-        for (String item : optionalList) {
+           ObservableList<AccountAssociate> filterAccountAssociate = filterAccountAssociates();
+    Set<String> addedAccounts = getAddedAccounts(filterAccountAssociate);
 
-            String[] parts = item.split("-");
-            String accountId = parts[0];
-            String acccountName = parts[1];
+    ObservableList<String> optionalList = lstVAssociateAccount.getItems();
+    addNewAccounts(optionalList, addedAccounts, filterAccountAssociate);
 
-            boolean exists = false;
-            for (AccountAssociate accountAssociate : accountAssociat) {
-                if (Objects.equals(accountAssociate.getInvoice(), txfIdUser.getText())) {
-                    if (Objects.equals(accountAssociate.getId(), accountId)) {
-                        exists = true;
-                        break;
-                    }
-                }
-            }
-            
-            if (!exists) {
-                accountAssociat.add(new AccountAssociate(Long.parseLong(accountId),acccountName,txfIdUser.getText()));
-            }
-        }
-        clear();
-    }
-
-    @Override
-    public void initialize() {
-        clear();
-        accountAssociat = (ObservableList<AccountAssociate>) AppContext.getInstance().get("newAccountAssociate");
-        accountAvaible = (ObservableList<Account>) AppContext.getInstance().get("newAccount");
-        associat = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
+    clear();
     }
 
     private void dragAndDrop() {
@@ -164,8 +143,7 @@ boolean foundUser = false;
         return accountAssociate.getId() + "-" + accountAssociate.getName();
     }
 
-
-    private void clear() {     
+    private void clear() {
         txfIdUser.clear();
         lblNameAssociate.setText("");
         btnSave.setDisable(true);
@@ -211,10 +189,57 @@ boolean foundUser = false;
     @FXML
     private void onActionBtnDelete(ActionEvent event) {
         DeleteAssociateAccountViewController deleteAssociate = (DeleteAssociateAccountViewController) FlowController.getInstance().getController("DeleteAssociateAccountView");
-    deleteAssociate.chargeCbxAccount(txfIdUser.getText());
-    FlowController.getInstance().goViewInWindowModal("DeleteAssociateAccountView", getStage(), true);
-    FlowController.getInstance().delete("DeleteAssociateAccountView");
-    clear();
+        deleteAssociate.chargeCbxAccount(txfIdUser.getText());
+        FlowController.getInstance().goViewInWindowModal("DeleteAssociateAccountView", getStage(), true);
+        FlowController.getInstance().delete("DeleteAssociateAccountView");
+        clear();
     }
+private ObservableList<AccountAssociate> filterAccountAssociates() {
+    return accountAssociat.filtered(accountAssociate -> Objects.equals(accountAssociate.getInvoice(), txfIdUser.getText()));
+}
 
+private Set<String> getAddedAccounts(ObservableList<AccountAssociate> filterAccountAssociate) {
+    Set<String> addedAccounts = new HashSet<>();
+    for (AccountAssociate accountAssociate : filterAccountAssociate) {
+        addedAccounts.add(Long.toString(accountAssociate.getId()));
+    }
+    return addedAccounts;
+}
+
+private void addNewAccounts(ObservableList<String> optionalList, Set<String> addedAccounts, ObservableList<AccountAssociate> filterAccountAssociate) {
+    for (String item : optionalList) {
+        String[] parts = item.split("-");
+        String accountId = parts[0];
+        String accountName = parts[1];
+        boolean exists = checkIfAccountExists(accountId, accountName, addedAccounts, filterAccountAssociate);
+        if (!exists) {
+            addAccount(accountId, accountName, addedAccounts);
+        }
+    }
+}
+
+private boolean checkIfAccountExists(String accountId, String accountName, Set<String> addedAccounts, ObservableList<AccountAssociate> filterAccountAssociate) {
+    if (addedAccounts.contains(accountId)) {
+        return true;
+    } else {
+        for (AccountAssociate accountAssociate : filterAccountAssociate) {
+            if (Objects.equals(accountAssociate.getId(), accountId) && Objects.equals(accountAssociate.getName(), accountName)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+private void addAccount(String accountId, String accountName, Set<String> addedAccounts) {
+    if (!addedAccounts.contains(accountId)) {
+        accountAssociat.add(new AccountAssociate(Long.parseLong(accountId), accountName, txfIdUser.getText()));
+        addedAccounts.add(accountId);
+    }
+}
+
+    @Override
+    public void initialize() {
+        clear();
+}
 }

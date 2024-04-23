@@ -68,6 +68,17 @@ public class MailBoxViewController extends Controller implements Initializable {
     private ObservableList<MailBoxDeposit> mailBoxDeposit = (ObservableList<MailBoxDeposit>) AppContext.getInstance().get("newMailBoxDeposit");
     @FXML
     private Label lblNameInvoice;
+    private int ThousandAmount20 = 0;
+    private int ThousandAmount10 = 0;
+    private int ThousandAmount5 = 0;
+    private int ThousandAmount2 = 0;
+    private int ThousandAmount1 = 0;
+    private int Amount500 = 0;
+    private int Amount100 = 0;
+    private int Amount50 = 0;
+    private int Amount25 = 0;
+    private int Amount10 = 0;
+    private int Amount5 = 0;
 
     /**
      * Initializes the controller class.
@@ -226,23 +237,39 @@ public class MailBoxViewController extends Controller implements Initializable {
         for (AccountAssociate accountAssociate : accountAssociat) {
             if (Objects.equals(accountAssociate.getInvoice(), txfInvoice.getText())
                     && Objects.equals(accountAssociate.getName(), account)) {
-                mailBoxDeposit.add(new MailBoxDeposit(accountAssociate.getInvoice(), accountAssociate.getName(), checkNull(txf20ThousandAmount),
-                        checkNull(txf10ThousandAmount), checkNull(txf5ThousandAmount), checkNull(txf2ThousandAmount), checkNull(txf1ThousandAmount),
-                        checkNull(txf500Amount), checkNull(txf100Amount), checkNull(txf50Amount), checkNull(txf25Amount),
-                        checkNull(txf10Amount), checkNull(txf5Amount)));
+                changeToString();
+                mailBoxDeposit.add(new MailBoxDeposit(accountAssociate.getInvoice(), accountAssociate.getName(), ThousandAmount20,
+                        ThousandAmount10, ThousandAmount5, ThousandAmount2, ThousandAmount1,
+                        Amount500, Amount100, Amount50, Amount25,
+                        Amount10, Amount5));
+                break;
             }
         }
     }
 
-    private String checkNull(TextField textField) {
-        String data = "0";
-        if (textField.getText().isEmpty()) {
-            return data;
+    private int checkNull(TextField data) {
+        if (data.getText().isEmpty() || data == null) {
+            return 0;
         }
-        return textField.getText();
-
+        int intData = Integer.parseInt(data.getText());
+        return intData;
     }
-            private void showNameAssociate(String invoice) {
+
+    private void changeToString() {
+        ThousandAmount20 = checkNull(txf20ThousandAmount);
+        ThousandAmount10 = checkNull(txf10ThousandAmount);
+        ThousandAmount5 = checkNull(txf5ThousandAmount);
+        ThousandAmount2 = checkNull(txf2ThousandAmount);
+        ThousandAmount1 = checkNull(txf1ThousandAmount);;
+        Amount500 = checkNull(txf500Amount);
+        Amount100 = checkNull(txf100Amount);
+        Amount50 = checkNull(txf50Amount);
+        Amount25 = checkNull(txf25Amount);
+        Amount10 = checkNull(txf10Amount);
+        Amount5 = checkNull(txf5Amount);
+    }
+
+    private void showNameAssociate(String invoice) {
         ObservableList<Associate> associateList = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
         ObservableList<Associate> filterAsscociateList = associateList.filtered(associate -> Objects.equals(invoice, associate.getInvoice()));
         Associate associate = filterAsscociateList.get(0);

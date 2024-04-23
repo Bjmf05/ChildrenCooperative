@@ -2,11 +2,9 @@ package cr.ac.una.tareaprogra.controller;
 
 import cr.ac.una.tareaprogra.model.Account;
 import cr.ac.una.tareaprogra.model.AccountAssociate;
-import cr.ac.una.tareaprogra.model.Associate;
 import cr.ac.una.tareaprogra.model.MailBoxDeposit;
 import cr.ac.una.tareaprogra.model.Movements;
 import cr.ac.una.tareaprogra.util.AppContext;
-import cr.ac.una.tareaprogra.util.FlowController;
 import cr.ac.una.tareaprogra.util.Mensaje;
 import java.net.URL;
 import java.util.Objects;

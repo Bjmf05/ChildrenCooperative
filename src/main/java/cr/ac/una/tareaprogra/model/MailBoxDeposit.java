@@ -11,49 +11,49 @@ public class MailBoxDeposit implements Serializable {
 
     private SimpleStringProperty invoice;
     public SimpleStringProperty nameAccount;
-    public SimpleStringProperty amount20Thousand;
-    public SimpleStringProperty amount10Thousand;
-    public SimpleStringProperty amount5Thousand;
-    public SimpleStringProperty amount2Thousand;
-    public SimpleStringProperty amount1Thousand;
-    public SimpleStringProperty amount500;
-    public SimpleStringProperty amount100;
-    public SimpleStringProperty amount50;
-    public SimpleStringProperty amount25;
-    public SimpleStringProperty amount10;
-    public SimpleStringProperty amount5;
+    public String amount20Thousand;
+    public String amount10Thousand;
+    public String amount5Thousand;
+    public String amount2Thousand;
+    public String amount1Thousand;
+    public String amount500;
+    public String amount100;
+    public String amount50;
+    public String amount25;
+    public String amount10;
+    public String amount5;
 
     public MailBoxDeposit() {
         this.invoice = new SimpleStringProperty();
         this.nameAccount = new SimpleStringProperty();
-        this.amount20Thousand = new SimpleStringProperty();
-        this.amount10Thousand = new SimpleStringProperty();
-        this.amount5Thousand = new SimpleStringProperty();
-        this.amount2Thousand = new SimpleStringProperty();
-        this.amount1Thousand = new SimpleStringProperty();
-        this.amount500 = new SimpleStringProperty();
-        this.amount100 = new SimpleStringProperty();
-        this.amount50 = new SimpleStringProperty();
-        this.amount25 = new SimpleStringProperty();
-        this.amount10 = new SimpleStringProperty();
-        this.amount5 = new SimpleStringProperty();
+        this.amount20Thousand = new String();
+        this.amount10Thousand = new String();
+        this.amount5Thousand = new String();
+        this.amount2Thousand = new String();
+        this.amount1Thousand = new String();
+        this.amount500 = new String();
+        this.amount100 = new String();
+        this.amount50 = new String();
+        this.amount25 = new String();
+        this.amount10 = new String();
+        this.amount5 = new String();
     }
 
-    public MailBoxDeposit(String invoice, String nameAccount, String amount20Thousand, String amount10Thousand, String amount5Thousand, String amount2Thousand, String amount1Thousand, String amount500, String amount100, String amount50, String amount25, String amount10, String amount5) {
+    public MailBoxDeposit(String invoice, String nameAccount, int amount20Thousand, int amount10Thousand, int amount5Thousand, int amount2Thousand, int amount1Thousand, int amount500, int amount100, int amount50, int amount25, int amount10, int amount5) {
         this();
         this.invoice.set(invoice);
         this.nameAccount.set(nameAccount);
-        this.amount20Thousand.set(amount20Thousand);
-        this.amount10Thousand.set(amount10Thousand);
-        this.amount5Thousand.set(amount5Thousand);
-        this.amount2Thousand.set(amount2Thousand);
-        this.amount1Thousand.set(amount1Thousand);
-        this.amount500.set(amount500);
-        this.amount100.set(amount100);
-        this.amount50.set(amount50);
-        this.amount25.set(amount25);
-        this.amount10.set(amount10);
-        this.amount5.set(amount5);
+        this.amount20Thousand = String.valueOf(amount20Thousand);
+        this.amount10Thousand = String.valueOf(amount10Thousand);
+        this.amount5Thousand = String.valueOf(amount5Thousand);
+        this.amount2Thousand = String.valueOf(amount2Thousand);
+        this.amount1Thousand = String.valueOf(amount1Thousand);
+        this.amount500 = String.valueOf(amount500);
+        this.amount100 = String.valueOf(amount100);
+        this.amount50 = String.valueOf(amount50);
+        this.amount25 = String.valueOf(amount25);
+        this.amount10 = String.valueOf(amount10);
+        this.amount5 = String.valueOf(amount5);
     }
 
     public String getInvoice() {
@@ -61,7 +61,7 @@ public class MailBoxDeposit implements Serializable {
     }
 
     public void setInvoice(String invoice) {
-        this.invoice.set(invoice); 
+        this.invoice.set(invoice);
     }
 
     public String getNameAccount() {

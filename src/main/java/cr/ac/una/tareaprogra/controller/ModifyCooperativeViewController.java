@@ -1,17 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package cr.ac.una.tareaprogra.controller;
 
 import cr.ac.una.tareaprogra.model.Cooperative;
 import cr.ac.una.tareaprogra.util.AppContext;
 import cr.ac.una.tareaprogra.util.FlowController;
 import cr.ac.una.tareaprogra.util.Mensaje;
-import io.github.palexdev.materialfx.utils.FXCollectors;
 import java.io.File;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,7 +17,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
