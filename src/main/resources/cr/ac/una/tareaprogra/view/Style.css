@@ -387,3 +387,48 @@
 .btn-Delete:hover{
     -fx-background-color: #f8c76d;
 }
+
+.btn-Play{
+    -fx-background-color: #00ff00;
+    -fx-background-image: url("../resources/playBtn.png");
+    -fx-background-size: 30px 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-alignment:CENTER_RIGHT;
+}
+
+.btn-Play:hover{
+    -fx-background-color: #00cc00;
+}
+
+.btn-Stop{
+    -fx-background-color: #999999;
+    -fx-background-image: url("../resources/PauseButton.png");
+    -fx-background-size: 30px 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-alignment:CENTER_RIGHT;
+}
+
+.btn-Stop:hover{
+    -fx-background-color: #666666;
+}
+
+.slider-video{
+    -fx-background-color:transparent;
+}
+
+.slider-video .thumb {
+    -fx-background-color: #007bff;
+    -fx-background-radius: 20px; 
+    -fx-pref-height: 17px; 
+    -fx-pref-width: 17px; 
+}
+
+.slider-video .thumb:hover {
+    -fx-background-color: #0056b3; 
+}
+
+.slider-video .track {
+    -fx-background-color: #00cccc; 
+}

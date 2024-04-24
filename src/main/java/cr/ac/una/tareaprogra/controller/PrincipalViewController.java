@@ -171,5 +171,6 @@ public class PrincipalViewController extends Controller implements Initializable
 
     @FXML
     private void onActionBtnTutorial(ActionEvent event) {
+        FlowController.getInstance().goView("VideoTutorialView");
     }
 }
