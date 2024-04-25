@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package cr.ac.una.tareaprogra.controller;
 
 import cr.ac.una.tareaprogra.App;
@@ -71,33 +67,39 @@ public class VideoTutorialController extends Controller implements Initializable
         if (parameter.equals("F")) {
             videoPath = "/cr/ac/una/tareaprogra/resources/guideFuncionarioVideo.mp4";
         }
-        if(parameter.equals("A")){
+        if (parameter.equals("A")) {
             videoPath = "/cr/ac/una/tareaprogra/resources/guideAssociatesVideo.mp4";
+        }else {
+            videoPath = "/cr/ac/una/tareaprogra/resources/guideTeachersVideo.mp4";
         }
-        else{
-        videoPath = "/cr/ac/una/tareaprogra/resources/guideTeachersVideo.mp4";}
+        
         URL videoUrl = getClass().getResource(videoPath);
         Media media = new Media(videoUrl.toExternalForm());
         mediaPlayer = new MediaPlayer(media);
 
-        mediaPlayer.setOnStopped(() -> {
-            mediaPlayer.seek(Duration.ZERO);
-        });
-
+        //Obtiene el valor maximo del video para que coincida con el video
         mediaPlayer.setOnReady(() -> {
             Duration duration = mediaPlayer.getMedia().getDuration();
             sliderOfVideo.setMax(duration.toSeconds());
         });
 
+        //Actualiza el valor del marcador de progreso con el tiempo actual de la reproducción
         mediaPlayer.currentTimeProperty().addListener((observable, oldValue, newValue) -> {
             sliderOfVideo.setValue(newValue.toSeconds());
         });
 
-        // Permitir al usuario cambiar la posición del video usando el slider
+        //Permite cambiar la posición de la reproducion del video usando el marcador de progreso del slider
         sliderOfVideo.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (sliderOfVideo.isValueChanging()) {
                 mediaPlayer.seek(Duration.seconds(newValue.doubleValue()));
             }
+        });
+
+        //Permite cambiar la posición de la reproducion al hacer clic en cualquier parte del slider
+        sliderOfVideo.setOnMouseClicked(event -> {
+            double mouseXPosition = event.getX();
+            double value = (mouseXPosition / sliderOfVideo.getWidth()) * sliderOfVideo.getMax();
+            mediaPlayer.seek(Duration.seconds(value));
         });
 
         MediaView mediaView = new MediaView(mediaPlayer);
