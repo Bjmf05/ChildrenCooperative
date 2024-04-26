@@ -64,8 +64,10 @@ public class ModifyCooperativeViewController extends Controller implements Initi
     private void onActionBtnSearchLogo(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Selecione Imagen");
+        //Filtros de extensión para mostrar archivos
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.jpg", "PNG files (*.png)", "*.png");
         fileChooser.getExtensionFilters().add(extFilter);
+        //Muestra la ventana de selección de archivo y obtiene el archivo seleccionado
         selectedFile = fileChooser.showOpenDialog(null);
         if(selectedFile != null){
             ruteOfArchive = selectedFile.getAbsolutePath();
@@ -104,6 +106,7 @@ public class ModifyCooperativeViewController extends Controller implements Initi
             if (!folder.exists()) { 
                 folder.mkdir();// Crea la carpeta de logos si no existe.
             }
+            //Copia la imagen a la carpeta de Logos
             Path source = Paths.get(selectedFile.getAbsolutePath());
             Path destiny = Paths.get(relativePath,selectedFile.getName());
             imagePath = "file:" + relativePath + selectedFile.getName();

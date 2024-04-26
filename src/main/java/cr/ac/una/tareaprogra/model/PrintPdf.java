@@ -24,11 +24,11 @@ import javafx.collections.ObservableList;
  */
 public class PrintPdf {
 
-    private Long id = 118720125L;
-    private String name = "Marconi Calvo Campos";
-    private String invoice = "C019";
-    private LocalDate dateOfBirth = LocalDate.of(2003, 03, 19);
-    private String sex = "Masculino";
+    private Long id;
+    private String name = "";
+    private String invoice = "";
+    private LocalDate dateOfBirth;
+    private String sex = "";
     private String title = "";
     private String addressPhoto = "resources/IconChildPhoto.png";
     private String logo = "";
@@ -39,7 +39,7 @@ public class PrintPdf {
     private Cooperative instanceCooperative;
     
     public void printPdf() throws IOException, DocumentException {
-        String temporaryFolder = System.getProperty("java.io.tmpdir");
+        String temporaryFolder = System.getProperty("java.io.tmpdir"); //Obtiene la ruta de la carpeta temporal
         String fileName = invoice+".pdf";
         File file = new File(temporaryFolder, fileName);
         file.deleteOnExit();
