@@ -34,7 +34,7 @@ public class VideoTutorialController extends Controller implements Initializable
     private HBox hBoxVideo;
 
     private MediaPlayer mediaPlayer;
-    private String videoPath;
+    private String videoPath = "/cr/ac/una/tareaprogra/resources/guideTeachersVideo.mp4";
 
     /**
      * Initializes the controller class.
@@ -69,8 +69,6 @@ public class VideoTutorialController extends Controller implements Initializable
         }
         if (parameter.equals("A")) {
             videoPath = "/cr/ac/una/tareaprogra/resources/guideAssociatesVideo.mp4";
-        }else {
-            videoPath = "/cr/ac/una/tareaprogra/resources/guideTeachersVideo.mp4";
         }
         
         URL videoUrl = getClass().getResource(videoPath);
