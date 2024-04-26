@@ -82,6 +82,7 @@ public class DeleteAssociateAccountViewController extends Controller implements 
             new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Cuenta", getStage(), "Ocurrio un error eliminando la cuenta.");
         }
     }
+//Funcion para llenar el combobox
 
     public void chargeCbxAccount(String invoice) {
         ObservableList<AccountAssociate> filterList = accountAssociat.filtered(accountAssociate
@@ -89,6 +90,7 @@ public class DeleteAssociateAccountViewController extends Controller implements 
         cbxAccount.setItems(filterList);
         chargeNameAssociate(invoice);
     }
+//Funcion para cargar el nombre del Asociado
 
     private void chargeNameAssociate(String invoice) {
         for (Associate associate : associat) {
@@ -103,6 +105,7 @@ public class DeleteAssociateAccountViewController extends Controller implements 
         lblNameAssoiate = null;
         cbxAccount.getSelectionModel().clearSelection();
     }
+//Funcion para borrar la cuenta
 
     private void deleteAccount(int i) {
         AccountAssociate selectedValue = cbxAccount.getValue();
@@ -112,6 +115,7 @@ public class DeleteAssociateAccountViewController extends Controller implements 
         }
         deleteMovement(account);
     }
+//Funcion de eliminar los movimientos
 
     private void deleteMovement(String account) {
         for (int i = 0; i < movement.size(); i++) {
@@ -121,6 +125,7 @@ public class DeleteAssociateAccountViewController extends Controller implements 
         }
     }
 
+    //Funcion para validar requeridos
     private String validateRequired() {
         AccountAssociate selectedValue = cbxAccount.getValue();
         String account = selectedValue.getName();
@@ -128,10 +133,11 @@ public class DeleteAssociateAccountViewController extends Controller implements 
             if (Objects.equals(accountAssociate.getName(), account)) {
                 if (Objects.equals(accountAssociate.getBalanceAccount(), "0")) {
                     return "";
-                }else{
-                return "La cuenta aun tiene fondos, si deseas eliminar retira los fondos";}
+                } else {
+                    return "La cuenta aun tiene fondos, si deseas eliminar retira los fondos";
+                }
             }
-            
+
         }
         return "";
     }

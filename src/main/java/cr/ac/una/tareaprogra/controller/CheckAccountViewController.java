@@ -68,6 +68,7 @@ public class CheckAccountViewController extends Controller implements Initializa
         accountAvaible = (ObservableList<Account>) AppContext.getInstance().get("newAccount");
         associat = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
     }
+//Verificar el Folio
 
     @FXML
     private void onActionBtnVerify(ActionEvent event) {
@@ -97,14 +98,15 @@ public class CheckAccountViewController extends Controller implements Initializa
 
     @FXML
     private void onActionBtnSave(ActionEvent event) {
-           ObservableList<AccountAssociate> filterAccountAssociate = filterAccountAssociates();
-    Set<String> addedAccounts = getAddedAccounts(filterAccountAssociate);
+        ObservableList<AccountAssociate> filterAccountAssociate = filterAccountAssociates();
+        Set<String> addedAccounts = getAddedAccounts(filterAccountAssociate);
 
-    ObservableList<String> optionalList = lstVAssociateAccount.getItems();
-    addNewAccounts(optionalList, addedAccounts, filterAccountAssociate);
+        ObservableList<String> optionalList = lstVAssociateAccount.getItems();
+        addNewAccounts(optionalList, addedAccounts, filterAccountAssociate);
 
-    clear();
+        clear();
     }
+//Funcion para el drag and drop de las cuentas 
 
     private void dragAndDrop() {
         lstVAccountAvailabe.setOnDragDetected(e -> {
@@ -135,6 +137,7 @@ public class CheckAccountViewController extends Controller implements Initializa
             e.consume();
         });
     }
+//Serializar los datos ya que las list son de tipo string
 
     private String serializeAccount(Account account) {
         return account.getId() + "-" + account.getName();
@@ -156,6 +159,7 @@ public class CheckAccountViewController extends Controller implements Initializa
         obsAccountAssociat.clear();
         obsAccountAvaible.clear();
     }
+//Funciones para llenar las listas
 
     private void fillLstVAccountAvailabe() {
         for (Account accountAvaib : accountAvaible) {
@@ -174,6 +178,7 @@ public class CheckAccountViewController extends Controller implements Initializa
 
         }
     }
+//Funcion para comparar las listas
 
     private void compareList() {
         fillLstVAccountAvailabe();
@@ -196,52 +201,53 @@ public class CheckAccountViewController extends Controller implements Initializa
         FlowController.getInstance().delete("DeleteAssociateAccountView");
         clear();
     }
-private ObservableList<AccountAssociate> filterAccountAssociates() {
-    return accountAssociat.filtered(accountAssociate -> Objects.equals(accountAssociate.getInvoice(), txfIdUser.getText()));
-}
-
-private Set<String> getAddedAccounts(ObservableList<AccountAssociate> filterAccountAssociate) {
-    Set<String> addedAccounts = new HashSet<>();
-    for (AccountAssociate accountAssociate : filterAccountAssociate) {
-        addedAccounts.add(Long.toString(accountAssociate.getId()));
+//Funciones para guardar la nueva cuenta del asociado, evitando duplicar a la hora de guardar
+    private ObservableList<AccountAssociate> filterAccountAssociates() {
+        return accountAssociat.filtered(accountAssociate -> Objects.equals(accountAssociate.getInvoice(), txfIdUser.getText()));
     }
-    return addedAccounts;
-}
 
-private void addNewAccounts(ObservableList<String> optionalList, Set<String> addedAccounts, ObservableList<AccountAssociate> filterAccountAssociate) {
-    for (String item : optionalList) {
-        String[] parts = item.split("-");
-        String accountId = parts[0];
-        String accountName = parts[1];
-        boolean exists = checkIfAccountExists(accountId, accountName, addedAccounts, filterAccountAssociate);
-        if (!exists) {
-            addAccount(accountId, accountName, addedAccounts);
-        }
-    }
-}
-
-private boolean checkIfAccountExists(String accountId, String accountName, Set<String> addedAccounts, ObservableList<AccountAssociate> filterAccountAssociate) {
-    if (addedAccounts.contains(accountId)) {
-        return true;
-    } else {
+    private Set<String> getAddedAccounts(ObservableList<AccountAssociate> filterAccountAssociate) {
+        Set<String> addedAccounts = new HashSet<>();
         for (AccountAssociate accountAssociate : filterAccountAssociate) {
-            if (Objects.equals(accountAssociate.getId(), accountId) && Objects.equals(accountAssociate.getName(), accountName)) {
-                return true;
+            addedAccounts.add(Long.toString(accountAssociate.getId()));
+        }
+        return addedAccounts;
+    }
+
+    private void addNewAccounts(ObservableList<String> optionalList, Set<String> addedAccounts, ObservableList<AccountAssociate> filterAccountAssociate) {
+        for (String item : optionalList) {
+            String[] parts = item.split("-");
+            String accountId = parts[0];
+            String accountName = parts[1];
+            boolean exists = checkIfAccountExists(accountId, accountName, addedAccounts, filterAccountAssociate);
+            if (!exists) {
+                addAccount(accountId, accountName, addedAccounts);
             }
         }
     }
-    return false;
-}
 
-private void addAccount(String accountId, String accountName, Set<String> addedAccounts) {
-    if (!addedAccounts.contains(accountId)) {
-        accountAssociat.add(new AccountAssociate(Long.parseLong(accountId), accountName, txfIdUser.getText()));
-        addedAccounts.add(accountId);
+    private boolean checkIfAccountExists(String accountId, String accountName, Set<String> addedAccounts, ObservableList<AccountAssociate> filterAccountAssociate) {
+        if (addedAccounts.contains(accountId)) {
+            return true;
+        } else {
+            for (AccountAssociate accountAssociate : filterAccountAssociate) {
+                if (Objects.equals(accountAssociate.getId(), accountId) && Objects.equals(accountAssociate.getName(), accountName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
-}
+
+    private void addAccount(String accountId, String accountName, Set<String> addedAccounts) {
+        if (!addedAccounts.contains(accountId)) {
+            accountAssociat.add(new AccountAssociate(Long.parseLong(accountId), accountName, txfIdUser.getText()));
+            addedAccounts.add(accountId);
+        }
+    }
 
     @Override
     public void initialize() {
         clear();
-}
+    }
 }

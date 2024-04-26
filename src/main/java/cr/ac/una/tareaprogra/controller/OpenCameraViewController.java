@@ -66,7 +66,7 @@ public class OpenCameraViewController extends Controller implements Initializabl
     @FXML
     private void onActionBtnMakePhoto(ActionEvent event) {
         if (webcam != null && webcam.isOpen()) {
-            String folderPath = "C:\\ProgramData\\Cooperativa\\fotos_usuarios"; 
+            String folderPath = System.getProperty("user.dir")+"\\Cooperativa\\fotos_usuarios"; 
             File folder = new File(folderPath);
             if (!folder.exists()) {
                 if (!folder.mkdir()) {
@@ -89,7 +89,7 @@ public class OpenCameraViewController extends Controller implements Initializabl
     @Override
     public void initialize() {
     }
-
+//Funcion para mantener la camara en movimiento hasta capturar
     private void startPreview() {
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
         executor.scheduleAtFixedRate(() -> {

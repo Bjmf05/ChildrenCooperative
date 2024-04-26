@@ -35,7 +35,7 @@ public class CreateAccountTypeViewController extends Controller implements Initi
     @FXML
     private TableColumn<Account, String> tbcName;
     private ObservableList<Account> accountList = (ObservableList<Account>) AppContext.getInstance().get("newAccount");
-     @FXML
+    @FXML
     private TableColumn<Account, String> tbcIdAccount;
 
     /**
@@ -47,7 +47,7 @@ public class CreateAccountTypeViewController extends Controller implements Initi
         tbcName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tbcModify.setCellValueFactory((TableColumn.CellDataFeatures<Account, Boolean> p) -> new SimpleBooleanProperty(p.getValue() != null));
         tbcModify.setCellFactory((TableColumn<Account, Boolean> p) -> new ButtonCell());
-         tbvAccount.setItems(accountList);
+        tbvAccount.setItems(accountList);
     }
 
     @Override
@@ -59,12 +59,13 @@ public class CreateAccountTypeViewController extends Controller implements Initi
         if (!txtTypeAccount.getText().isEmpty()) {
             Account account = new Account(txtTypeAccount.getText());
             accountList.add(account);
-            
+
         }
         txtTypeAccount.setText("");
         tbvAccount.setItems(accountList);
     }
-     private class ButtonCell extends TableCell<Account, Boolean> {
+//Funcion para agregar un boton de modificar en el tableview
+    private class ButtonCell extends TableCell<Account, Boolean> {
 
         final Button cellButton = new Button();
 
@@ -74,10 +75,10 @@ public class CreateAccountTypeViewController extends Controller implements Initi
             cellButton.setText("Modificar");
             cellButton.setOnAction((ActionEvent t) -> {
                 Account account = (Account) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
-ChangeNameAccountViewController  ChangeNameAccount = (ChangeNameAccountViewController) FlowController.getInstance().getController("ChangeNameAccountView");
-ChangeNameAccount.nameAccount(account);
-FlowController.getInstance().goViewInWindowModal("ChangeNameAccountView", getStage(), true);
-tbvAccount.refresh();
+                ChangeNameAccountViewController ChangeNameAccount = (ChangeNameAccountViewController) FlowController.getInstance().getController("ChangeNameAccountView");
+                ChangeNameAccount.nameAccount(account);
+                FlowController.getInstance().goViewInWindowModal("ChangeNameAccountView", getStage(), true);
+                tbvAccount.refresh();
             });
         }
 

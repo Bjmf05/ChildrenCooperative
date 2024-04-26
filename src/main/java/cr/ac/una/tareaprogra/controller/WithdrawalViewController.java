@@ -125,12 +125,14 @@ public class WithdrawalViewController extends Controller implements Initializabl
 
     }
 
+        //Funcion para llenar el combobox
     private void chargeCbxAccount() {
         ObservableList<AccountAssociate> filterList = accountAssociat.filtered(accountAssociate
                 -> Objects.equals(accountAssociate.getInvoice(), txfInvoice.getText()));
         cbxAccount.setItems(filterList);
     }
 
+    //Funcion para guardar el retiro
     private void safeWithdrawal() {
         AccountAssociate selectedValue = cbxAccount.getValue();
         String account = selectedValue.getName();
@@ -149,6 +151,7 @@ public class WithdrawalViewController extends Controller implements Initializabl
         }
     }
 
+    //Funcion para guardar el movimiento
     private void safeMovement(AccountAssociate accountAssociate, int amount, int balanceAccount) {
         ObservableList<Movements> movement = (ObservableList<Movements>) AppContext.getInstance().get("newMovement");
         long idAccount = accountAssociate.getId();
@@ -158,7 +161,7 @@ public class WithdrawalViewController extends Controller implements Initializabl
         long balanceAccoun = balanceAccount;
         movement.add(new Movements(idAccount, accountname, invoice, "Retiro", amoun, balanceAccoun));
     }
-
+    
     private String validateRequired() {
         AccountAssociate selectedValue = cbxAccount.getValue();
         String account = selectedValue.getName();

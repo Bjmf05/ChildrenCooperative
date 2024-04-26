@@ -11,9 +11,10 @@ import javafx.collections.ObservableList;
  * @author PC
  */
 public class Account implements Serializable {
+
     private SimpleStringProperty id;
     private SimpleStringProperty name;
-    
+
     public Account() {
         this.id = new SimpleStringProperty();
         this.name = new SimpleStringProperty();
@@ -24,21 +25,22 @@ public class Account implements Serializable {
         this.id.set(Integer.toString(createIdAccount()));
         this.name.set(name);
     }
-    public Account(Account account){
-    this();
-    this.id.set(account.getId().toString());
-    this.name.set(account.getName());
-    
+
+    public Account(Account account) {
+        this();
+        this.id.set(account.getId().toString());
+        this.name.set(account.getName());
+
     }
 
-  public Long getId() {
+    public Long getId() {
         if (id.get() != null && !id.get().isEmpty()) {
             return Long.valueOf(id.get());
         } else {
             return null;
         }
     }
-  
+
     public void setId(Long id) {
         this.id.set(id.toString());
     }
@@ -50,7 +52,6 @@ public class Account implements Serializable {
     public void setName(String Name) {
         this.name.set(Name);
     }
-
 
     @Override
     public int hashCode() {
@@ -82,20 +83,17 @@ public class Account implements Serializable {
     public String toString() {
         return name.get();
     }
-private Integer createIdAccount(){
-    ObservableList<Account> accountList = (ObservableList<Account>) AppContext.getInstance().get("newAccount");
-    if(accountList.isEmpty()){
-        return 1;
+//Funcion para crear un nuevo id
+    private Integer createIdAccount() {
+        ObservableList<Account> accountList = (ObservableList<Account>) AppContext.getInstance().get("newAccount");
+        if (accountList.isEmpty()) {
+            return 1;
+        } else {
+            Account account = accountList.get(accountList.size() - 1);
+            Long newIdL = account.getId();
+            int newIdI = (int) (newIdL + 1);
+            return newIdI;
+        }
     }
-    else{
-        Account account = accountList.get(accountList.size()-1);
-        Long newIdL = account.getId();
-        int newIdI = (int) (newIdL+1);
-        return newIdI;
-    }
-}
 
-    
-    
-    
 }

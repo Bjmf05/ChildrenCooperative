@@ -75,20 +75,20 @@ public class CheckAccountAssociateViewController extends Controller implements I
     @FXML
     private void onActionBtnVerify(ActionEvent event) {
         boolean foundUser = false;
-         if (!txfInvoice.getText().isEmpty()) {
+        if (!txfInvoice.getText().isEmpty()) {
             for (Movements movements : movement) {
                 if (Objects.equals(movements.getInvoice(), txfInvoice.getText())) {
                     chargeCbxAccount();
                     btnVerify.setDisable(true);
                     btnSearch.setDisable(false);
                     txfInvoice.setEditable(false);
-                    foundUser=true;
+                    foundUser = true;
                     showNameAssociate(txfInvoice.getText());
                     break;
                 }
             }
-            if(!foundUser){
-                 new Mensaje().showModal(Alert.AlertType.ERROR, "Revizar Cuenta", getStage(), "No se encontro ningun asociado con ese folio que haya realizado algun movimiento.");
+            if (!foundUser) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Revizar Cuenta", getStage(), "No se encontro ningun asociado con ese folio que haya realizado algun movimiento.");
             }
         }
     }
@@ -105,8 +105,7 @@ public class CheckAccountAssociateViewController extends Controller implements I
         ObservableList<Movements> filterList = movement.filtered(movements
                 -> Objects.equals(movements.getAccountName(), account)
                 && Objects.equals(movements.getInvoice(), txfInvoice.getText()));
-        
-        
+
         ObservableList<Movements> modifiableList = FXCollections.observableArrayList();
         for (int i = filterList.size() - 1; i >= 0; i--) {
             Movements movements = filterList.get(i);
@@ -119,12 +118,14 @@ public class CheckAccountAssociateViewController extends Controller implements I
     private void onActionBtnClear(ActionEvent event) {
         clear();
     }
+//Funcion para cargar las cuentas en combobox
 
     private void chargeCbxAccount() {
         ObservableList<AccountAssociate> filterList = accountAssociat.filtered(accountAssociate
                 -> Objects.equals(accountAssociate.getInvoice(), txfInvoice.getText()));
         cbxAccount.setItems(filterList);
     }
+//Funcion para limpiar
 
     private void clear() {
         btnSearch.setDisable(true);
@@ -135,10 +136,12 @@ public class CheckAccountAssociateViewController extends Controller implements I
         cbxAccount.setItems(FXCollections.observableArrayList());
         tbvMovementAccount.setItems(FXCollections.observableArrayList());
     }
-        private void showNameAssociate(String invoice) {
+
+    //Funcion para mostrar el nombre del asociado
+    private void showNameAssociate(String invoice) {
         ObservableList<Associate> associateList = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
         ObservableList<Associate> filterAsscociateList = associateList.filtered(associate -> Objects.equals(invoice, associate.getInvoice()));
         Associate associate = filterAsscociateList.get(0);
-        lblNameInvoice.setText(associate.getName() + " " + associate.getLastName1()+" "+ associate.getLastName2());
+        lblNameInvoice.setText(associate.getName() + " " + associate.getLastName1() + " " + associate.getLastName2());
     }
 }

@@ -107,12 +107,12 @@ public class DepositFunctionaryViewController extends Controller implements Init
                     btnVerify.setDisable(true);
                     txfInvoice.setEditable(false);
                     cbxAccount.setDisable(false);
-                    foundUser=true;
+                    foundUser = true;
                     break;
                 }
             }
-    if(!foundUser){
-                 new Mensaje().showModal(Alert.AlertType.ERROR, "Realizar Cuenta", getStage(), "No se encontro ningun asociado con ese folio.");
+            if (!foundUser) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Realizar Cuenta", getStage(), "No se encontro ningun asociado con ese folio.");
             }
         }
     }
@@ -148,6 +148,7 @@ public class DepositFunctionaryViewController extends Controller implements Init
         }
 
     }
+//Funcion para desabilitar datos
 
     private void disableData() {
         txfInvoice.setEditable(true);
@@ -167,6 +168,7 @@ public class DepositFunctionaryViewController extends Controller implements Init
         txf5Amount.setEditable(false);
         btnSave.setDisable(true);
     }
+//Funcion para habilitar datos
 
     private void enableData() {
         btnSave.setDisable(false);
@@ -200,6 +202,7 @@ public class DepositFunctionaryViewController extends Controller implements Init
         txf10Amount.clear();
         txf5Amount.clear();
     }
+//Cargar el comboBox
 
     private void chargeCbxAccount() {
         ObservableList<AccountAssociate> filterList = accountAssociat.filtered(accountAssociate
@@ -207,12 +210,14 @@ public class DepositFunctionaryViewController extends Controller implements Init
         cbxAccount.setItems(filterList);
 
     }
+//Pasar de string a int
 
     private int stringToInt(TextField textField) {
         String text = textField.getText();
         return text != null && !text.isEmpty() ? Integer.parseInt(text) : 0;
     }
 
+    //Sumar todas la cantidades
     private int totalDeposit() {
         int total = (20000 * stringToInt(txf20ThousandAmount))
                 + (10000 * stringToInt(txf10ThousandAmount))
@@ -228,6 +233,7 @@ public class DepositFunctionaryViewController extends Controller implements Init
 
         return total;
     }
+//Funcion para guardar el deposito
 
     private void safeDeposit() {
         AccountAssociate selectedValue = cbxAccount.getValue();
@@ -250,6 +256,7 @@ public class DepositFunctionaryViewController extends Controller implements Init
             }
         }
     }
+//Funcion para guardar el moviemiento
 
     private void safeMovement(AccountAssociate accountAssociate, int amount, int balanceAccount) {
         ObservableList<Movements> movement = (ObservableList<Movements>) AppContext.getInstance().get("newMovement");
@@ -260,6 +267,7 @@ public class DepositFunctionaryViewController extends Controller implements Init
         long balanceAccoun = balanceAccount;
         movement.add(new Movements(idAccount, accountname, invoice, "Deposito", amoun, balanceAccoun));
     }
+//Funcion para validar requeridos antes de guardar
 
     private String validateRequired() {
         TextField[] textFields = {txf20ThousandAmount, txf10ThousandAmount, txf5ThousandAmount, txf2ThousandAmount,
@@ -277,10 +285,12 @@ public class DepositFunctionaryViewController extends Controller implements Init
             return "No has dijitado ninguna cantidad. Hazlo he intenta de nuevo.";
         }
     }
-            private void showNameAssociate(String invoice) {
+
+    //Funcion para mostrar el nombre del asociado
+    private void showNameAssociate(String invoice) {
         ObservableList<Associate> associateList = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
         ObservableList<Associate> filterAsscociateList = associateList.filtered(associate -> Objects.equals(invoice, associate.getInvoice()));
         Associate associate = filterAsscociateList.get(0);
-        lblNameInvoice.setText(associate.getName() + " " + associate.getLastName1()+" "+ associate.getLastName2());
+        lblNameInvoice.setText(associate.getName() + " " + associate.getLastName1() + " " + associate.getLastName2());
     }
 }

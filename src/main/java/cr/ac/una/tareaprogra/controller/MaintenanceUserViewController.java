@@ -128,12 +128,13 @@ public class MaintenanceUserViewController extends Controller implements Initial
     private void onActionDpDateOfBirth(ActionEvent event) {
     }
 
+    //Boton para tomar la foto 
     @FXML
     private void onActionBtnMakePhoto(ActionEvent event) {
         OpenCameraViewController openCamera = (OpenCameraViewController) FlowController.getInstance().getController("OpenCameraView");
         FlowController.getInstance().goViewInWindowModal("OpenCameraView", getStage(), true);
         if (openCamera.getParameter().equals("p")) {
-            File file = new File("C:/ProgramData/Cooperativa/fotos_usuarios/foto.jpg");
+            File file = new File(System.getProperty("user.dir")+"/Cooperativa/fotos_usuarios/foto.jpg");
             String localUrl = file.toURI().toString();
             Image image = new Image(localUrl);
             imgMakePhoto.setImage(image);
@@ -220,7 +221,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
         btnMakePhoto.setDisable(true);
 
     }
-
+    //Funcion para bindar los datos del asociado a las txf
     private void bindAssociate() {
         txtFolio.textProperty().bind(associate.invoice);
         txtId.textProperty().bindBidirectional(associate.id);
@@ -231,7 +232,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
         dpDateOfBirth.valueProperty().bindBidirectional(associate.dateOfBirth);
 
     }
-
+    //Funcion para desbindear los datos del asociado
     private void unbindAssociate() {
         txtFolio.textProperty().unbind();
         txtId.textProperty().unbindBidirectional(associate.id);
@@ -293,6 +294,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
         FlowController.getInstance().delete("OpenCameraView");
     }
 
+    
     @FXML
     private void onActionBtnDeleteAssociate(ActionEvent event) {
         String invalid = validateAccounts();
@@ -324,7 +326,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
         }
         }
     }
-
+//Funcion para eliminar la antigua foto del asociado
     private void deletePhoto(String AddressPhoto) {
         File archive = new File(AddressPhoto);
         if (archive.exists()) {
@@ -332,10 +334,11 @@ public class MaintenanceUserViewController extends Controller implements Initial
         }
     }
 
+    //Funcion para cambiar el nombre de la foto
     private String changeFileName(String newInvoise) {
-        String FOLDER_PATH = "C:/ProgramData/Cooperativa/fotos_usuarios/";
+        String FOLDER_PATH = System.getProperty("user.dir")+"/Cooperativa/fotos_usuarios/";
         if (newInvoise != null && !newInvoise.isEmpty()) {
-            File file = new File("C:/ProgramData/Cooperativa/fotos_usuarios/foto.jpg");
+            File file = new File(System.getProperty("user.dir")+"/Cooperativa/fotos_usuarios/foto.jpg");
             File newFile = new File(FOLDER_PATH + newInvoise + ".jpg");
             if (file.exists()) {
                 file.renameTo(newFile);
@@ -344,7 +347,7 @@ public class MaintenanceUserViewController extends Controller implements Initial
         String address = FOLDER_PATH + newInvoise + ".jpg";
         return address;
     }
-
+//Funcion para en caso de eliminar el asociado, asegurarse que las cuentas esten en 0
     private String validateAccounts() {
         String invoice = txtFolio.getText();
         ObservableList<AccountAssociate> accountAssociateList = (ObservableList<AccountAssociate>) AppContext.getInstance().get("newAccountAssociate");

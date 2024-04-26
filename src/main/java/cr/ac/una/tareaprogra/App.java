@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
 public class App extends Application {
 
     private static Scene scene;
+    //Parametro que guarda el dato del acceso directo
     private static String parameter = "";
     @Override
     public void start(Stage stage) throws IOException {

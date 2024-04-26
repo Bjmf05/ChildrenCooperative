@@ -183,6 +183,7 @@ public class MailBoxDepositViewController extends Controller implements Initiali
         txf5Amount.clear();
     }
 
+    //Funcion para bindear los datos del deposito a los txf
     private void bindMailboxDeposit() {
         lblNameAccount.textProperty().bindBidirectional(mailBoxDeposit.nameAccount);
         txf20ThousandAmount.setText(mailBoxDeposit.amount20Thousand);
@@ -199,6 +200,7 @@ public class MailBoxDepositViewController extends Controller implements Initiali
 
     }
 
+     //Funcion para guardar el deposito
     private void safeDeposit() {
 
         String account = lblNameAccount.getText();
@@ -220,7 +222,7 @@ public class MailBoxDepositViewController extends Controller implements Initiali
             }
         }
     }
-
+    //Funcion para sumar la cantidad a depositar
     private int totalDeposit() {
         int total = (20000 * stringToInt(txf20ThousandAmount))
                 + (10000 * stringToInt(txf10ThousandAmount))
@@ -241,7 +243,7 @@ public class MailBoxDepositViewController extends Controller implements Initiali
         String text = textField.getText();
         return text != null && !text.isEmpty() ? Integer.parseInt(text) : 0;
     }
-
+    //Funcion para guardar el movimiento realizado
     private void safeMovement(AccountAssociate accountAssociate, int amount, int balanceAccount) {
         ObservableList<Movements> movement = (ObservableList<Movements>) AppContext.getInstance().get("newMovement");
         long idAccount = accountAssociate.getId();

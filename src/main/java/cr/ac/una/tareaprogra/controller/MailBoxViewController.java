@@ -202,7 +202,7 @@ public class MailBoxViewController extends Controller implements Initializable {
         txf10Amount.clear();
         txf5Amount.clear();
     }
-
+//Funcion para llenar el combobox
     private void chargeCbxAccount() {
         ObservableList<AccountAssociate> filterList = accountAssociat.filtered(accountAssociate
                 -> Objects.equals(accountAssociate.getInvoice(), txfInvoice.getText()));
@@ -230,7 +230,7 @@ public class MailBoxViewController extends Controller implements Initializable {
             return "No has dijitado ninguna cantidad. Hazlo he intenta de nuevo.";
         }
     }
-
+//Funcion para guardar el deposito
     private void safeDeposit() {
         AccountAssociate selectedValue = cbxAccount.getValue();
         String account = selectedValue.getName();
@@ -247,6 +247,7 @@ public class MailBoxViewController extends Controller implements Initializable {
         }
     }
 
+    //Funcion para verificar nulos
     private int checkNull(TextField data) {
         if (data.getText().isEmpty() || data == null) {
             return 0;
@@ -254,7 +255,7 @@ public class MailBoxViewController extends Controller implements Initializable {
         int intData = Integer.parseInt(data.getText());
         return intData;
     }
-
+//Funcion para cambiar de entero a string
     private void changeToString() {
         ThousandAmount20 = checkNull(txf20ThousandAmount);
         ThousandAmount10 = checkNull(txf10ThousandAmount);
@@ -268,7 +269,7 @@ public class MailBoxViewController extends Controller implements Initializable {
         Amount10 = checkNull(txf10Amount);
         Amount5 = checkNull(txf5Amount);
     }
-
+//Funcion para mostrar el nombre del asociado
     private void showNameAssociate(String invoice) {
         ObservableList<Associate> associateList = (ObservableList<Associate>) AppContext.getInstance().get("newAssociate");
         ObservableList<Associate> filterAsscociateList = associateList.filtered(associate -> Objects.equals(invoice, associate.getInvoice()));

@@ -74,6 +74,7 @@ public class ChangeNameAccountViewController extends Controller implements Initi
         }
     }
 
+    //Funciones para cambiar el nombre de las cuentas en todos lados
     public void nameAccount(Account account) {
         txfNewNameAccount.setText(account.getName());
         oldName = account.getName();

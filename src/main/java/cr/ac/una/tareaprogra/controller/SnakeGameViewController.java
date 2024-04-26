@@ -80,6 +80,7 @@ public class SnakeGameViewController extends Controller implements Initializable
     public void initialize() {
 
     }
+//Funcion para iniciar el juego
 
     private void initGame() {
         snake.clear();
@@ -92,18 +93,20 @@ public class SnakeGameViewController extends Controller implements Initializable
         clearCanvas();
         cnvGame.requestFocus();
     }
+//Funcion para que el canva tenga el focus
 
     private void setupInputHandlers() {
         cnvGame.setFocusTraversable(true);
         cnvGame.setOnKeyPressed(this::handleKeyPress);
     }
 
+    //Funcion para iniciar el bucle del juego
     private void startGameLoop() {
-if(gameLoop != null){
-gameLoop.stop();
-}
+        if (gameLoop != null) {
+            gameLoop.stop();
+        }
 
-      gameLoop =  new AnimationTimer() {
+        gameLoop = new AnimationTimer() {
             long lastTick = 0;
 
             public void handle(long now) {
@@ -118,9 +121,11 @@ gameLoop.stop();
                 }
             }
         };
-      gameLoop.start();
+        gameLoop.start();
     }
 
+    
+    //Funcion para reconocer la tecla presionada
     private void handleKeyPress(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case W:
@@ -138,6 +143,7 @@ gameLoop.stop();
         }
     }
 
+    //Funcion para actualizar el juego 
     private void updateGame() {
         if (gameOver) {
             drawGameOver();
@@ -150,7 +156,7 @@ gameLoop.stop();
         drawSnake();
         drawScore();
     }
-
+    //Funcion para mover la serpiente
     private void moveSnake() {
         for (int i = snake.size() - 1; i >= 1; i--) {
             snake.get(i).x = snake.get(i - 1).x;
@@ -171,10 +177,10 @@ gameLoop.stop();
                 break;
         }
     }
-
+    //Funcion para revizar las colisiones
     private void checkCollisions() {
-        if (snake.get(0).x <= 0 || snake.get(0).x >= WIDTH
-                || snake.get(0).y <= 0 || snake.get(0).y >= HEIGHT) {
+        if (snake.get(0).x < 0 || snake.get(0).x >= WIDTH
+                || snake.get(0).y < 0 || snake.get(0).y >= HEIGHT) {
             gameOver = true;
         }
         for (int i = 1; i < snake.size(); i++) {
@@ -189,20 +195,21 @@ gameLoop.stop();
             spawnFood();
         }
     }
-
+//Funcion para limpiar el canva
     private void clearCanvas() {
         GraphicsContext gc = cnvGame.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, WIDTH * CORNER_SIZE, HEIGHT * CORNER_SIZE);
     }
 
+    //Funcion para mostrar el fin del juego
     private void drawGameOver() {
         GraphicsContext gc = cnvGame.getGraphicsContext2D();
         gc.setFill(Color.RED);
         gc.setFont(new Font("", 50));
         gc.fillText("Fin del Juego", 100, 175);
     }
-
+    //Funcion para dibujar la comida 
     private void drawFood() {
         GraphicsContext gc = cnvGame.getGraphicsContext2D();
         Color foodColor = getFoodColor();
@@ -210,6 +217,7 @@ gameLoop.stop();
         gc.fillOval(foodX * CORNER_SIZE, foodY * CORNER_SIZE, CORNER_SIZE, CORNER_SIZE);
     }
 
+    //Funcion para generar la comida en una posicion aleatoria
     private void spawnFood() {
         while (true) {
             foodX = random.nextInt(WIDTH);
@@ -222,24 +230,19 @@ gameLoop.stop();
             }
         }
     }
-
+//Funcion para elegir el color de la comida
     private Color getFoodColor() {
-        switch (foodColorIndex) {
-            case 0:
-                return Color.PURPLE;
-            case 1:
-                return Color.LIGHTBLUE;
-            case 2:
-                return Color.YELLOW;
-            case 3:
-                return Color.PINK;
-            case 4:
-                return Color.ORANGE;
-            default:
-                return Color.WHITE;
-        }
+        return switch (foodColorIndex) {
+            case 0 -> Color.PURPLE;
+            case 1 -> Color.LIGHTBLUE;
+            case 2 -> Color.YELLOW;
+            case 3 -> Color.PINK;
+            case 4 -> Color.RED;
+            default -> Color.WHITE;
+        };
     }
 
+    //Funcion para dibujar la serpiente
     private void drawSnake() {
         GraphicsContext gc = cnvGame.getGraphicsContext2D();
         gc.setFill(Color.GREEN);
@@ -273,17 +276,18 @@ gameLoop.stop();
                     c.x * CORNER_SIZE + CORNER_SIZE / 2, c.y * CORNER_SIZE + CORNER_SIZE / 2);
         }
     }
-
+    //Funcion para mostrar el puntaje
     private void drawScore() {
         GraphicsContext gc = cnvGame.getGraphicsContext2D();
         gc.setFill(Color.WHITE);
         gc.setFont(new Font("", 20));
-        gc.fillText("Score: " + score, 10, 20);
+        gc.fillText("Puntos: " + score, 10, 20);
     }
-
+    // Funcion para liberar referencia al bucle de juego
     private void stopGameLoop() {
         if (gameLoop != null) {
             gameLoop.stop();
-            gameLoop = null; // Liberar referencia al bucle de juego
-        }}
+            gameLoop = null; 
+        }
     }
+}

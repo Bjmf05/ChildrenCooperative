@@ -20,22 +20,23 @@ public class Data {
     }
 
     private static final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
-    private static final String JSON_FILE_PATH_Account = "C:\\ProgramData\\Cooperativa\\data\\account.json";
-    private static final String JSON_FILE_PATH_AccountAssociate = "C:\\ProgramData\\Cooperativa\\data\\accountAssociate.json";
-    private static final String JSON_FILE_PATH_MailBoxDeposit = "C:\\ProgramData\\Cooperativa\\data\\mailBoxDeposit.json";
-    private static final String JSON_FILE_PATH_Movements = "C:\\ProgramData\\Cooperativa\\data\\movements.json";
-    private static final String JSON_FILE_PATH_Associate = "C:\\ProgramData\\Cooperativa\\data\\associate.json";
-    private static final String JSON_FILE_PATH_Cooperative = "C:\\ProgramData\\Cooperativa\\data\\cooperative.json";
+    private static final String JSON_FILE_PATH_Account = System.getProperty("user.dir")+"\\Cooperativa\\data\\account.json";
+    private static final String JSON_FILE_PATH_AccountAssociate = System.getProperty("user.dir")+"\\Cooperativa\\data\\accountAssociate.json";
+    private static final String JSON_FILE_PATH_MailBoxDeposit = System.getProperty("user.dir")+"\\Cooperativa\\data\\mailBoxDeposit.json";
+    private static final String JSON_FILE_PATH_Movements = System.getProperty("user.dir")+"\\Cooperativa\\data\\movements.json";
+    private static final String JSON_FILE_PATH_Associate = System.getProperty("user.dir")+"\\Cooperativa\\data\\associate.json";
+    private static final String JSON_FILE_PATH_Cooperative = System.getProperty("user.dir")+"\\Cooperativa\\data\\cooperative.json";
 
+    //Funcion para iniciar la carga de datos o creacion
     public void startData() throws IOException {
-        String cooperativaPath = "C:\\ProgramData\\Cooperativa";
+        String cooperativaPath =  System.getProperty("user.dir")+"\\Cooperativa";
         File cooperativaFolder = new File(cooperativaPath);
 
         if (!cooperativaFolder.exists()) {
             cooperativaFolder.mkdirs();
         }
 
-        String cooperativaDataPath = "C:\\ProgramData\\Cooperativa\\data";
+        String cooperativaDataPath = System.getProperty("user.dir")+"\\Cooperativa\\data";
         File cooperativaData = new File(cooperativaDataPath);
         if (!cooperativaData.exists()) {
             cooperativaData.mkdirs();
@@ -51,6 +52,7 @@ public class Data {
         }
     }
 
+        //Funcion para cargar el appcontext con los datos de los archivos
     private void chargeAppContext() throws IOException {
         ArrayList<AccountAssociate> arrayAccountAssociateList = loadListToJson(JSON_FILE_PATH_AccountAssociate, AccountAssociate.class);
         ArrayList<Associate> arrayAssociateList = loadListToJson(JSON_FILE_PATH_Associate, Associate.class);
@@ -74,6 +76,7 @@ public class Data {
         AppContext.getInstance().set("newCooperative", cooperativeList);
     }
 
+    //Funcion para leer los datos del .json y pasarlo a una arraylist
     private <T> ArrayList<T> loadListToJson(String route, Class<T> classObject) throws IOException {
              File file = new File(route);
         if (!file.exists() || file.length() == 0) {
@@ -87,6 +90,7 @@ public class Data {
         }
     }
 
+    //Funcion para guardar las listas en arrayList
     public void safeLists() {
 
         ObservableList<Account> accountList = (ObservableList<Account>) AppContext.getInstance().get("newAccount");
@@ -113,7 +117,7 @@ public class Data {
         ArrayList<Cooperative> arrayCooperativeList = new ArrayList<>(cooperativeList);
         safeArrayList(JSON_FILE_PATH_Cooperative, arrayCooperativeList);
     }
-
+    //En caso de que falle por alguna razon el cargar los datos esta funcion las crea
     private void createObservableLists() {
         ObservableList<Account> accountList = FXCollections.observableArrayList();
         ObservableList<AccountAssociate> accountAssociateList = FXCollections.observableArrayList();
@@ -133,6 +137,7 @@ public class Data {
         AppContext.getInstance().set("newCooperative", cooperativeList);
     }
 
+        //Funcion para guardar los arrayList en .json
     private void safeArrayList(String Route, ArrayList<?> list) {
         try {
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

@@ -10,7 +10,7 @@ import javafx.beans.property.SimpleStringProperty;
  *
  * @author PC
  */
-public class Associate implements Serializable  {
+public class Associate implements Serializable {
 
     public SimpleStringProperty id;
     public SimpleStringProperty name;
@@ -64,6 +64,7 @@ public class Associate implements Serializable  {
             this.dateOfBirth.set(null);
         }
     }
+//Constructor para cuando se realize una modificacion
 
     public void setAssociate(Associate associate) {
 
