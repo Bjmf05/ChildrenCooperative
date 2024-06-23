@@ -1,9 +1,9 @@
 # Children's Cooperative Project
 
-##Description
+## Description
 This project is an application that simulates a cooperative for children, allowing deposits, withdrawals and account management. The goal is to teach children about financial management in a fun and interactive way.
 
-##Characteristics
+## Characteristics
 - Create accounts for children
 - Make deposits and withdrawals
 - Check the balance of the accounts.
@@ -21,7 +21,7 @@ This project is an application that simulates a cooperative for children, allowi
 1. Clone the repository:
    ```tap
    git clone https://github.com/Bjmf05/ChildrenCooperative.git
-2.Open the executable folder.
-3.Open the shortcut properties.
-4.Change only the address of the .jar and the folder.
-5.Run the shortcut.
+2. Open the executable folder.
+3. Open the shortcut properties.
+4. Change only the address of the .jar and the folder.
+5. Run the shortcut.
